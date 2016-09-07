@@ -1,12 +1,13 @@
+
+
 from django.shortcuts import render
 from django.http import HttpResponse
-import requests
 
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
-
+import requests
 
 # Create your views here.
 
@@ -38,11 +39,15 @@ class MyChatBotView(generic.View):
 		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
 				print message
-				sender_id = message['sender']['id']
-				message_text = message['message']['text']
-				post_facebook_message(sender_id,message_text) 
+				try:
+					sender_id = message['sender']['id']
+					message_text = message['message']['text']
+					post_facebook_message(sender_id,message_text) 
+				except Exception as e:
+					print e
+					pass
 
-		return HttpResponse()	
+		return HttpResponse()  
 
 def index(request):
 	return HttpResponse('Hello world')
