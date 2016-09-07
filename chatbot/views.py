@@ -35,7 +35,7 @@ class MyChatBotView(generic.View):
 		incoming_mesage= json.loads(self.request.body.decode('utf-8'))
 		print incoming_mesage
 
-		for entry in incoming_mesage['entry']:
+		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
 				print message
 				sender_id = message['sender']['id']
