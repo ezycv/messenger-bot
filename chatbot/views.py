@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import requests
 
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
+
 
 # Create your views here.
 
@@ -40,6 +42,7 @@ class MyChatBotView(generic.View):
 				message_text = message['message']['text']
 				post_facebook_message(sender_id,message_text) 
 
+			return HttpResponse()	
 
 def index(request):
 	return HttpResponse('Hello world')
