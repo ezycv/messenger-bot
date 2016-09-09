@@ -2,7 +2,7 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
-
+import urllib2
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -26,11 +26,14 @@ def post_football_message(text , message):
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
-	data= message
+	req = urllib2.Request('http://api.football-data.org/v1/teams/{{ text }}/players/')
+	r = urllib2.urlopen(req)
+	data = r.read()
+	j = json.loads(data)
 
-	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-	print status.json()	
-	return data
+	status = requests.post(post_message_url, headers={"Content-Type": "application/json"})
+	#print status.json()	
+	return j
 
 
 class MyChatBotView(generic.View):
