@@ -13,12 +13,18 @@ import requests
 
 VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAEitDLi38TVFoRJWXZBDu9Vnn5bBP9M2leOAH024own6CrgBMWC7IZBCqjOT8lyzQPLNMDFV8hn44tTBzbGteoeSejqMKy6hPH5iWhBMdZCSoVr8nTTgIVsP8P7PFi0faSqNkVZAUXQZAUfWRkBVBF6eNuJ0gOgZDZD'
+API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 def post_facebook_message(fbid,message_text):
 	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 	print status.json()
+
+def post_football_message(text):
+	post_message_url = 'http://api.football-data.org/v1/teams/66/players/85b82a55e643435fb11b903effdb9b3b+/'
+	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+	print status.json()	
 
 
 class MyChatBotView(generic.View):
@@ -42,6 +48,7 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
+
 					post_facebook_message(sender_id,message_text) 
 				except Exception as e:
 					print e
