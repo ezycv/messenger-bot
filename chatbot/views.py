@@ -26,7 +26,7 @@ def post_football_message(text , message):
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
-	req = urllib2.Request('http://api.football-data.org/v1/teams/(?P<text>[0-9]+)/players/')
+	req = urllib2.Request('http://api.football-data.org/v1/teams/66/players/')
 	r = urllib2.urlopen(req)
 	data = r.read()
 	j = json.loads(data)
