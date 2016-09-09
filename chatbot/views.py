@@ -22,9 +22,15 @@ def post_facebook_message(fbid,message_text):
 	print status.json()
 
 def post_football_message(text):
-	post_message_url = 'http://api.football-data.org/v1/teams/66/players/85b82a55e643435fb11b903effdb9b3b+/'
+	post_message_url = 'http://api.football-data.org/v1/teams/{{ text }}/players/85b82a55e643435fb11b903effdb9b3b+/'
+
+	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
+
+	data= json.loads(self.request.body.decode('utf-8'))
+
 	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 	print status.json()	
+	return data;
 
 
 class MyChatBotView(generic.View):
@@ -48,6 +54,8 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
+					data1 = post_football_message(message_text)
+					print data1
 
 					post_facebook_message(sender_id,message_text) 
 				except Exception as e:
