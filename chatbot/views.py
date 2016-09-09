@@ -60,8 +60,11 @@ class MyChatBotView(generic.View):
 					data1 = post_football_message(message_text ,incoming_message )
 					#print data1
 					for links in data1['_links']:
+						print links
 						for team in links['team']:
+							print team
 							for players in team['players']:
+								print players
 								for names in players['name']:
 									print names
 
