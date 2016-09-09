@@ -26,11 +26,9 @@ def post_football_message(text , message):
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
-	data= message
-
 	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 	print status.json()	
-	return data;
+	return data
 
 
 class MyChatBotView(generic.View):
