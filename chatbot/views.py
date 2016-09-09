@@ -59,6 +59,11 @@ class MyChatBotView(generic.View):
 					message_text = message['message']['text']
 					data1 = post_football_message(message_text ,incoming_message )
 					print data1
+					for name in data1[players]:
+						for names in name[name]:
+							print names
+
+
 
 					post_facebook_message(sender_id,message_text) 
 				except Exception as e:
