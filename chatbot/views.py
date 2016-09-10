@@ -61,8 +61,8 @@ class MyChatBotView(generic.View):
 					#print data1
 					for players in data1['players']:
 						#print links,data1[0],data[1],data[2].data[3],data[4]
-						for names in players['name']:
-							print names
+						#for names in players['name']:
+						print players['name']
 							# for players in team['players']:
 							# 	print players
 							# 	for names in players['name']:
