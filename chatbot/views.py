@@ -25,7 +25,7 @@ def post_football_message(text):
 	#post_message_url = 'http://api.football-data.org/v1/teams//players/85b82a55e643435fb11b903effdb9b3b+/'
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-	url = 'http://api.football-data.org/v1/teams/?85b82a55e643435fb11b903effdb9b3b/'
+	url = 'http://api.football-data.org/v1/teams/'
 	
 	new_url = url + text + "/players"
 	req = urllib2.Request(new_url)
