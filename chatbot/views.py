@@ -21,17 +21,19 @@ def post_facebook_message(fbid,message_text):
 	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 	print status.json()
 
-def post_football_message(text , message):
-	post_message_url = 'http://api.football-data.org/v1/teams//players/85b82a55e643435fb11b903effdb9b3b+/'
+def post_football_message(text):
+	#post_message_url = 'http://api.football-data.org/v1/teams//players/85b82a55e643435fb11b903effdb9b3b+/'
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-
-	req = urllib2.Request('http://api.football-data.org/v1/teams/66/players/')
+	url = 'http://api.football-data.org/v1/teams/'
+	
+	new_url = url + text + "/players"
+	req = urllib2.Request(new_url)
 	r = urllib2.urlopen(req)
 	data = r.read()
 	j = json.loads(data)
 
-	status = requests.post(post_message_url, headers={"Content-Type": "application/json"})
+	#status = requests.post(post_message_url, headers={"Content-Type": "application/json"})
 	#print status.json()	
 	return j
 
@@ -57,7 +59,7 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					data1 = post_football_message(message_text ,incoming_message )
+					data1 = post_football_message(message_text)
 					#print data1
 					for players in data1['players']:
 						#print links,data1[0],data[1],data[2].data[3],data[4]
