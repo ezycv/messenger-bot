@@ -58,7 +58,7 @@ class MyChatBotView(generic.View):
 				print message
 				try:
 					sender_id = message['sender']['id']
-					post_facebook_message(sender_id,'Hey how can i help u with?')
+					#post_facebook_message(sender_id,'Hey how can i help u with?')
 					message_text = message['message']['text']
 					data1 = post_football_message(message_text)
 					#print data1
