@@ -60,19 +60,19 @@ class MyChatBotView(generic.View):
 					sender_id = message['sender']['id']
 					#post_facebook_message(sender_id,'Hey how can i help u with?')
 					message_text = message['message']['text']
-					data1 = post_football_message(message_text)
+					#3data1 = post_football_message(message_text)
 					post_facebook_message(sender_id,'Hey how can i help u with?')
 					#print data1
-					for players in data1['players']:
+					#for players in data1['players']:
 						#print links,data1[0],data[1],data[2].data[3],data[4]
 						#for names in players['name']:
-						print players['name']
-						post_facebook_message(sender_id,players['name'])
+						#print players['name']
+						#post_facebook_message(sender_id,players['name'])
 
 							# for players in team['players']:
 							# 	print players
 							# 	for names in players['name']:
-					post_facebook_message(sender_id,'Is there anything more to help.?')		# 		print names
+					#post_facebook_message(sender_id,'Is there anything more to help.?')		# 		print names
 
 							
 
