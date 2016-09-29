@@ -58,6 +58,7 @@ class MyChatBotView(generic.View):
 				print message
 				try:
 					sender_id = message['sender']['id']
+					post_facebook_message(sender_id,'Hey how can i help u with?')
 					message_text = message['message']['text']
 					data1 = post_football_message(message_text)
 					#print data1
@@ -66,7 +67,7 @@ class MyChatBotView(generic.View):
 						#for names in players['name']:
 						print players['name']
 						post_facebook_message(sender_id,players['name'])
-										
+
 							# for players in team['players']:
 							# 	print players
 							# 	for names in players['name']:
@@ -80,7 +81,7 @@ class MyChatBotView(generic.View):
 				except Exception as e:
 					print e
 					pass
-		
+
 		return HttpResponse()  
 
 def index(request):
