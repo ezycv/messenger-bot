@@ -66,11 +66,11 @@ class MyChatBotView(generic.View):
 						#for names in players['name']:
 						print players['name']
 						post_facebook_message(sender_id,players['name'])
-						post_facebook_message(sender_id,'Is there anything more to help.?')				
+										
 							# for players in team['players']:
 							# 	print players
 							# 	for names in players['name']:
-							# 		print names
+					post_facebook_message(sender_id,'Is there anything more to help.?')		# 		print names
 
 							
 
