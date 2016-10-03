@@ -28,7 +28,7 @@ def post_football_message(text):
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 	url = 'https://www.googleapis.com/gmail/v1/users/me/labels/'
 	
-	new_url = url + text + "/?key={YOUR_API_KEY}'"
+	new_url = url + text + '/?key=AIzaSyDDaUwDASa3X5Q_LzvIZ9WkItLIrKwjHVc'
 	req = urllib2.Request(new_url)
 	r = urllib2.urlopen(req)
 	data = r.read()
