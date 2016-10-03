@@ -19,15 +19,16 @@ def post_facebook_message(fbid,message_text):
 	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 	status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+	
 	print status.json()
 
 def post_football_message(text):
 	#post_message_url = 'http://api.football-data.org/v1/teams//players/85b82a55e643435fb11b903effdb9b3b+/'
 
 	#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-	url = 'http://api.football-data.org/v1/teams/'
+	url = 'https://www.googleapis.com/gmail/v1/users/me/labels/'
 	
-	new_url = url + text + "/players"
+	new_url = url + text + "/?key={YOUR_API_KEY}'"
 	req = urllib2.Request(new_url)
 	r = urllib2.urlopen(req)
 	data = r.read()
@@ -58,21 +59,14 @@ class MyChatBotView(generic.View):
 				print message
 				try:
 					sender_id = message['sender']['id']
-					#post_facebook_message(sender_id,'Hey how can i help u with?')
 					message_text = message['message']['text']
-					#3data1 = post_football_message(message_text)
-					post_facebook_message(sender_id,'Hey how can i help u with?')
-					#print data1
-					#for players in data1['players']:
-						#print links,data1[0],data[1],data[2].data[3],data[4]
-						#for names in players['name']:
-						#print players['name']
-						#post_facebook_message(sender_id,players['name'])
+					data = post_football_message(message_text)
+					post_facebook_message(sender_id,data[messagesUnread])
 
-							# for players in team['players']:
-							# 	print players
-							# 	for names in players['name']:
-					#post_facebook_message(sender_id,'Is there anything more to help.?')		# 		print names
+					
+					
+
+					
 
 							
 
