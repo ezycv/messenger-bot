@@ -26,7 +26,7 @@ def scrape_spreadsheet():
 	for entry in data["values"]:
 		
 		for k in entry:	
-			arr.append(d)
+			arr.append(k)
 	print arr
 	return arr			
 
