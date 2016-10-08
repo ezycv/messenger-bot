@@ -69,7 +69,7 @@ class MyChatBotView(generic.View):
 	def post(self, request, *args, **kwargs):
 		incoming_message= json.loads(self.request.body.decode('utf-8'))
 		print  incoming_message
-		a=scrape_spreadsheet
+		a=scrape_spreadsheet()
 
 		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
