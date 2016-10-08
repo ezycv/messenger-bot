@@ -21,7 +21,7 @@ def scrape_spreadsheet():
 
 	resp = requests.get(url=url)
 	data = json.loads(resp.text)
-	arr[]
+	arr = []
 
 	for entry in data[values]:
 		
