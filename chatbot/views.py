@@ -15,6 +15,22 @@ VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAJZBslH5fjCxDvWcZBU7Oz2aYcQWNYEaU4GKTHJ01jCg6JlMVCLaZCmvB1Sqis7B0GxQA43whyC7AbroQ94M03nHvnpumpR1MPzkxpYFXa9NEZAw3a0H9ZBESpA0RvsvVmbAZBJzMFvl0wcxl6lVRwfPzTcWOSdgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
+def scrape_spreadsheet():
+	sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
+	url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetid +'/values/Sheet1!A1:D20?key=AIzaSyBEET07ztOkEYiQ_CULBX6bW19py0CY3EI'
+
+	resp = requests.get(url=url)
+	data = json.loads(resp.text)
+	arr[]
+
+	for entry in data[values]:
+		
+		for k in entry:	
+			arr.append(d)
+	print arr
+	return arr			
+
+
 def post_facebook_message(fbid,message_text):
 	post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
 	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
@@ -53,6 +69,7 @@ class MyChatBotView(generic.View):
 	def post(self, request, *args, **kwargs):
 		incoming_message= json.loads(self.request.body.decode('utf-8'))
 		print  incoming_message
+		a=scrape_spreadsheet
 
 		for entry in incoming_message['entry']:
 			for message in entry['messaging']:
@@ -60,8 +77,9 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					data = post_football_message(message_text)
-					post_facebook_message(sender_id,data[messagesUnread])
+					for i in a:
+
+						post_facebook_message(sender_id,i)
 
 					
 					
