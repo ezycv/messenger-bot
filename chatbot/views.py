@@ -23,7 +23,7 @@ def scrape_spreadsheet():
 	data = json.loads(resp.text)
 	arr = []
 
-	for entry in data[values]:
+	for entry in data["values"]:
 		
 		for k in entry:	
 			arr.append(d)
