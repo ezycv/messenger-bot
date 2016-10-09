@@ -8,6 +8,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 import requests
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 
 # Create your views here.
 
@@ -15,10 +18,23 @@ VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAJZBslH5fjCxDvWcZBU7Oz2aYcQWNYEaU4GKTHJ01jCg6JlMVCLaZCmvB1Sqis7B0GxQA43whyC7AbroQ94M03nHvnpumpR1MPzkxpYFXa9NEZAw3a0H9ZBESpA0RvsvVmbAZBJzMFvl0wcxl6lVRwfPzTcWOSdgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
+def write_spreadsheet():
+	scope = ['https://spreadsheets.google.com/feeds']
+
+	credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
+	gc = gspread.authorize(credentials)
+	
+	wks = gc.open("testing").sheet1
+	a=wks.acell('A1')
+	return a
+	
+
+
+
+
 def scrape_spreadsheet():
 	sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
 	url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetid +'/values/Sheet1!A1:D20?key=AIzaSyBEET07ztOkEYiQ_CULBX6bW19py0CY3EI'
-
 	resp = requests.get(url=url)
 	data = json.loads(resp.text)
 	arr = []
@@ -77,10 +93,12 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					print "hahahshsh",len(a)
-					# for i in range(len(a)):
+					#print "hahahshsh",len(a)
+					 for i in range(len(a)):
 
-					# 	post_facebook_message(sender_id,a[i])
+						post_facebook_message(sender_id,a[i])
+						b =write_spreadsheet()
+						print b
 
 					
 					
