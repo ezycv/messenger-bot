@@ -77,9 +77,10 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					for i in range(len(a)):
+					print "hahahshsh",len(a)
+					# for i in range(len(a)):
 
-						#post_facebook_message(sender_id,a[i])
+					# 	post_facebook_message(sender_id,a[i])
 
 					
 					
