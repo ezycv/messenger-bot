@@ -96,9 +96,9 @@ class MyChatBotView(generic.View):
 					#print "hahahshsh",len(a)
 					for i in range(len(a)):
 
-						#post_facebook_message(sender_id,a[i])
-						b =write_spreadsheet()
-						print b
+						post_facebook_message(sender_id,a[i])
+						#b =write_spreadsheet()
+						#print b
 
 					
 					
