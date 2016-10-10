@@ -19,7 +19,7 @@ PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAJZBslH5fjCxDvWcZBU7Oz2aYcQWNYEaU4GKTHJ01jCg6
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 def write_spreadsheet():
-	scope = ['https://spreadsheets.google.com/']
+	scope = ['https://spreadsheets.google.com/feeds']
 
 	credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
 	gc = gspread.authorize(credentials)
