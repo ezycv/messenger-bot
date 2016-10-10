@@ -26,7 +26,7 @@ def write_spreadsheet():
 	
 	wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
 	ws = wks.get_worksheet(0)
-	a=ws.acell('1,1')
+	a=ws.acell('A1')
 	return a
 	
 
