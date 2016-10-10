@@ -24,7 +24,7 @@ def write_spreadsheet():
 	credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
 	gc = gspread.authorize(credentials)
 	
-	wks = gc.open("testing").sheet1
+	wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM/edit#gid=0')
 	a=wks.acell('A1')
 	return a
 	
