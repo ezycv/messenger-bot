@@ -25,8 +25,7 @@ def write_spreadsheet():
 	gc = gspread.authorize(credentials)
 	
 	wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
-	a=wks.acell('1,1')
-	return a
+	return wks.acell('1,1')
 	
 
 
