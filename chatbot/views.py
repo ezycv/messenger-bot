@@ -24,7 +24,7 @@ def write_spreadsheet():
 	credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
 	gc = gspread.authorize(credentials)
 	
-	wks = gc.open('testing')
+	wks = gc.open('Achievements')
 	a=wks.acell('A1')
 	return a
 	
