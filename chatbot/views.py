@@ -109,6 +109,7 @@ class MyChatBotView(generic.View):
 
                         
                     elif integercheck(message_text) == True:
+                        global i
                         i=i+1
                         pos = 'B' + str(i)
                         post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
