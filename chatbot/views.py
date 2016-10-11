@@ -96,7 +96,7 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					if message_text in 'hi,hello,hey,supp,'.split(','):
+					if message_text in 'hi,hello,hey,supp'.split(','):
 						post_facebook_message(sender_id,'Hey,please tell me your roll number ')
 					elif type(message_text) == int:
 						post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
