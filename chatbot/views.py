@@ -33,7 +33,13 @@ def write_spreadsheet(input):
 	
 
 
-
+def integercheck(number):
+try:
+    int(number)
+except ValueError:
+    return False
+else:
+    return True
 
 def scrape_spreadsheet():
 	sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
@@ -98,7 +104,7 @@ class MyChatBotView(generic.View):
 					message_text = message['message']['text']
 					if message_text in 'hi,hello,hey,supp'.split(','):
 						post_facebook_message(sender_id,'Hey,please tell me your roll number ')
-					elif type(message_text) == int:
+					elif integercheck(message_text) == True:
 						post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
 
 
