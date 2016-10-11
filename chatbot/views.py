@@ -18,7 +18,7 @@ VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAJZBslH5fjCxDvWcZBU7Oz2aYcQWNYEaU4GKTHJ01jCg6JlMVCLaZCmvB1Sqis7B0GxQA43whyC7AbroQ94M03nHvnpumpR1MPzkxpYFXa9NEZAw3a0H9ZBESpA0RvsvVmbAZBJzMFvl0wcxl6lVRwfPzTcWOSdgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
-def write_spreadsheet():
+def write_spreadsheet(input):
 	scope = ['https://spreadsheets.google.com/feeds']
 
 	credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
@@ -26,7 +26,9 @@ def write_spreadsheet():
 	
 	wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
 	ws = wks.get_worksheet(0)
-	a=ws.acell('A1')
+	a= ws.update_acell('b2', input)
+
+
 	return a
 	
 
@@ -98,9 +100,9 @@ class MyChatBotView(generic.View):
 					#for i in range(len(a)):
 
 						#post_facebook_message(sender_id,a[i])
-					b =write_spreadsheet()
-					print b
-					post_facebook_message(sender_id,b)
+					write_spreadsheet(message_text)
+					
+					post_facebook_message(sender_id,'thanks for your answer')
 
 					
 					
