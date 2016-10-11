@@ -101,8 +101,9 @@ class MyChatBotView(generic.View):
 
 						#post_facebook_message(sender_id,a[i])
 					write_spreadsheet(message_text)
+					b='ok'
 					
-					post_facebook_message(sender_id,message_text)
+					post_facebook_message(sender_id,b)
 
 					
 					
