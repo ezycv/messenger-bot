@@ -116,10 +116,10 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'now tell me your phone number by writing phone in the end of number ')
                         write_spreadsheet(pos,message_text)
 
-                    elif  phone in message_text:
+                    elif  'phone' in message_text:
                         global j
                         j=j+1
-                        pos = 'C' + str(i)                        
+                        pos = 'C' + str(j)                        
                         post_facebook_message(sender_id,'your data has been updated in the database  ')
                         write_spreadsheet(pos,message_text)
                     else:
