@@ -17,8 +17,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
-i=0
-j=0
+i=1
+j=1
 
 def write_spreadsheet(pos,input):
     scope = ['https://spreadsheets.google.com/feeds']
@@ -112,8 +112,23 @@ class MyChatBotView(generic.View):
                         global i
                         i=i+1
                         pos = 'B' + str(i)
-                        post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
+                        print pos
+                        post_facebook_message(sender_id,'now tell me your phone number by writing phone in the end of number ')
                         write_spreadsheet(pos,message_text)
+
+                     elif  phone in message_text:
+                        global j
+                        j=j+1
+                        pos = 'C' + str(i)                        
+                        post_facebook_message(sender_id,'your data has been updated in the database  ')
+                        write_spreadsheet(pos,message_text)
+                    else:
+                        post_facebook_message(sender_id,'please say hi hello hey to start a conversation  ')
+
+
+
+
+
 
 
                     
