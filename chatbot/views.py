@@ -15,7 +15,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 # Create your views here.
 
 VERIFY_TOKEN = '7thseptember2016'
-PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAJZBslH5fjCxDvWcZBU7Oz2aYcQWNYEaU4GKTHJ01jCg6JlMVCLaZCmvB1Sqis7B0GxQA43whyC7AbroQ94M03nHvnpumpR1MPzkxpYFXa9NEZAw3a0H9ZBESpA0RvsvVmbAZBJzMFvl0wcxl6lVRwfPzTcWOSdgZDZD'
+PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 def write_spreadsheet(input):
@@ -106,7 +106,7 @@ class MyChatBotView(generic.View):
 					
 					#write_spreadsheet(message_text)
 
-s
+
 					
 					
 

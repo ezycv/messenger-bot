@@ -1,7 +1,7 @@
 HTTP/1.1 500 INTERNAL SERVER ERROR
 Connection: keep-alive
 Server: gunicorn/19.6.0
-Date: Tue, 11 Oct 2016 18:01:47 GMT
+Date: Tue, 11 Oct 2016 18:14:30 GMT
 Transfer-Encoding: chunked
 X-Frame-Options: SAMEORIGIN
 Content-Type: text/html
@@ -187,7 +187,7 @@ Via: 1.1 vegur
     </tr>
     <tr>
       <th>Server time:</th>
-      <td>Tue, 11 Oct 2016 18:01:47 +0000</td>
+      <td>Tue, 11 Oct 2016 18:14:30 +0000</td>
     </tr>
   </table>
 </div>
@@ -205,13 +205,13 @@ Via: 1.1 vegur
           <code>/app/.heroku/python/lib/python2.7/site-packages/django/core/handlers/base.py</code> in <code>get_response</code>
 
           
-            <div class="context" id="c140486147126552">
+            <div class="context" id="c140598814242072">
               
-                <ol start="80" class="pre-context" id="pre140486147126552"><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>        urlconf = settings.ROOT_URLCONF</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>        urlresolvers.set_urlconf(urlconf)</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>        resolver = urlresolvers.RegexURLResolver(r&#39;^/&#39;, urlconf)</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>        try:</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>            response = None</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>            # Apply request middleware</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>            for middleware_method in self._request_middleware:</pre></li></ol>
+                <ol start="80" class="pre-context" id="pre140598814242072"><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>        urlconf = settings.ROOT_URLCONF</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>        urlresolvers.set_urlconf(urlconf)</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>        resolver = urlresolvers.RegexURLResolver(r&#39;^/&#39;, urlconf)</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>        try:</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>            response = None</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>            # Apply request middleware</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>            for middleware_method in self._request_middleware:</pre></li></ol>
               
-              <ol start="87" class="context-line"><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>                response = middleware_method(request)</pre> <span>...</span></li></ol>
+              <ol start="87" class="context-line"><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>                response = middleware_method(request)</pre> <span>...</span></li></ol>
               
-                <ol start='88' class="post-context" id="post140486147126552"><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>                if response:</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>                    break</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre></pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>            if response is None:</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>                if hasattr(request, &#39;urlconf&#39;):</pre></li><li onclick="toggle('pre140486147126552', 'post140486147126552')"><pre>                    # Reset url resolver with a custom urlconf.</pre></li></ol>
+                <ol start='88' class="post-context" id="post140598814242072"><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>                if response:</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>                    break</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre></pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>            if response is None:</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>                if hasattr(request, &#39;urlconf&#39;):</pre></li><li onclick="toggle('pre140598814242072', 'post140598814242072')"><pre>                    # Reset url resolver with a custom urlconf.</pre></li></ol>
               
             </div>
           
@@ -219,10 +219,10 @@ Via: 1.1 vegur
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140486147126552')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '140598814242072')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140486147126552">
+            <table class="vars" id="v140598814242072">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -232,8 +232,8 @@ Via: 1.1 vegur
               <tbody>
                 
                   <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&quot;&lt;WSGIRequest\npath:/facebook_auth,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;QueryDict: {}&gt;,\nCOOKIES:{},\nMETA:{&#39;CONTENT_LENGTH&#39;: &#39;274&#39;,\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\n &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\n &#39;HTTP_CONNECT_TIME&#39;: &#39;3&#39;,\n &#39;HTTP_HOST&#39;: &#39;thawing-sands-52537.herokuapp.com&#39;,\n &#39;HTTP_TOTAL_ROUTE_TIME&#39;: &#39;0&#39;,\n &#39;HTTP_USER_AGENT&#39;: &#39;curl/7.47.0&#39;,\n &#39;HTTP_VIA&#39;: &#39;1.1 vegur&#39;,\n &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;45.127.232.16&#39;,\n &#39;HTTP_X_FORWARDED_PORT&#39;: &#39;443&#39;,\n &#39;HTTP_X_FORWARDED_PROTO&#39;: &#39;https&#39;,\n &#39;HTTP_X_REQUEST_ID&#39;: &#39;4a12d289-a392-4fd5-8c3e-ddf35e830ec5&#39;,\n &#39;HTTP_X_REQUEST_START&#39;: &#39;1476208907742&#39;,\n &#39;PATH_INFO&#39;: u&#39;/facebook_auth&#39;,\n &#39;QUERY_STRING&#39;: &#39;&#39;,\n &#39;RAW_URI&#39;: &#39;/facebook_auth&#39;,\n &#39;REMOTE_ADDR&#39;: &#39;10.152.55.197&#39;,\n &#39;REMOTE_PORT&#39;: &#39;49462&#39;,\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\n &#39;SCRIPT_NAME&#39;: u&#39;&#39;,\n &#39;SERVER_NAME&#39;: &#39;0.0.0.0&#39;,\n &#39;SERVER_PORT&#39;: &#39;31444&#39;,\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\n &#39;SERVER_SOFTWARE&#39;: &#39;gunicorn/19.6.0&#39;,\n &#39;gunicorn.socket&#39;: &lt;socket._socketobject object at 0x7fc57ae57050&gt;,\n &#39;wsgi.errors&#39;: &lt;gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7fc57aee1590&gt;,\n &#39;wsgi.file_wrapper&#39;: &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;,\n &#39;wsgi.input&#39;: &lt;gunicorn.http.body.Body object at 0x7fc57aee15d0&gt;,\n &#39;wsgi.multiprocess&#39;: True,\n &#39;wsgi.multithread&#39;: False,\n &#39;wsgi.run_once&#39;: False,\n &#39;wsgi.url_scheme&#39;: &#39;https&#39;,\n &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>
+                    <td>response</td>
+                    <td class="code"><pre>None</pre></td>
                   </tr>
                 
                   <tr>
@@ -242,8 +242,8 @@ Via: 1.1 vegur
                   </tr>
                 
                   <tr>
-                    <td>middleware_method</td>
-                    <td class="code"><pre>&lt;bound method CommonMiddleware.process_request of &lt;django.middleware.common.CommonMiddleware object at 0x7fc57b997fd0&gt;&gt;</pre></td>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fdfb77e8550&gt;</pre></td>
                   </tr>
                 
                   <tr>
@@ -252,13 +252,13 @@ Via: 1.1 vegur
                   </tr>
                 
                   <tr>
-                    <td>response</td>
-                    <td class="code"><pre>None</pre></td>
+                    <td>request</td>
+                    <td class="code"><pre>&quot;&lt;WSGIRequest\npath:/facebook_auth,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;QueryDict: {}&gt;,\nCOOKIES:{},\nMETA:{&#39;CONTENT_LENGTH&#39;: &#39;274&#39;,\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\n &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\n &#39;HTTP_CONNECT_TIME&#39;: &#39;0&#39;,\n &#39;HTTP_HOST&#39;: &#39;thawing-sands-52537.herokuapp.com&#39;,\n &#39;HTTP_TOTAL_ROUTE_TIME&#39;: &#39;0&#39;,\n &#39;HTTP_USER_AGENT&#39;: &#39;curl/7.47.0&#39;,\n &#39;HTTP_VIA&#39;: &#39;1.1 vegur&#39;,\n &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;45.127.232.16&#39;,\n &#39;HTTP_X_FORWARDED_PORT&#39;: &#39;443&#39;,\n &#39;HTTP_X_FORWARDED_PROTO&#39;: &#39;https&#39;,\n &#39;HTTP_X_REQUEST_ID&#39;: &#39;2d9822cc-53d9-4abc-a2c0-f5e638efbfa4&#39;,\n &#39;HTTP_X_REQUEST_START&#39;: &#39;1476209670211&#39;,\n &#39;PATH_INFO&#39;: u&#39;/facebook_auth&#39;,\n &#39;QUERY_STRING&#39;: &#39;&#39;,\n &#39;RAW_URI&#39;: &#39;/facebook_auth&#39;,\n &#39;REMOTE_ADDR&#39;: &#39;10.179.164.130&#39;,\n &#39;REMOTE_PORT&#39;: &#39;11545&#39;,\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\n &#39;SCRIPT_NAME&#39;: u&#39;&#39;,\n &#39;SERVER_NAME&#39;: &#39;0.0.0.0&#39;,\n &#39;SERVER_PORT&#39;: &#39;28653&#39;,\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\n &#39;SERVER_SOFTWARE&#39;: &#39;gunicorn/19.6.0&#39;,\n &#39;gunicorn.socket&#39;: &lt;socket._socketobject object at 0x7fdfb66afb40&gt;,\n &#39;wsgi.errors&#39;: &lt;gunicorn.http.wsgi.WSGIErrorsWrapper object at 0x7fdfb6617050&gt;,\n &#39;wsgi.file_wrapper&#39;: &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;,\n &#39;wsgi.input&#39;: &lt;gunicorn.http.body.Body object at 0x7fdfb6617250&gt;,\n &#39;wsgi.multiprocess&#39;: True,\n &#39;wsgi.multithread&#39;: False,\n &#39;wsgi.run_once&#39;: False,\n &#39;wsgi.url_scheme&#39;: &#39;https&#39;,\n &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>self</td>
-                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fc57b8be050&gt;</pre></td>
+                    <td>middleware_method</td>
+                    <td class="code"><pre>&lt;bound method CommonMiddleware.process_request of &lt;django.middleware.common.CommonMiddleware object at 0x7fdfb6a0acd0&gt;&gt;</pre></td>
                   </tr>
                 
-              <
+              
