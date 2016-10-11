@@ -104,6 +104,8 @@ class MyChatBotView(generic.View):
 					b='ok'
 					
 					post_facebook_message(sender_id,b)
+					write_spreadsheet(message_text)
+
 
 					
 					
