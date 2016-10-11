@@ -96,17 +96,17 @@ class MyChatBotView(generic.View):
 				try:
 					sender_id = message['sender']['id']
 					message_text = message['message']['text']
-					#print "hahahshsh",len(a)
-					#for i in range(len(a)):
+					if message_text in 'hi,hello,hey,supp,'.split(','):
+						post_facebook_message(sender_id,'Hey,please tell me your roll number ')
+					elif type(message_text) == int:
+						post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
 
-						#post_facebook_message(sender_id,a[i])
-					write_spreadsheet(message_text)
-					b='ok'
+
+
 					
-					post_facebook_message(sender_id,b)
-					write_spreadsheet(message_text)
+					#write_spreadsheet(message_text)
 
-
+s
 					
 					
 
