@@ -18,7 +18,7 @@ VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
-def write_spreadsheet(input):
+def write_spreadsheet(pos,input):
     scope = ['https://spreadsheets.google.com/feeds']
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
@@ -26,7 +26,7 @@ def write_spreadsheet(input):
     
     wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
     ws = wks.get_worksheet(0)
-    a= ws.update_acell('b2', input)
+    a= ws.update_acell(pos, input)
 
 
     return a
@@ -81,6 +81,8 @@ def post_football_message(text):
 
 
 class MyChatBotView(generic.View):
+    i=0
+    j=0
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
             return HttpResponse(self.request.GET['hub.challenge'])
@@ -104,9 +106,13 @@ class MyChatBotView(generic.View):
                     message_text = message['message']['text']
                     if message_text in 'hi,hello,hey,supp'.split(','):
                         post_facebook_message(sender_id,'Hey,please tell me your roll number ')
-                    elif integercheck(message_text) == True:
-                        post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
 
+                        
+                    elif integercheck(message_text) == True:
+                        i=i+1
+                        pos = 'B' + str(i)
+                        post_facebook_message(sender_id,'now tell me your achievements in one line seperated by commas(,) ')
+                        write_spreadsheet(pos,message_text)
 
 
                     
