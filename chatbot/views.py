@@ -127,10 +127,10 @@ class MyChatBotView(generic.View):
                         i=i+1
                         pos = 'B' + str(i)
                         
-                        post_facebook_message(sender_id,'now tell me your phone number by adding (-) before your number ')
+                        post_facebook_message(sender_id,'now tell me your phone number by adding (.) before your number ')
                         write_spreadsheet(pos,message_text)
 
-                    elif  '-' in message_text:
+                    elif  '.' in message_text:
                         global j
                         j=j+1
                         pos = 'C' + str(j)                        
