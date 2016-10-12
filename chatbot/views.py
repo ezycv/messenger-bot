@@ -145,7 +145,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'your data has been updated in the database  ')
                         write_spreadsheet(pos1,name)
                         write_spreadsheet(pos2,rollnumber)
-                        write_spreadsheet(pos1,phone)
+                        write_spreadsheet(pos3,phone)
                     else:
                         post_facebook_message(sender_id,'please say hi hello hey to start a conversation  ')
 
