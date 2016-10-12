@@ -116,32 +116,39 @@ class MyChatBotView(generic.View):
 
                     if message_text in 'hi,hello,hey,supp'.split(','):
                         post_facebook_message(sender_id,'Hey ' + name +', please tell me your roll number ')
-                        global k
-                        k=k+1
-                        pos = 'A' + str(k)        
-                        write_spreadsheet(pos,name)
+
+                        # global k
+                        # k=k+1
+                        # pos = 'A' + str(k)        
+                        # write_spreadsheet(pos,name)
 
                         
                     elif integercheck(message_text) == True:
-                        global i
-                        i=i+1
-                        pos = 'B' + str(i)
+                        rollnumber = message_text
+                        # global i
+                        # i=i+1
+                        # pos = 'B' + str(i)
                         
                         post_facebook_message(sender_id,'now tell me your phone number by adding (.) before your number ')
-                        write_spreadsheet(pos,message_text)
+                        # write_spreadsheet(pos,message_text)
 
                     elif  '.' in message_text:
+                        phone = message_text
                         global j
                         j=j+1
-                        pos = 'C' + str(j)                        
+                        pos1 = 'A' + str(j)
+                        pos2 = 'B' + str(j)
+                        pos3 = 'C' + str(j)                        
                         post_facebook_message(sender_id,'your data has been updated in the database  ')
-                        write_spreadsheet(pos,message_text)
+                        write_spreadsheet(pos1,name)
+                        write_spreadsheet(pos2,rollnumber)
+                        write_spreadsheet(pos1,phone)
                     else:
                         post_facebook_message(sender_id,'please say hi hello hey to start a conversation  ')
 
 
 
-
+D
 
 
 
