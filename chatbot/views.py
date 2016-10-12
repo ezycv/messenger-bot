@@ -148,7 +148,7 @@ class MyChatBotView(generic.View):
 
 
 
-D
+
 
 
 
