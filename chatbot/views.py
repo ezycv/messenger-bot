@@ -43,7 +43,7 @@ def integercheck(number):
     else:
         return True
 def userdeatils(fbid):
-    url = 'https://graph.facebook.com/v2.6/%s?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=%s'%(fbid,PAGE_ACCESS_TOKEN)
+    url = 'https://graph.facebook.com/v2.6/1047867078643788?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
     resp = requests.get(url==url)
     data =json.loads(resp.text)
     return data         
