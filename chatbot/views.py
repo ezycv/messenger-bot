@@ -42,6 +42,11 @@ def integercheck(number):
         return False
     else:
         return True
+def userdeatils(fbid):
+    url = 'https://graph.facebook.com/v2.6/%s?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=%s'%(fbid,PAGE_ACCESS_TOKEN)
+    resp = requests.get(url==url)
+    data =json.loads(resp.text)
+    return data         
 
 def scrape_spreadsheet():
     sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
@@ -104,8 +109,11 @@ class MyChatBotView(generic.View):
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
+                    a = userdeatils(sender_id)
+                    name = '%s %s'%(a['first_name'],a['last_name'])
+
                     if message_text in 'hi,hello,hey,supp'.split(','):
-                        post_facebook_message(sender_id,'Hey,please tell me your roll number ')
+                        post_facebook_message(sender_id,'Hey'+ name +' ,please tell me your roll number ')
 
                         
                     elif integercheck(message_text) == True:
@@ -113,10 +121,10 @@ class MyChatBotView(generic.View):
                         i=i+1
                         pos = 'B' + str(i)
                         print pos
-                        post_facebook_message(sender_id,'now tell me your phone number by writing phone in the end of number ')
+                        post_facebook_message(sender_id,'now tell me your phone number by adding (-) before your number ')
                         write_spreadsheet(pos,message_text)
 
-                    elif  'phone' in message_text:
+                    elif  '-' in message_text:
                         global j
                         j=j+1
                         pos = 'C' + str(j)                        
