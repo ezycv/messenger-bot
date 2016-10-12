@@ -43,7 +43,7 @@ def integercheck(number):
     else:
         return True
 def userdeatils(fbid):
-    url = 'https://graph.facebook.com/v2.6/1047867078643788?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
+    url = 'https://graph.facebook.com/v2.6/' + fbid + '?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
     resp = requests.get(url=url)
     data =json.loads(resp.text)
     return data         
@@ -114,7 +114,7 @@ class MyChatBotView(generic.View):
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
                     if message_text in 'hi,hello,hey,supp'.split(','):
-                        post_facebook_message(sender_id,'Hey'+ name +' ,please tell me your roll number ')
+                        post_facebook_message(sender_id,'Hey ' + name +', please tell me your roll number ')
 
                         
                     elif integercheck(message_text) == True:
