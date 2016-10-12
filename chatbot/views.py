@@ -14,9 +14,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # Create your views here.
 
-VERIFY_TOKEN = '7thseptember2016'
-PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
-API_token = '85b82a55e643435fb11b903effdb9b3b'
+
 
 j=1
 phone = ''
@@ -28,7 +26,7 @@ def write_spreadsheet(pos,input):
     credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
     gc = gspread.authorize(credentials)
     
-    wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
+    wks = gc.open_by_key('')
     ws = wks.get_worksheet(0)
     a= ws.update_acell(pos, input)
 
@@ -52,7 +50,7 @@ def userdeatils(fbid):
 
 def scrape_spreadsheet():
     sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
-    url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetid +'/values/Sheet1!A1:D20?key=AIzaSyBEET07ztOkEYiQ_CULBX6bW19py0CY3EI'
+    url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetid +'/values/Sheet1!A1:D20?key=***'
     resp = requests.get(url=url)
     data = json.loads(resp.text)
     arr = []
@@ -78,7 +76,7 @@ def post_football_message(text):
     #response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
     url = 'https://www.googleapis.com/gmail/v1/users/me/labels/'
     
-    new_url = 'https://www.googleapis.com/gmail/v1/users/me/labels/INBOX?key=AIzaSyDDaUwDASa3X5Q_LzvIZ9WkItLIrKwjHVc'
+    new_url = 'https://www.googleapis.com/gmail/v1/users/me/labels/INBOX?key=**'
     req = urllib2.Request(new_url)
     r = urllib2.urlopen(req)
     data = r.read()
