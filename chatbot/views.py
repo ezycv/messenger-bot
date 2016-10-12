@@ -19,6 +19,7 @@ PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVb
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 i=1
 j=1
+k=1
 
 def write_spreadsheet(pos,input):
     scope = ['https://spreadsheets.google.com/feeds']
@@ -111,17 +112,21 @@ class MyChatBotView(generic.View):
                     message_text = message['message']['text']
                     
                     a = userdeatils(sender_id)
-                    name = '%s %s'%(a['first_name'],a['last_name'])
+                    name = '%s %s'%(a['first_name'],a['last_name'])s
 
                     if message_text in 'hi,hello,hey,supp'.split(','):
                         post_facebook_message(sender_id,'Hey ' + name +', please tell me your roll number ')
+                        global k
+                        k=k+1
+                        pos = 'A' + str(k)        
+                        write_spreadsheet(pos,name)
 
                         
                     elif integercheck(message_text) == True:
                         global i
                         i=i+1
                         pos = 'B' + str(i)
-                        print pos
+                        
                         post_facebook_message(sender_id,'now tell me your phone number by adding (-) before your number ')
                         write_spreadsheet(pos,message_text)
 
