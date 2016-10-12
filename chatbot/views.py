@@ -46,7 +46,7 @@ def userdeatils(fbid):
     url = 'https://graph.facebook.com/v2.6/1047867078643788?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
     resp = requests.get(url==url)
     data =json.loads(resp.text)
-    return data         
+    return json.dumps(data)         
 
 def scrape_spreadsheet():
     sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
@@ -109,6 +109,7 @@ class MyChatBotView(generic.View):
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
+                    
                     a = userdeatils(sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
