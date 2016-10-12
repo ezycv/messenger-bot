@@ -17,9 +17,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
-i=1
+
 j=1
-k=1
+phone = ''
+rollnumber = ''
 
 def write_spreadsheet(pos,input):
     scope = ['https://spreadsheets.google.com/feeds']
@@ -124,6 +125,7 @@ class MyChatBotView(generic.View):
 
                         
                     elif integercheck(message_text) == True:
+                        global rollnumber
                         rollnumber = message_text
                         # global i
                         # i=i+1
@@ -133,6 +135,7 @@ class MyChatBotView(generic.View):
                         # write_spreadsheet(pos,message_text)
 
                     elif  '.' in message_text:
+                        global phone
                         phone = message_text
                         global j
                         j=j+1
