@@ -61,7 +61,7 @@ def scrape_spreadsheet():
         
         for k in entry: 
             arr.append(k)
-    print arr
+    # print arr
     return arr          
 
 
