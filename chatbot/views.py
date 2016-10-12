@@ -115,7 +115,7 @@ class MyChatBotView(generic.View):
                     a = userdeatils(sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
-                    if message_text in 'hi,hello,hey,supp'.split(','):
+                    if message_text in 'hi,hello,hey,supp'.split(',').lower():
                         post_facebook_message(sender_id,'Hey ' + name +', please tell me your roll number ')
 
                         # global k
