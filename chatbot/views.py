@@ -140,7 +140,7 @@ class MyChatBotView(generic.View):
                         # pos3 = 'C' + str(j)                        
                         post_facebook_message(sender_id,'your data has been updated in the database  ')
                         p = Messages.objects.get_or_create(name=name,
-                    ,
+                    
                         fb_id = sender_id,
                         contact = phone,
                         address = address,
