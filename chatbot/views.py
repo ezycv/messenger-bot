@@ -143,7 +143,7 @@ class MyChatBotView(generic.View):
                     ,
                         fb_id = sender_id,
                         contact = phone,
-                        # address = address,
+                        address = address,
                         message = message_text
                         )[0]
                     else:
