@@ -6,13 +6,15 @@ class event(models.Model):
 	name = models.CharField(max_length = 250)
 	contact = models.IntegerField(max_length = 100 ,  null=True)
 	fbid= models.CharField(max_length = 1000)
-	dates= models.CharField(max_length = 1000)
+	datestart= models.CharField(max_length = 1000)
+	dateend= models.CharField(max_length = 1000)
 	fblink= models.URLField(max_length = 1000)
-	description= models.CharField(max_length = 1000)
+	description= models.CharField(max_length = 10000)
 	emailid= models.EmailField(max_length = 1000)
 	logolink= models.URLField(max_length = 1000)
 	state= models.CharField(max_length = 1000)
 	location = models.CharField(max_length = 250)
+	oname = models.CharField(max_length = 250)
 	
 
 
