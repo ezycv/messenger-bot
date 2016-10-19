@@ -199,7 +199,7 @@ class MyChatBotView(generic.View):
                         handle_postback(message['sender']['id'],message['postback']['payload'])
                         return HttpResponse()
                     else:
-                        pass  
+                        pass
 
                 except Exception as e:
                     print e
@@ -209,7 +209,7 @@ class MyChatBotView(generic.View):
 
 def index(request):
     set_menu()
-    handle_postback('fbid','MENU_OUTPUT')
+    handle_postback('fbid','MENU_WHY')
     return HttpResponse('helloworld')
 
 def eventweb(request):
@@ -292,6 +292,7 @@ def handle_postback(fbid,payload):
         
 
     elif payload == 'MENU_OUTPUT':
+        
         response_object = {
                               "recipient":{
                                 "id":"USER_ID"
@@ -312,11 +313,6 @@ def handle_postback(fbid,payload):
                                             "type":"web_url",
                                             "url":"https://petersfancybrownhats.com",
                                             "title":"View Website"
-                                          },
-                                          {
-                                            "type":"postback",
-                                            "title":"Start Chatting",
-                                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
                                           }              
                                         ]
                                       }
