@@ -11,7 +11,7 @@ class event(models.Model):
 	description= models.CharField(max_length = 1000)
 	emailid= models.EmailField(max_length = 1000)
 	logolink= models.URLField(max_length = 1000)
-	state= models.IntegerField(max_length = 1000)
+	#state= models.IntegerField(max_length = 1000)
 	location = models.CharField(max_length = 250)
 	
 
