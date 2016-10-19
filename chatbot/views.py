@@ -114,14 +114,16 @@ class MyChatBotView(generic.View):
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
-                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your Event name ')
                         p.greeting = 'TRUE'
                         p.save()
+                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your Event name ')
+                       
                         
                     elif p.greetings =='TRUE':
-                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your contact phone number to be displayed on the page ')
                         p.contact = message_text
                         p.save()
+                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your contact phone number to be displayed on the page ')
+         
 
                     # elif  '.' in message_text:
                     #     global phone
