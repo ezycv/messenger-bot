@@ -113,42 +113,38 @@ class MyChatBotView(generic.View):
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     
-                    a = userdeatils(sender_id)
+                    p = event.objects.get_or_create(fbid =sender_id)[0]
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
-                        post_facebook_message(sender_id,'Hey ' + name +', please tell me your roll number ')
-
+                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your Event name ')
+                        p.greeting = 'TRUE'
+                        p.save()
                         
-                    elif integercheck(message_text) == True:
-                        global rollnumber
-                        rollnumber = message_text
-                        # global i
-                        # i=i+1
-                        # pos = 'B' + str(i)
-                        
-                        post_facebook_message(sender_id,'now tell me your phone number by adding (.) before your number ')
-                        # write_spreadsheet(pos,message_text)
+                    elif p.greetings ='TRUE':
+                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your contact phone number to be displayed on the page ')
+                        p.contact = message_text
+                        p.save()
 
-                    elif  '.' in message_text:
-                        global phone
-                        phone = message_text
-                        global j
-                        j=j+1
-                        # pos1 = 'A' + str(j)
-                        # pos2 = 'B' + str(j)
-                        # pos3 = 'C' + str(j)                        
-                        post_facebook_message(sender_id,'your data has been updated in the database  ')
-                        p = Messages.objects.get_or_create(name=name,
+                    # elif  '.' in message_text:
+                    #     global phone
+                    #     phone = message_text
+                    #     global j
+                    #     j=j+1
+                    #     # pos1 = 'A' + str(j)
+                    #     # pos2 = 'B' + str(j)
+                    #     # pos3 = 'C' + str(j)                        
+                    #     post_facebook_message(sender_id,'your data has been updated in the database  ')
+                    #     p = Messages.objects.get_or_create(name=name,
                     
                     
-                        fb_id = sender_id,
-                        contact = phone,
-                        address = address,
-                        message = message_text
-                        )[0]
-                    else:
-                        post_facebook_message(sender_id,'please say hi hello hey to start a conversation  ')
+                    #     fb_id = sender_id,
+                    #     contact = phone,
+                    #     address = address,
+                    #     message = message_text
+                    #     )[0]
+                    # else:
+                    #     post_facebook_message(sender_id,'please say hi hello hey to start a conversation  ')
 
 
 
