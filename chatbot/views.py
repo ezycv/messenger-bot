@@ -198,17 +198,17 @@ class MyChatBotView(generic.View):
 def eventweb(request):
     #fbid = '1047867078643788'
 
-    p = event.objects.get(fbid ='1047867078643788')
-    p.name = name
-    p.location = location
-    p.logolink = logolink
-    p.description = description
-    p.fblink = fblink
-    p.emailid = emailid
-    p.oname = oname
-    p.dateend = dateend
-    p.datestart = datestart
-    p.contact = contact
+    p = event.objects.get_or_create(fbid ='1047867078643788')
+    name = p.name 
+    location = p.location
+    logolink = p.logolink  
+    description = p.description
+    fblink = p.fblink  
+    emailid = p.emailid  
+    oname = p.oname 
+    dateend = p.dateend 
+    datestart =  p.datestart  
+    contact = p.contact 
 
     context_dict['event-name'] = name 
     context_dict['location'] = location
