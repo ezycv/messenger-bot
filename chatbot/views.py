@@ -209,7 +209,7 @@ def eventweb(request):
     dateend = p.dateend 
     datestart =  p.datestart  
     contact = p.contact 
-
+    context_dict = {}
     context_dict['event-name'] = name 
     context_dict['location'] = location
     context_dict['logo-link'] = logolink
