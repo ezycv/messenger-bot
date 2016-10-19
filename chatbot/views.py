@@ -10,6 +10,7 @@ import json
 import requests
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from chatbot.models import event
 
 
 # Create your views here.
