@@ -12,7 +12,7 @@ import requests
 #from oauth2client.service_account import ServiceAccountCredentials
 from chatbot.models import event
 
-
+sender_id = ''
 # Create your views here.
 
 VERIFY_TOKEN = '7thseptember2016'
@@ -107,6 +107,7 @@ class MyChatBotView(generic.View):
             for message in entry['messaging']:
                 print message
                 try:
+                    global sender_id
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     a= userdeatils(sender_id)
@@ -194,7 +195,8 @@ class MyChatBotView(generic.View):
 
         return HttpResponse()
 
-def event(request , fbid):
+def eventweb(request):
+    fbid = '1047867078643788'
 
     p = event.objects.get(fbid =fbid)[0]
     p.name = name

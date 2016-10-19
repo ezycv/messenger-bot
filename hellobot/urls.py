@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     #url(r'^$' , v.index),
     #url(r'', 'chatbot.views.index'),
     url(r'^facebook_auth/?$' , v.MyChatBotView.as_view()) ,
-    url(r'^index/?$' ,' chatbot.views.event' , name = 'event')   
+    url(r'^index/?$' ,v.eventweb , name = 'event')   
 
 )
