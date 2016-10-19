@@ -15,6 +15,12 @@ class event(models.Model):
 	state= models.CharField(max_length = 1000)
 	location = models.CharField(max_length = 250)
 	oname = models.CharField(max_length = 250)
+	tagline = models.CharField(max_length = 250)
+	twitterlink = models.CharField(max_length = 250)
+	sub1 = models.CharField(max_length = 250)
+	sub2 = models.CharField(max_length = 250)
+	sub3 = models.CharField(max_length = 250)
+	sub4 = models.CharField(max_length = 250)
 	
 
 

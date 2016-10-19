@@ -131,57 +131,98 @@ class MyChatBotView(generic.View):
                         p.contact = message_text
                         p.state='3'
                         p.save()
-                        post_facebook_message(sender_id,'okay, now tell me your start date  for the event  in dd/mm/yy format ')
+                        post_facebook_message(sender_id,'okay, now tell me your tagline  for the event  ')
 
                     elif p.state =='3':
-                        p.datestart = message_text
+                        p.tagline = tagline
                         p.state='4'
+                        p.save()
+                        post_facebook_message(sender_id,'okay, now tell me your start date  for the event  in dd/mm/yy format ')
+
+                    elif p.state =='4':
+                        p.datestart = message_text
+                        p.state='5'
                         p.save()
                         post_facebook_message(sender_id,'okay, now tell me your end date  for the event dd/mm/yy format ') 
 
-                    elif p.state =='4':
+                    elif p.state =='5':
                         p.dateend = message_text
-                        p.state='5'
+                        p.state='6'
                         p.save()
                         post_facebook_message(sender_id,' Now, Please tell me your organiser name to be displayed on the page ')   
 
-                    elif p.state =='5':
+                    elif p.state =='6':
                         p.oname = message_text
-                        p.state='6'
+                        p.state='7'
                         p.save()
                         post_facebook_message(sender_id,'Now , Please tell me your conatct email id  to be displayed on the page ')                                              
 
-                    elif p.state =='6':
+                    elif p.state =='7':
                         p.emailid = message_text
-                        p.state='7'
+                        p.state='8'
                         p.save()
-                        post_facebook_message(sender_id,'Now , Please tell if u have any fabeook page if yes send its link otherwise just send no  ')                     
+                        post_facebook_message(sender_id,'Now , Please tell if u have any twitter id  if yes send its link otherwise just send no  ')
+
+                    elif p.state =='8':
+                        p.twitterlink = message_text
+                        p.state='9'
+                        p.save()
+                        post_facebook_message(sender_id,'Now , Please tell if u have any fabeook page if yes send its link otherwise just send no  ')                                             
                     
 
-                    elif p.state =='7':
+                    elif p.state =='9':
                         p.fblink = message_text
-                        p.state='8'
+                        p.state='10'
                         p.save()
                         post_facebook_message(sender_id,'Now , send me description of the event ')                     
 
-                    elif p.state =='8':
+                    elif p.state =='10':
                         p.description = message_text
-                        p.state='9'
+                        p.state='11'
                         p.save()
-                        post_facebook_message(sender_id,'if u have a logo please send its link if not just send  ')                             
+                        post_facebook_message(sender_id,'if u have a logo please send its link if not just send no ')                             
 
-                    elif p.state =='9':
+                    elif p.state =='11':
                         p.logolink = message_text
-                        p.state='10'
+                        p.state='12'
                         p.save()
                         post_facebook_message(sender_id,'Now , send me location of the event in one line seperated by commas  ')    
 
-                    elif p.state =='10':
+                    elif p.state =='12':
                         p.location = message_text
-                        p.state='11'
+                        p.state='13'
                         p.save()
-                        post_facebook_message(sender_id,'ur data has been taken  ') 
+                        post_facebook_message(sender_id,'send me the details of the 1st sub event  ') 
+
+                    elif p.state =='13':
+                        p.sub1 = message_text
+                        p.state='14'
+                        p.save()
+                        post_facebook_message(sender_id,' send me the details of the 2st sub event  ') 
                     
+                    elif p.state =='14':
+                        p.sub2 = message_text
+                        p.state='15'
+                        p.save()
+                        post_facebook_message(sender_id,' send me the details of the 3st sub event  ')
+
+                    elif p.state =='15':
+                        p.sub3 = message_text
+                        p.state='16'
+                        p.save()
+                        post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
+
+                    elif p.state =='16':
+                        p.sub4 = message_text
+                        p.state='17'
+                        p.save()
+                        post_facebook_message(sender_id,' your website link is https://myresumemaker.herokuapp.com/index  ')                          
+
+
+
+
+
+
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ')
                 
@@ -226,6 +267,13 @@ def eventweb(request):
     dateend = p.dateend 
     datestart =  p.datestart  
     contact = p.contact 
+    tagline = p.tagline
+    twitterlink = p.twitterlink
+    sub1 = p.sub1
+    sub2 = p.sub2
+    sub3 = p.sub3
+    sub4 = p.sub4
+
     context_dict = {}
     context_dict['eventname'] = name 
     context_dict['location'] = location
@@ -237,6 +285,13 @@ def eventweb(request):
     context_dict['dateend'] = dateend
     context_dict['datestart'] = datestart
     context_dict['contact'] = contact
+    context_dict['tagline'] = tagline
+    context_dict['twitterlink'] = twitterlink
+    context_dict['sub1'] = sub1
+    context_dict['sub2'] = sub2
+    context_dict['sub3'] = sub3
+    context_dict['sub4'] = sub4
+
 
 
     return render(request,'chatbot/index.html',context_dict)
