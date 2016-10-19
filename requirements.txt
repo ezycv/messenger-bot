@@ -1,5 +1,4 @@
 Django==1.7
 gunicorn==19.6.0
 requests
-gspread
-oauth2client
+whitenoise
