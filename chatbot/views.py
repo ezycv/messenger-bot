@@ -19,10 +19,6 @@ VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
-j=1
-phone = ''
-rollnumber = ''
-address = ''
 
 def write_spreadsheet(pos,input):
     scope = ['https://spreadsheets.google.com/feeds']
@@ -105,7 +101,7 @@ class MyChatBotView(generic.View):
     def post(self, request, *args, **kwargs):
         incoming_message= json.loads(self.request.body.decode('utf-8'))
         print  incoming_message
-        a=scrape_spreadsheet()
+        
 
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
@@ -113,7 +109,7 @@ class MyChatBotView(generic.View):
                 try:
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
-                    
+                    a= userdeatils(sender_id)
                     p = event.objects.get_or_create(fbid =sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
 
