@@ -210,15 +210,15 @@ def eventweb(request):
     datestart =  p.datestart  
     contact = p.contact 
     context_dict = {}
-    context_dict['event-name'] = name 
+    context_dict['eventname'] = name 
     context_dict['location'] = location
-    context_dict['logo-link'] = logolink
+    context_dict['logolink'] = logolink
     context_dict['description'] = description
     context_dict['fblink'] = fblink
     context_dict['emailid'] = emailid
-    context_dict['organiser-name'] = oname
-    context_dict['date-end'] = dateend
-    context_dict['date-start'] = datestart
+    context_dict['organisername'] = oname
+    context_dict['dateend'] = dateend
+    context_dict['datestart'] = datestart
     context_dict['contact'] = contact
 
 

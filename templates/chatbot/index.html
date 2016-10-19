@@ -99,9 +99,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <!-- Text title -->
-                        <h1 class="title">//text//<br>//Everything//</h1><--!to be edited-->
+                        <h1 class="title">{{ tagline }}</h1>
                         <!-- /Text title -->
-                        <div class="button"><a href="#">See Details</a></div>
+                        <div class="button"><a href="#">Apply Here</a></div>
                     </div>
                 </div>
                <!-- /Texts container -->
@@ -111,8 +111,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                <img src="{% static 'chatbot/images/slider2.jpg' %}"  class="img-responsive" alt=""/>
                 <div class="slide_content">
                     <div class="slide_content_wrap">
-                        <h1 class="title">////<br>////</h1>   <--!to be edited-->
-                       	<div class="button"><a href="#">See Details</a></div>
+                        <h1 class="title">{{ tagline }}</h1>  
+                       	<div class="button"><a href="#">Apply here</a></div>
                     </div>
                 </div>
             </div>
@@ -126,24 +126,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
 	  <div class="main">
 		<div class="content-top">
-			<h2>//event name//</h2>                                          
-			<p>//something//</p>                                             
-			<div class="logouser">/////////////</div>                         
-				
+			<h2>{{ eventname }}</h2>                                          
+			<p></p>                                             
+			<div class="logouser">
+      <img src="{{ logolink }}" class="logoid" alt=""/  >  
+      </div>                  				
 		
 		</div>
 	</div>
 	<div class="content-bottom">
 		<div class="container">
-    <div class = "imagebk" >
-    <img src = "http://stjoevan.org/wp-content/uploads/2013/05/enjoying_party_vector-1920x12001.jpg" class = "img-responsive" />
+    <!-- <div class = "imagebk" > -->
+    <!-- <img src = "http://stjoevan.org/wp-content/uploads/2013/05/enjoying_party_vector-1920x12001.jpg" class = "img-responsive" /> -->
 			<div class="row content_bottom-text" >
-			  <div class="col-md-7">
-				<h3>The<br>Description</h3>									<--!to be edited-->
-				<p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
-				<p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
+			  <div class="col-md-4">
+
+				<h3>The<br>Description</h3>									
+				<p> {{ description }}
+        <h2>{{organisername}}</h2> 
 			  </div>
-        </div>
+
+        <!-- </div> -->
 			</div>
 		</div>
 	</div>
@@ -214,9 +217,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-3">
 						<ul class="footer_box">
 							<h4>Contact Us</h4>
-							<li><a href="https://www.facebook.com/"><img height="50px" src="{% static 'chatbot/images/fbicon.png' %}"></img></a></li><br><br>
-							<li><a href="https://twitter.com/login"><img height="50px" src="{% static 'chatbot/images/twitterlogo.png' %}"></img></a></li><br><br>
-							<li><a href="">Mobile no.</a></li>              
+							<li><a href="{{ fblink }}"><img height="50px" src="{% static 'chatbot/images/fbicon.png' %}"></img></a></li><br><br>
+							<li><a href="{{ twitterlink }}"><img height="50px" src="{% static 'chatbot/images/twitterlogo.png' %}"></img></a></li><br><br>
+							<li><a href="">{{contact}}</a></li>              
 						</ul>
 					</div>
 					<div id="map" style="width:70%;height:275px"></div>
