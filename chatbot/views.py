@@ -8,8 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
 import requests
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+#import gspread
+#from oauth2client.service_account import ServiceAccountCredentials
 from chatbot.models import event
 
 
