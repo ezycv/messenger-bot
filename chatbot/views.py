@@ -115,11 +115,12 @@ class MyChatBotView(generic.View):
 
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
                         p.greetings = 'TRUE'
+                        p.state='1'
                         p.save()
                         post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your Event name ')
                        
                         
-                    elif p.greetings =='TRUE':
+                    elif p.state =='1':
                         p.name = message_text
                         p.save()
                         post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your contact phone number to be displayed on the page ')
