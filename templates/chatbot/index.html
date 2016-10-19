@@ -1,0 +1,236 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+
+-->
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Party starts here</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/jquery.easydropdown.js"></script>-->
+<!--start slider -->
+<link rel="stylesheet" href="css/fwslider.css" media="all">
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/fwslider.js"></script>
+<!--end slider -->
+<script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+                        
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+                        
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+     </script>
+</head>
+<body>
+	<div class="header">
+		<div class="container">
+			<div class="row">
+			  <div class="col-md-12">
+				 <div class="header-left">
+					 <div class="logo">
+						<a href="index.html"><img height="50px" src="images/logo.png" alt=""/></a>
+					 </div>
+					 <div class="menu">
+						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
+						    <ul class="nav" id="nav">
+						    	<li><a href="shop.html">Shop</a></li>
+						    	<li><a href="team.html">Team</a></li>
+						    	<li><a href="experiance.html">Events</a></li>
+						    	<li><a href="experiance.html">Experiance</a></li>
+						    	<li><a href="shop.html">Company</a></li>
+								<li><a href="contact.html">Contact</a></li>								
+								<div class="clear"></div>
+							</ul>
+							<script type="text/javascript" src="js/responsive-nav.js"></script>
+				    </div>							
+	    		    <div class="clear"></div>
+	    	    </div>
+	            
+	      </div>
+		 </div>
+	    </div>
+	</div>
+	<div class="banner">
+	<!-- start slider -->
+       <div id="fwslider">
+         <div class="slider_container">
+            <div class="slide"> 
+                <!-- Slide image -->
+               <img src="images/slider1.jpg"  class="img-responsive" alt=""/>
+                <!-- /Slide image -->
+                <!-- Texts container -->
+                <div class="slide_content">
+                    <div class="slide_content_wrap">
+                        <!-- Text title -->
+                        <h1 class="title">//text//<br>//Everything//</h1><--!to be edited-->
+                        <!-- /Text title -->
+                        <div class="button"><a href="#">See Details</a></div>
+                    </div>
+                </div>
+               <!-- /Texts container -->
+            </div>
+            <!-- /Duplicate to create more slides -->
+            <div class="slide">
+               <img src="images/slider2.jpg"  class="img-responsive" alt=""/>
+                <div class="slide_content">
+                    <div class="slide_content_wrap">
+                        <h1 class="title">////<br>////</h1>   <--!to be edited-->
+                       	<div class="button"><a href="#">See Details</a></div>
+                    </div>
+                </div>
+            </div>
+            <!--/slide -->
+        </div>
+        <div class="timers"></div>
+        <div class="slidePrev"><span></span></div>
+        <div class="slideNext"><span></span></div>
+       </div>
+       <!--/slider -->
+      </div>
+	  <div class="main">
+		<div class="content-top">
+			<h2>//event name//</h2>                                          <--!to be edited-->
+			<p>//something//</p>                                             <--!to be edited-->
+			<div class="logouser">/////////////</div>                         <--!to be edited-->
+				
+		
+		</div>
+	</div>
+	<div class="content-bottom">
+		<div class="container">
+			<div class="row content_bottom-text">
+			  <div class="col-md-7">
+				<h3>The<br>Description</h3>									<--!to be edited-->
+				<p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
+				<p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="features">
+		<div class="container">
+			<h3 class="m_3">Timeline</h3>
+			<div class="close_but"><i class="close1"> </i></div>
+			  <div class="row">
+				<div class="col-md-3 top_box">
+				  <div class="view view-ninth"><a href="single.html">
+                    <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+                    <div class="mask mask-1"> </div>
+                    <div class="mask mask-2"> </div>
+                      <div class="content">
+                        <h2>//subevent name1//</h2>				<--!to be edited-->
+                        <p>Event 1</p>
+                      </div>
+                   </a> </div
+                  </div>
+                  <h4 class="m_4"><a href="#">Event 1</a></h4>
+                  
+                </div>
+                <div class="col-md-3 top_box">
+					<div class="view view-ninth"><a href="single.html">
+                    <img src="images/pic2.jpg" class="img-responsive" alt=""/>
+                    <div class="mask mask-1"> </div>
+                    <div class="mask mask-2"> </div>
+                      <div class="content">
+                        <h2>//subevent name2//</h2>      <--!to be edited-->
+                        <p>Event 2</p>
+                      </div>
+                    </a> </div>
+                   <h4 class="m_4"><a href="#">Event 2</a></h4>
+                  
+				</div>
+				<div class="col-md-3 top_box">
+					<div class="view view-ninth"><a href="single.html">
+                    <img src="images/pic3.jpg" class="img-responsive" alt=""/>
+                    <div class="mask mask-1"> </div>
+                    <div class="mask mask-2"> </div>
+                      <div class="content">
+                        <h2>//subevent name3//</h2>      <--!to be edited-->
+                        <p>Event 3</p>
+                      </div>
+                    </a> </div>
+                   <h4 class="m_4"><a href="#">Event 3</a></h4>
+                   
+				</div>
+				<div class="col-md-3 top_box1">
+					<div class="view view-ninth"><a href="single.html">
+                    <img src="images/pic4.jpg" class="img-responsive" alt=""/>
+                    <div class="mask mask-1"> </div>
+                    <div class="mask mask-2"> </div>
+                      <div class="content">
+                        <h2>//subevent name4//</h2>    <--!to be edited-->
+                        <p>Event 4</p>
+                      </div>
+                     </a> </div>
+                   <h4 class="m_4"><a href="#">Event 4</a></h4>
+                   
+				</div>
+			</div>
+		 </div>
+	    </div>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<ul class="footer_box">
+							<h4>Contact Us</h4>
+							<li><a href="https://www.facebook.com/"><img height="50px" src="images/fbicon.png"></img></a></li><br><br>
+							<li><a href="https://twitter.com/login"><img height="50px" src="images/twitterlogo.png"></img></a></li><br><br>
+							<li><a href="">Mobile no.</a></li>              <--!to be edited-->
+						</ul>
+					</div>
+					<div id="map" style="width:70%;height:275px"></div>
+
+<script>
+function myMap() {
+  var myCenter = new google.maps.LatLng(28.6139,77.2090);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myCenter, zoom: 5};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter});
+  marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+					</div>
+				<div class="row footer_bottom">   
+				</div>
+			</div>
+		</div>
+</body>	
+</html>

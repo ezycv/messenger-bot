@@ -182,13 +182,26 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'ur data has been taken  ') 
                     
                     else:
-                        post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ') 
+                        post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ')
+                
+                    context_dict['event-name'] = name 
+                    context_dict['location'] = location
+                    context_dict['logo-link'] = logolink
+                    context_dict['description'] = description
+                    context_dict['fblink'] = fblink
+                    context_dict['emailid'] = emailid
+                    context_dict['organiser-name'] = oname
+                    context_dict['date-end'] = dateend
+                    context_dict['date-start'] = datestart
+                    context_dict['contact'] = contact
+      
+
 
                 except Exception as e:
                     print e
                     pass
 
-        return HttpResponse()  
+        return render(request,'chatbot/index.html',context_dict)  
 
 def index(request):
     return HttpResponse('Hello world')
