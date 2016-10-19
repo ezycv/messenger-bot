@@ -121,7 +121,7 @@ class MyChatBotView(generic.View):
                         p.greeting = 'TRUE'
                         p.save()
                         
-                    elif p.greetings ='TRUE':
+                    elif p.greetings =='TRUE':
                         post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your contact phone number to be displayed on the page ')
                         p.contact = message_text
                         p.save()
