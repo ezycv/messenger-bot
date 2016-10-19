@@ -12,7 +12,7 @@ import requests
 #from oauth2client.service_account import ServiceAccountCredentials
 from chatbot.models import event
 
-sender_id = ''
+
 # Create your views here.
 
 VERIFY_TOKEN = '7thseptember2016'
@@ -134,7 +134,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'okay, now tell me your tagline  for the event  ')
 
                     elif p.state =='3':
-                        p.tagline = tagline
+                        p.tagline = message_text
                         p.state='4'
                         p.save()
                         post_facebook_message(sender_id,'okay, now tell me your start date  for the event  in dd/mm/yy format ')
