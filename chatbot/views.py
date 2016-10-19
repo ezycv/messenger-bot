@@ -252,13 +252,13 @@ def set_menu():
                           "call_to_actions":[
                             {
                               "type":"postback",
-                              "title":"Help",
-                              "payload":"MENU_LINK"
+                              "title":"Your event website",
+                              "payload":"MENU_OUTPUT"
                             },
                             {
                               "type":"postback",
                               "title":"Our website",
-                              "payload":"MENU_OUTPUT"
+                              "payload":"MENU_LINK"
                             },
                             {
                               "type":"postback",
