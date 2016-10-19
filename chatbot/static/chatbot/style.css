@@ -547,7 +547,7 @@ li.list_desc h4 a:hover{
 }
 .content-bottom{
 	width:100%;
-	background: url({% static 'chatbot/images/bg_image.jpg' %})no-repeat center top;
+	background: url('http://stjoevan.org/wp-content/uploads/2013/05/enjoying_party_vector-1920x12001.jpg')no-repeat center top;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
