@@ -173,18 +173,17 @@ class MyChatBotView(generic.View):
                         p.logolink = message_text
                         p.state='10'
                         p.save()
-                        post_facebook_message(sender_id,'Now , send me location of the  ')    
+                        post_facebook_message(sender_id,'Now , send me location of the event in one line seperated by commas  ')    
 
                     elif p.state =='10':
                         p.location = message_text
                         p.state='11'
                         p.save()
-                        post_facebook_message(sender_id,'Now , send me location of the event in one line seperated by commas  ') 
+                        post_facebook_message(sender_id,'ur data has been taken  ') 
                     
-                    elif p.state =='11':
-                        
-                        
-                        post_facebook_message(sender_id,'your data has been taken   ')                      
+                    else:
+                        post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ') 
+
                 except Exception as e:
                     print e
                     pass
