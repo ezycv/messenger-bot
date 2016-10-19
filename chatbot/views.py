@@ -196,9 +196,9 @@ class MyChatBotView(generic.View):
         return HttpResponse()
 
 def eventweb(request):
-    fbid = '1047867078643788'
+    #fbid = '1047867078643788'
 
-    p = event.objects.get(fbid =fbid)[0]
+    p = event.objects.get(fbid =1047867078643788)[0]
     p.name = name
     p.location = location
     p.logolink = logolink
