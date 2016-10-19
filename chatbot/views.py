@@ -184,16 +184,7 @@ class MyChatBotView(generic.View):
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ')
                 
-                    context_dict['event-name'] = name 
-                    context_dict['location'] = location
-                    context_dict['logo-link'] = logolink
-                    context_dict['description'] = description
-                    context_dict['fblink'] = fblink
-                    context_dict['emailid'] = emailid
-                    context_dict['organiser-name'] = oname
-                    context_dict['date-end'] = dateend
-                    context_dict['date-start'] = datestart
-                    context_dict['contact'] = contact
+
       
 
 
@@ -201,7 +192,32 @@ class MyChatBotView(generic.View):
                     print e
                     pass
 
-        return render(request,'chatbot/index.html',context_dict)  
+        return HttpResponse()
 
-def index(request):
-    return HttpResponse('Hello world')
+def event(request , fbid):
+
+    p = event.objects.get(fbid =fbid)[0]
+    p.name = name
+    p.location = location
+    p.logolink = logolink
+    p.description = description
+    p.fblink = fblink
+    p.emailid = emailid
+    p.oname = oname
+    p.dateend = dateend
+    p.datestart = datestart
+    p.contact = contact
+
+    context_dict['event-name'] = name 
+    context_dict['location'] = location
+    context_dict['logo-link'] = logolink
+    context_dict['description'] = description
+    context_dict['fblink'] = fblink
+    context_dict['emailid'] = emailid
+    context_dict['organiser-name'] = oname
+    context_dict['date-end'] = dateend
+    context_dict['date-start'] = datestart
+    context_dict['contact'] = contact
+
+
+    return render(request,'chatbot/index.html',context_dict)
