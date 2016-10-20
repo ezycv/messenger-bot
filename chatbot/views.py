@@ -98,7 +98,7 @@ def cards(fbid):
               "title": "party theme",
               "subtitle": "party,fests,weddings,birthdays etc",
               "item_url": "https://myresumemaker.herokuapp.com/temp1",               
-              "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+              "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/l/t35.0-12/14800069_1785774908361060_98733447_o.png?oh=5e3268cb388a25f6d84cb2c27b3c757f&oe=580A723E",
               "buttons": [{
                 "type": "web_url",
                 "url": "https://myresumemaker.herokuapp.com/temp1",
@@ -110,7 +110,7 @@ def cards(fbid):
               "title": "hackathon theme",
               "subtitle": "all tech competitions them",
               "item_url": "https://myresumemaker.herokuapp.com/temp2",               
-              "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
+              "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t35.0-12/14795941_1785774938361057_1017427262_o.png?oh=6809b9c14ee2646703a8047da8b2c479&oe=580A89BA",
               "buttons": [{
                 "type": "web_url",
                 "url": "https://myresumemaker.herokuapp.com/temp2",
