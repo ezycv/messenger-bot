@@ -385,6 +385,11 @@ def eventweb2(request):
 
     return render(request,'chatbot/temp2.html',context_dict)
 
+def eventreg(request):
+    context_dict = {}
+
+    return render(request,'chatbot/shop.html',context_dict)
+
 
 def set_menu():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN

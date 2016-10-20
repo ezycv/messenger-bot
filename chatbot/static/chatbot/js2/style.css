@@ -188,6 +188,9 @@ body a{
 .content-bottom{
 	width:100%;
 	background: url(http://opendallas.org/wp-content/uploads/2013/05/home_fpo_51860911.jpg)no-repeat center top;
+  /*opacity: 0.7;*/
+  color: #ffffff;
+  text-shadow: 2px 2px #000000;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
