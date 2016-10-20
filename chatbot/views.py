@@ -159,7 +159,7 @@ class MyChatBotView(generic.View):
                         p.greetings = 'TRUE'
                         p.state='1'
                         p.save()
-                        post_facebook_message(sender_id,'Hey , ' + name +', Please tell me your Event name ')
+                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
                        
                         
                     elif p.state =='1':
@@ -252,19 +252,16 @@ class MyChatBotView(generic.View):
                         p.state='16'
                         p.save()
                         post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
-                    
+
+
                     elif p.state =='16':
                         p.sub4 = message_text
                         p.state='17'
                         p.save()
-                        post_facebook_message(sender_id,' here are your templates ')
+                        
 
-                    elif p.state =='17':
-                        message_text = 'templates'
-                        p.state='18'
-                        p.save()
                         post_facebook_message(sender_id,' please select one of the templates given below ')
-                        post_facebook_message(sender_id,message_text)                        
+                        post_facebook_message(sender_id,'templates')                        
                         
 
                         
