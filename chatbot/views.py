@@ -95,32 +95,31 @@ def cards(fbid):
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "rift",
-              "subtitle": "Next-generation virtual reality",
-              "item_url": "https://www.oculus.com/en-us/rift/",               
+              "title": "party theme",
+              "subtitle": "party,fests,weddings,birthdays etc",
+              "item_url": "https://myresumemaker.herokuapp.com/temp1",               
               "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://www.oculus.com/en-us/rift/",
-                "title": "Open Web URL"
+                "url": "https://myresumemaker.herokuapp.com/temp1"
+                "title": "Open your website in this theme"
               }, {
-                "type": "postback",
-                "title": "Call Postback",
-                "payload": "Payload for first bubble",
+                "type": "element_share",
+                ,
+                ,
               }],
             }, {
-              "title": "touch",
-              "subtitle": "Your Hands, Now in VR",
-              "item_url": "https://www.oculus.com/en-us/touch/",               
+              "title": "hackathon theme",
+              "subtitle": "all tech competitions them",
+              "item_url": "https://myresumemaker.herokuapp.com/temp2",               
               "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://www.oculus.com/en-us/touch/",
-                "title": "Open Web URL"
+                "url": "https://myresumemaker.herokuapp.com/temp2",
+                "title": "Open your website in this theme"
               }, {
-                "type": "postback",
-                "title": "Call Postback",
-                "payload": "Payload for second bubble",
+                "type": "element_share",
+                
               }]
             }]
           }
@@ -265,12 +264,7 @@ class MyChatBotView(generic.View):
                         
 
                         
-
-                    elif p.state =='17':
-                        p.sub4 = message_text
-                        p.state='18'
-                        p.save()
-                        post_facebook_message(sender_id,' your website link is https://myresumemaker.herokuapp.com/index  ')                          
+                         
 
 
 
