@@ -101,7 +101,7 @@ def cards(fbid):
               "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
               "buttons": [{
                 "type": "web_url",
-                "url": "https://myresumemaker.herokuapp.com/temp1"
+                "url": "https://myresumemaker.herokuapp.com/temp1",
                 "title": "Open your website in this theme"
               }, {
                 "type": "element_share",
