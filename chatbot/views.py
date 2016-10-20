@@ -71,7 +71,7 @@ def post_facebook_message(fbid,message_text):
     
     # print status.json()
     if message_text == 'templates':
-        response_msg = trial(fbid)
+        response_msg = cards(fbid)
 
     else:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
