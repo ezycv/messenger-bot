@@ -65,17 +65,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  <div class="col-md-12">
 				 <div class="header-left">
 					 <div class="logo">
-						<a href="index.html"><img height="50px" src="{% static 'chatbot/images/logo.png' %}" alt=""/></a>
+						<a href="temp1.html"><img height="50px" src="{% static 'chatbot/images/logo.png' %}" alt=""/></a>
 					 </div>
 					 <div class="menu">
 						  <a class="toggleMenu" href="#"><img src="{% static 'chatbot/images/nav.png' %}" alt="" /></a>
 						    <ul class="nav" id="nav">
-						    	<li><a href="shop.html">Shop</a></li>
-						    	<li><a href="team.html">Team</a></li>
-						    	<li><a href="experiance.html">Events</a></li>
-						    	<li><a href="experiance.html">Experiance</a></li>
-						    	<li><a href="shop.html">Company</a></li>
-								<li><a href="contact.html">Contact</a></li>								
+						    	<li><a href="shop.html">Apply Here</a></li>
+                  <li><a href="#timeline">Events</a></li>
+                  <li><a href="#description">Description</a></li>
+                <li><a href="#contact">Contact</a></li>								
 								<div class="clear"></div>
 							</ul>
 							<script type="text/javascript" src="{% static 'chatbot/responsive-nav.js' %}"></script>
@@ -101,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <!-- Text title -->
                         <h1 class="title">{{ tagline }}</h1>
                         <!-- /Text title -->
-                        <div class="button"><a href="#">Apply Here</a></div>
+                        
                     </div>
                 </div>
                <!-- /Texts container -->
@@ -112,7 +110,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <h1 class="title">{{ tagline }}</h1>  
-                       	<div class="button"><a href="#">Apply here</a></div>
+                       	
                     </div>
                 </div>
             </div>
@@ -138,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
     <!-- <div class = "imagebk" > -->
     <!-- <img src = "http://stjoevan.org/wp-content/uploads/2013/05/enjoying_party_vector-1920x12001.jpg" class = "img-responsive" /> -->
-			<div class="row content_bottom-text" >
+			<div class="row content_bottom-text" id = "description" >
 			  <div class="col-md-4">
 
 				<h3>The<br>Description</h3>									
@@ -151,13 +149,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<div class="features">
-		<div class="container">
+		<div class="container" id = "timeline">
 			<h3 class="m_3"> {{datestart}} to {{dateend}} </h3>
 			<div class="close_but"><i class="close1"> </i></div>
 			  <div class="row">
 				<div class="col-md-3 top_box">
-				  <div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic1.jpg' %}" class="img-responsive" alt=""/>
+				  <div class="view view-ninth"><a href="#">
+                    <img src="{% static 'chatbot/images/pic1.jpg' %}" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -170,8 +168,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   
                 </div>
                 <div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic2.jpg' %}" class="img-responsive" alt=""/>
+					<div class="view view-ninth"><a href="#">
+                    <img src="{% static 'chatbot/images/pic2.jpg' %}" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -183,8 +181,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   
 				</div>
 				<div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic3.jpg' %}" class="img-responsive" alt=""/>
+					<div class="view view-ninth"><a href="#">
+                    <img src="{% static 'chatbot/images/pic3.jpg' %}" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -196,8 +194,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                    
 				</div>
 				<div class="col-md-3 top_box1">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic4.jpg' %}" class="img-responsive" alt=""/>
+					<div class="view view-ninth"><a href="#">
+                    <img src="{% static 'chatbot/images/pic4.jpg' %}" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -215,7 +213,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<ul class="footer_box">
+						<ul class="footer_box" id="contact">
 							<h4>Contact Us</h4>
 							<li><a href="{{ fblink }}"><img height="50px" src="{% static 'chatbot/images/fbicon.png' %}"></img></a></li><br><br>
 							<li><a href="{{ twitterlink }}"><img height="50px" src="{% static 'chatbot/images/twitterlogo.png' %}"></img></a></li><br><br>

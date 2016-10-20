@@ -987,6 +987,11 @@ li.youtube a span {
 .copy {
   float: left;
 }
+.img-responsive2{
+  height:175px;
+  width:275px;
+}
+
 .copy p{
 	font-size:0.8125em;
 	font-weight:600;
