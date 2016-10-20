@@ -65,26 +65,70 @@ def scrape_spreadsheet():
 
 def post_facebook_message(fbid,message_text):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    # response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
+    # status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+
     
-    print status.json()
+    # print status.json()
+    if message_text in 'templates':
+        response_msg = trial(fbid)
 
-def post_football_message(text):
-    #post_message_url = 'http://api.football-data.org/v1/teams//players/85b82a55e643435fb11b903effdb9b3b+/'
+    else:
+        response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
-    #response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
-    url = 'https://www.googleapis.com/gmail/v1/users/me/labels/'
+    requests.post(post_message_url, 
+                    headers={"Content-Type": "application/json"},
+                    data=response_msg)
+
+
+
+
+def cards(fbid):
     
-    new_url = 'https://www.googleapis.com/gmail/v1/users/me/labels/INBOX?key=AIzaSyDDaUwDASa3X5Q_LzvIZ9WkItLIrKwjHVc'
-    req = urllib2.Request(new_url)
-    r = urllib2.urlopen(req)
-    data = r.read()
-    j = json.loads(data)
+    response_object = {
+      "recipient": {
+        "id": fbid
+      },
+      "message": {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "rift",
+              "subtitle": "Next-generation virtual reality",
+              "item_url": "https://www.oculus.com/en-us/rift/",               
+              "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+              "buttons": [{
+                "type": "web_url",
+                "url": "https://www.oculus.com/en-us/rift/",
+                "title": "Open Web URL"
+              }, {
+                "type": "postback",
+                "title": "Call Postback",
+                "payload": "Payload for first bubble",
+              }],
+            }, {
+              "title": "touch",
+              "subtitle": "Your Hands, Now in VR",
+              "item_url": "https://www.oculus.com/en-us/touch/",               
+              "image_url": "http://messengerdemo.parseapp.com/img/touch.png",
+              "buttons": [{
+                "type": "web_url",
+                "url": "https://www.oculus.com/en-us/touch/",
+                "title": "Open Web URL"
+              }, {
+                "type": "postback",
+                "title": "Call Postback",
+                "payload": "Payload for second bubble",
+              }]
+            }]
+          }
+        }
+      }
+    }
 
-    #status = requests.post(post_message_url, headers={"Content-Type": "application/json"})
-    #print status.json()    
-    return j
+    return json.dumps(response_object)
 
 
 class MyChatBotView(generic.View):
@@ -213,8 +257,18 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
 
                     elif p.state =='16':
-                        p.sub4 = message_text
+                        
                         p.state='17'
+                        p.save()
+                        post_facebook_message(sender_id,' please select one of the templates given below ')
+                        post_facebook_message(sender_id,' templates ')                        
+                        
+
+                        
+
+                    elif p.state =='17':
+                        p.sub4 = message_text
+                        p.state='18'
                         p.save()
                         post_facebook_message(sender_id,' your website link is https://myresumemaker.herokuapp.com/index  ')                          
 
@@ -294,8 +348,50 @@ def eventweb(request):
 
 
 
-    return render(request,'chatbot/index.html',context_dict)
+    return render(request,'chatbot/temp1.html',context_dict)
 
+def eventweb2(request):
+    #fbid = '1047867078643788'
+
+    p = event.objects.get_or_create(fbid ='1047867078643788')[0]
+    name = p.name 
+    location = p.location
+    logolink = p.logolink  
+    description = p.description
+    fblink = p.fblink  
+    emailid = p.emailid  
+    oname = p.oname 
+    dateend = p.dateend 
+    datestart =  p.datestart  
+    contact = p.contact 
+    tagline = p.tagline
+    twitterlink = p.twitterlink
+    sub1 = p.sub1
+    sub2 = p.sub2
+    sub3 = p.sub3
+    sub4 = p.sub4
+
+    context_dict = {}
+    context_dict['eventname'] = name 
+    context_dict['location'] = location
+    context_dict['logolink'] = logolink
+    context_dict['description'] = description
+    context_dict['fblink'] = fblink
+    context_dict['emailid'] = emailid
+    context_dict['organisername'] = oname
+    context_dict['dateend'] = dateend
+    context_dict['datestart'] = datestart
+    context_dict['contact'] = contact
+    context_dict['tagline'] = tagline
+    context_dict['twitterlink'] = twitterlink
+    context_dict['sub1'] = sub1
+    context_dict['sub2'] = sub2
+    context_dict['sub3'] = sub3
+    context_dict['sub4'] = sub4
+
+
+
+    return render(request,'chatbot/temp2.html',context_dict)
 
 
 def set_menu():

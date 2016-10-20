@@ -3,28 +3,24 @@ Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
-
 -->
-
-
 <!DOCTYPE HTML>
 <html>
 <head>
 {% load staticfiles %}
-
-<title>your</title>
-<link href="{% static 'chatbot/bootstrap.css' %}" rel='stylesheet' type='text/css' />
-<link href="{% static 'chatbot/style.css' %}" rel='stylesheet' type='text/css' />
+<title>hacktheme</title>
+<link href="{% static 'chatbot/js2/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'chatbot/js2/style.css' %}" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="{% static 'chatbot/jquery.min.js' %}"></script>
+<script src="{% static 'chatbot/js2/jquery.min.js' %}"></script>
 <!--<script src="js/jquery.easydropdown.js"></script>-->
 <!--start slider -->
-<link rel="stylesheet" href="{% static 'chatbot/fwslider.css' %}" media="all">
-<script src="{% static 'chatbot/jquery-ui.min.js' %}"></script>
-<script src="{% static 'chatbot/fwslider.js' %}"></script>
+<link rel="stylesheet" href="{% static 'chatbot/js2/fwslider.css' %}" media="all">
+<script src="{% static 'chatbot/js2/jquery-ui.min.js' %}"></script>
+<script src="{% static 'chatbot/js2/fwslider.js' %}"></script>
 <!--end slider -->
 <script type="text/javascript">
         $(document).ready(function() {
@@ -65,20 +61,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			  <div class="col-md-12">
 				 <div class="header-left">
 					 <div class="logo">
-						<a href="index.html"><img height="50px" src="{% static 'chatbot/images/logo.png' %}" alt=""/></a>
+						<a href="index.html"><img height="50px" src="{% static 'chatbot/images/comp.png' %}" alt=""/></a>
 					 </div>
 					 <div class="menu">
 						  <a class="toggleMenu" href="#"><img src="{% static 'chatbot/images/nav.png' %}" alt="" /></a>
 						    <ul class="nav" id="nav">
-						    	<li><a href="shop.html">Shop</a></li>
-						    	<li><a href="team.html">Team</a></li>
-						    	<li><a href="experiance.html">Events</a></li>
-						    	<li><a href="experiance.html">Experiance</a></li>
-						    	<li><a href="shop.html">Company</a></li>
-								<li><a href="contact.html">Contact</a></li>								
+						    	<li><a href="shop.html">Apply Here</a></li>
+						    	<li><a href="#timeline">Events</a></li>
+						    	<li><a href="#descrpition">Description</a></li>
+								<li><a href="#contact">Contact</a></li>								
 								<div class="clear"></div>
 							</ul>
-							<script type="text/javascript" src="{% static 'chatbot/responsive-nav.js' %}"></script>
+							<script type="text/javascript" src="js/responsive-nav.js"></script>
 				    </div>							
 	    		    <div class="clear"></div>
 	    	    </div>
@@ -93,7 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
          <div class="slider_container">
             <div class="slide"> 
                 <!-- Slide image -->
-               <img src="{% static 'chatbot/images/slider1.jpg' %}"  class="img-responsive" alt=""/>
+               <img src="https://i.ytimg.com/vi/r7tV3u9tyrU/maxresdefault.jpg"  class="img-responsive" alt=""/>
                 <!-- /Slide image -->
                 <!-- Texts container -->
                 <div class="slide_content">
@@ -101,18 +95,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <!-- Text title -->
                         <h1 class="title">{{ tagline }}</h1>
                         <!-- /Text title -->
-                        <div class="button"><a href="#">Apply Here</a></div>
+                        <div class="button"><a href="shop.html">Apply Here</a></div>
                     </div>
                 </div>
                <!-- /Texts container -->
             </div>
             <!-- /Duplicate to create more slides -->
             <div class="slide">
-               <img src="{% static 'chatbot/images/slider2.jpg' %}"  class="img-responsive" alt=""/>
+               <img src="https://1.bp.blogspot.com/-sFvjSj7ahj8/VWz4-HWoZoI/AAAAAAAAbgI/edHWCsxuDE4/s1600/ninja-cat-6.jpg"  class="img-responsive" alt=""/>
                 <div class="slide_content">
                     <div class="slide_content_wrap">
-                        <h1 class="title">{{ tagline }}</h1>  
-                       	<div class="button"><a href="#">Apply here</a></div>
+                        <h1 class="title"><{{ tagline }}/h1>   
+                       	<div class="button"><a href="shop.html">Apply Here</a></div>
                     </div>
                 </div>
             </div>
@@ -126,38 +120,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
 	  <div class="main">
 		<div class="content-top">
-			<h2>{{ eventname }}</h2>                                          
+			<h2>{{ eventname }}</h2>                                        
 			<p></p>                                             
-			<div class="logouser">
-      <img src="{{ logolink }}" class="logoid" alt=""/  >  
-      </div>                  				
+			<div class="logouser" >
+     <img style = "padding-left: 700px;" src="{{ logolink }}"  alt=""/  >     
+      </div>                         
+				
 		
 		</div>
 	</div>
 	<div class="content-bottom">
 		<div class="container">
-    <!-- <div class = "imagebk" > -->
-    <!-- <img src = "http://stjoevan.org/wp-content/uploads/2013/05/enjoying_party_vector-1920x12001.jpg" class = "img-responsive" /> -->
-			<div class="row content_bottom-text" >
-			  <div class="col-md-4">
-
-				<h3>The<br>Description</h3>									
-				<p> {{ description }}
-        <h2>{{organisername}}</h2> 
+			<div class="row content_bottom-text" id="descrpition">
+			  <div class="col-md-7">
+				<h3>The<br>Description</h3>	
+        <p> {{ description }}
+        <h2>{{organisername}}</h2> 								
+				
 			  </div>
-
-        <!-- </div> -->
 			</div>
 		</div>
 	</div>
 	<div class="features">
-		<div class="container">
-			<h3 class="m_3"> {{datestart}} to {{dateend}} </h3>
+		<div class="container" id="timeline">
+			<h3 class="m_3">{{datestart}} to {{dateend}}</h3>
 			<div class="close_but"><i class="close1"> </i></div>
 			  <div class="row">
 				<div class="col-md-3 top_box">
 				  <div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic1.jpg' %}" class="img-responsive" alt=""/>
+                    <img src="http://img.wallpaperfolder.com/f/7BFD10D6FC1A/krt-ndash-never-forget-smile.jpg" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -171,11 +162,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="col-md-3 top_box">
 					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic2.jpg' %}" class="img-responsive" alt=""/>
+                    <img src="http://themerkle.com/wp-content/uploads/2016/07/code-wallpaper-18.png" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>{{sub2}}</h2>      
+                        <h2>{{sub2}}</h2>     
                         <p>Event 2</p>
                       </div>
                     </a> </div>
@@ -184,7 +175,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div class="col-md-3 top_box">
 					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic3.jpg' %}" class="img-responsive" alt=""/>
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTG17iNhrYyHWqond0b4vh-i866gUnTrwzsNduBOYQjriljfNzV" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
@@ -192,16 +183,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <p>Event 3</p>
                       </div>
                     </a> </div>
-                   <h4 class="m_4"><a href="#">{{sub3}} </a></h4>
+                   <h4 class="m_4"><a href="#">{{sub3}}</a></h4>
                    
 				</div>
 				<div class="col-md-3 top_box1">
 					<div class="view view-ninth"><a href="single.html">
-                    <img src="{% static 'chatbot/images/pic4.jpg' %}" class="img-responsive" alt=""/>
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRLkW23JAFG7Ggk6UIC9AKOWWgpkf4rniQlVsKK_PTWeJ9VWGLP2w" class="img-responsive2" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>{{sub4}}</h2>   
+                        <h2>{{sub4}}</h2>    
                         <p>Event 4</p>
                       </div>
                      </a> </div>
@@ -215,9 +206,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<ul class="footer_box">
+						<ul class="footer_box" id="contact">
 							<h4>Contact Us</h4>
-							<li><a href="{{ fblink }}"><img height="50px" src="{% static 'chatbot/images/fbicon.png' %}"></img></a></li><br><br>
+							<li><a href="{{ fblink }}"><img height="50px" src="{% static 'chatbot/images/fbicon.png' %}"  hover:"font-size:1.2em";></img></a></li><br><br>
 							<li><a href="{{ twitterlink }}"><img height="50px" src="{% static 'chatbot/images/twitterlogo.png' %}"></img></a></li><br><br>
 							<li><a href="">{{contact}}</a></li>              
 						</ul>
@@ -261,10 +252,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq_0Uhv66j2Otfvhlm360YT-q72nCtZ7Q&callback=initMap">
     </script>
 
-					</div>
-				<div class="row footer_bottom">   
-				</div>
-			</div>
-		</div>
-</body>	
+          </div>
+        <div class="row footer_bottom">   
+        </div>
+      </div>
+    </div>
+</body> 
 </html>

@@ -493,6 +493,15 @@ li.list_desc h4 a:hover{
 	text-align:center;
 	margin:2% 0 0 0;
 }
+}
+ #logoid{
+
+	margin: 0px auto;
+	padding-left: 700px;
+
+}
+
+
 #flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
 	display: none;
 }
