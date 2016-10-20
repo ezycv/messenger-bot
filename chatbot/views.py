@@ -257,11 +257,11 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
 
                     elif p.state =='16':
-                        
+                        message_text = 'templates'
                         p.state='17'
                         p.save()
                         post_facebook_message(sender_id,' please select one of the templates given below ')
-                        post_facebook_message(sender_id,' templates ')                        
+                        post_facebook_message(sender_id,message_text)                        
                         
 
                         
