@@ -70,7 +70,7 @@ def post_facebook_message(fbid,message_text):
 
     
     # print status.json()
-    if message_text in 'templates':
+    if message_text == 'templates':
         response_msg = trial(fbid)
 
     else:
