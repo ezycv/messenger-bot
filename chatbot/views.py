@@ -252,10 +252,16 @@ class MyChatBotView(generic.View):
                         p.state='16'
                         p.save()
                         post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
-
+                    
                     elif p.state =='16':
-                        message_text = 'templates'
+                        p.sub4 = message_text
                         p.state='17'
+                        p.save()
+                        post_facebook_message(sender_id,' here are your templates ')
+
+                    elif p.state =='17':
+                        message_text = 'templates'
+                        p.state='18'
                         p.save()
                         post_facebook_message(sender_id,' please select one of the templates given below ')
                         post_facebook_message(sender_id,message_text)                        
@@ -436,39 +442,14 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'Your vision our creativity')
 
     elif payload == 'MENU_LINK':
-        return post_facebook_message(fbid,'masterevent.github.io')
+        return post_facebook_message(fbid,'Master-Event.github.io')
         
 
     elif payload == 'MENU_OUTPUT':
-        
-        response_object = {
-                              "recipient":{
-                                "id":"USER_ID"
-                              },
-                              "message":{
-                                "attachment":{
-                                  "type":"template",
-                                  "payload":{
-                                    "template_type":"generic",
-                                    "elements":[
-                                      {
-                                        "title":"Welcome to Peter\'s Hats",
-                                        "item_url":"https://petersfancybrownhats.com",
-                                        "image_url":"https://petersfancybrownhats.com/company_image.png",
-                                        "subtitle":"We\'ve got the right hat for everyone.",
-                                        "buttons":[
-                                          {
-                                            "type":"web_url",
-                                            "url":"https://petersfancybrownhats.com",
-                                            "title":"View Website"
-                                          }              
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                }
-                              }
-                            }
+        return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
+        
+       
+                              
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
