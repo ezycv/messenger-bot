@@ -104,9 +104,7 @@ def cards(fbid):
                 "url": "https://myresumemaker.herokuapp.com/temp1",
                 "title": "Open your website in this theme"
               }, {
-                "type": "element_share",
-                ,
-                ,
+                "type": "element_share"
               }],
             }, {
               "title": "hackathon theme",
@@ -118,7 +116,7 @@ def cards(fbid):
                 "url": "https://myresumemaker.herokuapp.com/temp2",
                 "title": "Open your website in this theme"
               }, {
-                "type": "element_share",
+                "type": "element_share"
                 
               }]
             }]
