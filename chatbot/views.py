@@ -15,6 +15,7 @@ from chatbot.models import event
 
 # Create your views here.
 
+sender_id = ''
 VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
@@ -302,10 +303,10 @@ def index(request):
     handle_postback('fbid','MENU_WHY')
     return HttpResponse('helloworld')
 
-def eventweb(request):
+def eventweb(request , sender_id):
     #fbid = '1047867078643788'
 
-    p = event.objects.get_or_create(fbid ='1047867078643788')[0]
+    p = event.objects.get_or_create(fbid =sender_id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
