@@ -254,11 +254,11 @@ class MyChatBotView(generic.View):
                         p.state='16'
                         p.save()
                         post_facebook_message(sender_id,' send me the details of the 4st sub event  ')
-                        print 'hi hi hi hi hi hi 'sender_id
-                        print 'hi hi hi hi hi hi 'sender_id
-                        print 'hi hi hi hi hi hi 'sender_id
-                        print 'hi hi hi hi hi hi 'sender_id
-                        print 'hi hi hi hi hi hi 'sender_id
+                        print 'hi hi hi hi hi hi ' + sender_id
+                        print 'hi hi hi hi hi hi ' + sender_id
+                        print 'hi hi hi hi hi hi ' + sender_id
+                        print 'hi hi hi hi hi hi ' + sender_id
+                        print 'hi hi hi hi hi hi ' + sender_id
                        
 
                     elif p.state =='16':
