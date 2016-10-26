@@ -161,6 +161,7 @@ class MyChatBotView(generic.View):
                         p.greetings = 'TRUE'
                         p.state='1'
                         p.save()
+                        print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
                        
                         
@@ -168,6 +169,7 @@ class MyChatBotView(generic.View):
                         p.name = message_text
                         p.state='2'
                         p.save()
+                        print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
          
                     elif p.state =='2':
