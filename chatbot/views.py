@@ -304,9 +304,9 @@ def index(request):
     handle_postback('fbid','MENU_WHY')
     return HttpResponse('helloworld')
 
-def eventweb(request , sender_id):
+def eventweb(request ):
     #fbid = '1047867078643788'
-    
+
 
     p = event.objects.get_or_create(fbid =sender_id)[0]
     name = p.name 
