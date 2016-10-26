@@ -259,6 +259,7 @@ class MyChatBotView(generic.View):
                         p.sub4 = message_text
                         p.state='17'
                         p.save()
+                        print sender_id
                         
 
                         post_facebook_message(sender_id,' please select one of the templates given below ')
@@ -305,6 +306,7 @@ def index(request):
 
 def eventweb(request , sender_id):
     #fbid = '1047867078643788'
+    
 
     p = event.objects.get_or_create(fbid =sender_id)[0]
     name = p.name 
@@ -349,7 +351,7 @@ def eventweb(request , sender_id):
 def eventweb2(request):
     #fbid = '1047867078643788'
 
-    p = event.objects.get_or_create(fbid ='1047867078643788')[0]
+    p = event.objects.get_or_create(fbid = sender_id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
