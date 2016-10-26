@@ -15,7 +15,7 @@ from chatbot.models import event
 
 # Create your views here.
 
-sender_id = ''
+sender_id = 'ba'
 VERIFY_TOKEN = '7thseptember2016'
 PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVbIszjMi3Ive6yWK30Qo9orezqF5nLcaVJYaAEnDMGtF7xJzgz28xFyk0KOmjmu5PMQHj06FOElFiZCj5HXcdOlHTLrzmYvthplc3IhMfizoi6YvwgZDZD'
 API_token = '85b82a55e643435fb11b903effdb9b3b'
@@ -141,6 +141,7 @@ class MyChatBotView(generic.View):
         return generic.View.dispatch(self, request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        global sender_id
         incoming_message= json.loads(self.request.body.decode('utf-8'))
         print  incoming_message
         
@@ -149,9 +150,8 @@ class MyChatBotView(generic.View):
             for message in entry['messaging']:
                 print message
                 try:
-                    global sender_id
-                    sender_id = message['sender']['id']
                     
+                    sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     a= userdeatils(sender_id)
                     p = event.objects.get_or_create(fbid =sender_id)[0]
@@ -161,6 +161,9 @@ class MyChatBotView(generic.View):
                         p.greetings = 'TRUE'
                         p.state='1'
                         p.save()
+                        # global x
+                        # x = sender_id
+
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
                        
@@ -261,7 +264,7 @@ class MyChatBotView(generic.View):
                         print 'hi hi hi hi hi hi ' + sender_id
                         print 'hi hi hi hi hi hi ' + sender_id
                         print 'hi hi hi hi hi hi ' + sender_id
-                       
+                        
 
                     elif p.state =='16':
                         p.sub4 = message_text
@@ -310,7 +313,9 @@ class MyChatBotView(generic.View):
 def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
-    return HttpResponse('helloworld')
+    context_dict = {}
+    context_dict['fbid'] = sender_id
+    return render(request,'chatbot/index.html', context_dict)
 
 def eventweb(request ):
     #fbid = '1047867078643788'
