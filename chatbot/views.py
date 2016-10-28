@@ -135,7 +135,7 @@ def cards(fbid):
 def selectcard(fbid):
     response_object ={
   "recipient":{
-    "id":"USER_ID"
+    "id":"fbid"
   },
   "message":{
     "attachment":{
@@ -206,8 +206,9 @@ class MyChatBotView(generic.View):
                         # x = sender_id
 
                         print  'hihihihihihihihihih'+ sender_id
-                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
                         post_facebook_message(sender_id,'selection')
+                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
+                        
                        
                         
                     elif p.state =='1':
