@@ -209,10 +209,7 @@ class MyChatBotView(generic.View):
                     a= userdeatils(sender_id)
                     p = event.objects.get_or_create(fbid =sender_id)[0]
                     name = '%s %s'%(a['first_name'],a['last_name'])
-                    if message_text == "lets Make an event-website" :
-
-
-                        if message_text.lower() in 'hi,hello,hey,supp'.split(','):
+                    if message_text.lower() in 'hi,hello,hey,supp'.split(','):
                             p.greetings = 'TRUE'
                             p.state='1'
                             p.save()
@@ -223,9 +220,14 @@ class MyChatBotView(generic.View):
                             
                             post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                             post_facebook_message(sender_id,'selection')
+
+                    if message_text == "lets Make an event-website" :
+
+
+                        
                            
                             
-                        elif p.state =='1':
+                        if p.state =='1':
                             p.name = message_text
                             p.state='2'
                             p.save()
@@ -350,14 +352,10 @@ class MyChatBotView(generic.View):
                     elif message_text == "lets make a Resume" :
                     
 
-                        if message_text.lower() in 'hi,hello,hey,supp'.split(','):
-                            pp.greetings = 'TRUE'
-                            pp.state='1'
-                            pp.save()
-                            post_facebook_message(sender_id,'Hey , ' + data +', Please tell me your email id ')
+                        
                            
                             
-                        elif pp.state =='1':
+                        if pp.state =='1':
                             pp.emailid = message_text
                             pp.state='2'
                             pp.save()
