@@ -135,7 +135,7 @@ def cards(fbid):
 def selectcard(fbid):
     response_object ={
   "recipient":{
-    "id":"fbid"
+    "id":fbid
   },
   "message":{
     "attachment":{
