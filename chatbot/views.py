@@ -721,7 +721,9 @@ def handle_postback(fbid,payload):
             ]}
         }
         }}
-        return response_object
+        response_msg = json.dumps(response_object)
+        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+
 
     elif payload == 'MENU_LINK':
         return post_facebook_message(fbid,'Master-Event.github.io')
