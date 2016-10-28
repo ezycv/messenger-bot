@@ -195,6 +195,7 @@ class MyChatBotView(generic.View):
 
     def post(self, request, *args, **kwargs):
         global message_text
+        global sender_id
         incoming_message= json.loads(self.request.body.decode('utf-8'))
         print  incoming_message
         
