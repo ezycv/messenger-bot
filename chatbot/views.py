@@ -628,7 +628,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'please tell me your event name ')
 
     elif payload == "RESUME" :
-        pp = event.objects.get_or_create(fbid =fbid)[0]
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1'
         pp.save()
 
