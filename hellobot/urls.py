@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     url(r'^temp1/(?P<id>[\*\w\-]+)$' ,v.eventweb , name = 'event') , 
     url(r'^blah/?$' ,v.index , name = 'index') ,
     url(r'^temp2/(?P<id>[\*\w\-]+)$' ,v.eventweb2 , name = 'event2'),
-    url(r'^shop.html?$' ,v.eventreg , name = 'shop'), 
+    url(r'^shop.html?$' ,v.eventreg , name = 'shop'),
+    url(r'^try/(?P<id>[\*\w\-]+)$', 'main.views.resume', name = 'testing'), 
   
 
 )
