@@ -720,7 +720,7 @@ def handle_postback(fbid,payload):
             
             ]}
         }
-        }
+        }}
         return response_object
 
     elif payload == 'MENU_LINK':
