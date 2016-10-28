@@ -45,10 +45,10 @@ def post_facebook_message(fbid,message_text):
     if message_text == 'templates':
         response_msg = cards(fbid)
 
-    elif message_text == 'selection':
+    elif message_text == 'selection' :
         response_msg = selectcard(fbid)
 
-    if message_text == 'resume download':
+    elif message_text == 'resume download':
         response_msg = card_resume(fbid)    
         
 
