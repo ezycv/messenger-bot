@@ -144,23 +144,35 @@ def selectcard(fbid):
         "template_type":"generic",
         "elements":[
           {
-            "title":"Welcome to Peter\'s Hats",
-            "item_url":"https://petersfancybrownhats.com",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
-            "subtitle":"We\'ve got the right hat for everyone.",
+            "title":"Resume",
+            
+            "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Resume&w=450&h=500",
+            "subtitle":"Make a resume",
             "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
-              },
+              
               {
                 "type":"postback",
-                "title":"Start Chatting",
+                "title":"Try it ",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }              
+            ]
+          },
+          {
+            "title":"Event Website",
+            
+            "image_url":"https://placeholdit.imgix.net/~text?txtsize=70&txt=Event%20Website&w=450&h=500",
+            "subtitle":"Make an Event website",
+            "buttons":[
+              
+              {
+                "type":"postback",
+                "title":"Try it ",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               }              
             ]
           }
+
+
         ]
       }
         }
