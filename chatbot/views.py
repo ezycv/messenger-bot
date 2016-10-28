@@ -152,7 +152,7 @@ def selectcard(fbid):
               
               {
                 "type":"postback",
-                "title":"lets make a Resume",
+                "title":"Resume",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               }              
             ]
@@ -166,7 +166,7 @@ def selectcard(fbid):
               
               {
                 "type":"postback",
-                "title":"lets Make an event-website",
+                "title":"event-website",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               }              
             ]
@@ -210,23 +210,26 @@ class MyChatBotView(generic.View):
                     p = event.objects.get_or_create(fbid =sender_id)[0]
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
-                            p.greetings = 'TRUE'
-                            p.state='1'
-                            p.save()
+
                             
 
-                            print  'hihihihihihihihihih'+ sender_id
+                        print  'hihihihihihihihihih'+ sender_id
                             
-                            post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
-                            post_facebook_message(sender_id,'selection')
+                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
+                        post_facebook_message(sender_id,'selection')
 
-                    elif message_text == "lets Make an event-website" :
+                    elif message_text == "event-website" :
+                        
+                        p.greetings = 'TRUE'
+                        p.state='1'
+                        p.save()                        
 
 
                         
                            
                             
                         if p.state =='1':
+
                             p.name = message_text
                             p.state='2'
                             p.save()
@@ -234,6 +237,7 @@ class MyChatBotView(generic.View):
                             post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
              
                         elif p.state =='2':
+
                             p.contact = message_text
                             p.state='3'
                             p.save()
@@ -348,16 +352,16 @@ class MyChatBotView(generic.View):
                     
 
           
-                    elif message_text == "lets make a Resume" :
+                    elif message_text == "Resume" :
                     
 
                         
                            
                             
-                        if pp.state =='1':
-                            pp.emailid = message_text
-                            pp.state='2'
-                            pp.save()
+                        if p.state =='1':
+                            p.emailid = message_text
+                            p.state='2'
+                            p.save()
                             post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the resume ')
              
                         elif pp.state =='2':
