@@ -10,7 +10,7 @@ import json
 import requests
 #import gspread
 #from oauth2client.service_account import ServiceAccountCredentials
-from chatbot.models import event
+from chatbot.models import event,resume_input
 
 
 # Create your views here.
@@ -153,7 +153,7 @@ def selectcard(fbid):
               {
                 "type":"postback",
                 "title":"Resume",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                "payload":"RESUME"
               }              
             ]
           },
@@ -208,6 +208,7 @@ class MyChatBotView(generic.View):
                     message_text = message['message']['text']
                     a= userdeatils(sender_id)
                     p = event.objects.get_or_create(fbid =sender_id)[0]
+                    pp = resume_input.objects.get_or_create(fbid =sender_id)[0]
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
 
@@ -643,7 +644,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
     elif payload == "EVENT" :
-        p = event.objects.get_or_create(fbid =sender_id)[0]
+        p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'
         p.save()
 
