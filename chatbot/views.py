@@ -648,6 +648,7 @@ def handle_postback(fbid,payload):
     elif payload == "EVENT" :
         p = event.objects.get_or_create(fbid =sender_id)[0]
         p.state == '1'
+        p.save()
         return post_facebook_message(fbid,'thank u ')
 
 
