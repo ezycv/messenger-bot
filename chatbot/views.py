@@ -181,7 +181,7 @@ def selectcard(fbid):
     return json.dumps(response_object)
 
 
-
+message_text = ''
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
@@ -194,7 +194,7 @@ class MyChatBotView(generic.View):
         return generic.View.dispatch(self, request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        global sender_id
+        global message_text
         incoming_message= json.loads(self.request.body.decode('utf-8'))
         print  incoming_message
         
