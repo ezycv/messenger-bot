@@ -623,6 +623,8 @@ def handle_postback(fbid,payload):
     elif payload == "EVENT" :
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'
+        p.greetings = 'TRUE'
+
         p.save()
 
         return post_facebook_message(fbid,'please tell me your event name ')
@@ -630,6 +632,7 @@ def handle_postback(fbid,payload):
     elif payload == "RESUME" :
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
         pp.state = '1'
+        pp.greetings = 'TRUE'
         pp.save()
 
         return post_facebook_message(fbid,'Please tell me your email id ')        
