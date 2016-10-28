@@ -21,18 +21,7 @@ PAGE_ACCESS_TOKEN = 'EAAJz4ZB0zviUBAGrx1T1dvrS2dT4tMlZCam9JcTcWOZBWutdyFQLHpIXVb
 API_token = '85b82a55e643435fb11b903effdb9b3b'
 
 
-def write_spreadsheet(pos,input):
-    scope = ['https://spreadsheets.google.com/feeds']
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('try-apis-8794a4e1de95.json', scope)
-    gc = gspread.authorize(credentials)
-    
-    wks = gc.open_by_key('1PDseACNFDN_WsUXx63W1GKqKUQYV_2y8n1PDZTGE3mM')
-    ws = wks.get_worksheet(0)
-    a= ws.update_acell(pos, input)
-
-
-    return a
     
 
 
@@ -43,19 +32,7 @@ def userdeatils(fbid):
     data =json.loads(resp.text)
     return data         
 
-def scrape_spreadsheet():
-    sheetid = '1-L2IvZV10eZ9-hCICgucsxICLBqxxREKPRVsCaOFAXE'
-    url = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetid +'/values/Sheet1!A1:D20?key=AIzaSyBEET07ztOkEYiQ_CULBX6bW19py0CY3EI'
-    resp = requests.get(url=url)
-    data = json.loads(resp.text)
-    arr = []
-
-    for entry in data["values"]:
-        
-        for k in entry: 
-            arr.append(k)
-    # print arr
-    return arr          
+          
 
 
 def post_facebook_message(fbid,message_text):
@@ -70,6 +47,9 @@ def post_facebook_message(fbid,message_text):
 
     elif message_text == 'selection':
         response_msg = selectcard(fbid)
+
+    if message_text == 'resume download':
+        response_msg = card_resume(fbid)    
         
 
     else:
@@ -78,6 +58,41 @@ def post_facebook_message(fbid,message_text):
     requests.post(post_message_url, 
                     headers={"Content-Type": "application/json"},
                     data=response_msg)
+
+
+
+
+def card_resume(fbid):
+    
+    response_object = {
+      "recipient": {
+        "id": fbid
+      },
+      "message": {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "RESUME",
+              "subtitle": "Don,t wait just click",
+              "item_url": "https://resume-pdf.herokuapp.com/try/%s"%(fbid),               
+              "image_url": "https://www.google.co.in/imgres?imgurl=https%3A%2F%2Fresumegenius.com%2Fwp-content%2Fuploads%2F2015%2F04%2Fresume-writing-image.jpg&imgrefurl=https%3A%2F%2Fresumegenius.com%2Fresume-samples&docid=Im0LRhWKKEIV4M&tbnid=RoJ3A0-BHrxhvM%3A&w=245&h=135&itg=1&client=safari&bih=739&biw=1280&ved=0ahUKEwjw6-vDwfvPAhWHRY8KHdSOCfwQMwh-KEEwQQ&iact=mrc&uact=8",
+              "buttons": [{
+                "type": "web_url",
+                "url": "https://resume-pdf.herokuapp.com/try/%s"%(fbid),  
+                "title": "DOWNLOAD"
+              }, {
+                "type": "element_share"
+              }]
+              
+            }]
+          }
+        }
+      }
+    }
+
+    return json.dumps(response_object)
 
 
 
@@ -96,7 +111,7 @@ def cards(fbid):
             "elements": [{
               "title": "party theme",
               "subtitle": "party,fests,weddings,birthdays etc",
-              "item_url": "https://myresumemaker.herokuapp.com/temp1",               
+              "item_url": "https://myresumemaker.herokuapp.com/temp1/%s"%(fbid),               
               "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/l/t35.0-12/14800069_1785774908361060_98733447_o.png?oh=5e3268cb388a25f6d84cb2c27b3c757f&oe=580A723E",
               "buttons": [{
                 "type": "web_url",
@@ -108,7 +123,7 @@ def cards(fbid):
             }, {
               "title": "hackathon theme",
               "subtitle": "all tech competitions them",
-              "item_url": "https://myresumemaker.herokuapp.com/temp2",               
+              "item_url": "https://myresumemaker.herokuapp.com/temp2/%s"%(fbid),               
               "image_url": "https://scontent-sit4-1.xx.fbcdn.net/v/t35.0-12/14795941_1785774938361057_1017427262_o.png?oh=6809b9c14ee2646703a8047da8b2c479&oe=580A89BA",
               "buttons": [{
                 "type": "web_url",
@@ -440,7 +455,7 @@ class MyChatBotView(generic.View):
                         pp.name = message_text
                         pp.save()
                         post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
-                        post_facebook_message(sender_id,'templates')
+                        post_facebook_message(sender_id,'resume download')
 
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
@@ -469,6 +484,76 @@ class MyChatBotView(generic.View):
 
             return HttpResponse()
 
+
+
+
+def resume(request,id):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="mycv.pdf"'
+    # Create the PDF object, using the response object as its "file."
+    p = canvas.Canvas(response)
+    pp = resume_input.objects.get_or_create(fbid=id)[0]
+    #print dir(p)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.setFont("Helvetica", 20)
+    p.drawString(230,820, pp.name)
+    p.setFont("Helvetica", 8)
+    p.drawString(230,810,pp.emailid)
+    p.drawString(230,800,pp.contact)
+    p.setFont("Helvetica", 13)
+    
+    p.drawString(0,790,"Objective")
+    p.setStrokeColor(colors.red)    
+    p.line(0,785,500,785)
+    p.setFont("Helvetica", 9)
+    p.drawString(20,775,pp.details_sub11)
+
+    p.setFont("Helvetica", 13)
+    p.drawString(0,755,"Professional Summary")
+    p.setStrokeColor(colors.red)    
+    p.line(0,750,500,750)
+    p.setFont("Helvetica", 9)
+    p.drawString(20,740,pp.details_sub21)
+    p.drawString(20,730,pp.details_sub22)
+    p.drawString(20,720,pp.details_sub23)
+    p.drawString(20,710,pp.details_sub24)
+    
+    p.drawString(0,690,"Skills")
+    p.setStrokeColor(colors.red)    
+    p.line(0,685,500,685)
+    p.setFont("Helvetica", 9)
+    p.drawString(20,675,pp.details_sub31)
+    p.drawString(20,665,pp.details_sub32)
+    p.drawString(20,655,pp.details_sub32)
+    p.drawString(20,645,pp.details_sub34)
+
+    p.setFont("Helvetica", 13)
+    p.drawString(0,625,"Education")
+    p.setStrokeColor(colors.red)    
+    p.line(0,620,500,620)
+    p.setFont("Helvetica", 9)
+    p.drawString(20,610,pp.details_sub41)
+    p.drawString(20,600,pp.details_sub42)
+    
+    p.setFont("Helvetica", 13)
+    p.drawString(0,580,"Hobbies")
+    p.setStrokeColor(colors.red)    
+    p.line(0,575,500,575)
+    p.setFont("Helvetica", 9)
+    p.drawString(20,565,pp.details_sub51)
+    p.drawString(20,555,pp.details_sub52)
+    p.drawString(20,545,pp.details_sub53)
+    p.drawString(20,535,pp.details_sub54)
+
+    p.showPage()
+    p.save()
+    return response
+
+
+
+
 def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
@@ -476,11 +561,11 @@ def index(request):
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
 
-def eventweb(request):
+def eventweb(request,id):
     #fbid = '1047867078643788'
 
 
-    p = event.objects.get_or_create(fbid =sender_id)[0]
+    p = event.objects.get_or_create(fbid =id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
@@ -520,10 +605,10 @@ def eventweb(request):
 
     return render(request,'chatbot/temp1.html',context_dict)
 
-def eventweb2(request):
+def eventweb2(request,id):
     #fbid = '1047867078643788'
 
-    p = event.objects.get_or_create(fbid = sender_id)[0]
+    p = event.objects.get_or_create(fbid = id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
