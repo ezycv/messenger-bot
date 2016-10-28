@@ -646,6 +646,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
     elif payload == "EVENT" :
+        p = event.objects.get_or_create(fbid =sender_id)[0]
         p.state == '1'
         return post_facebook_message(fbid,'thank u ')
 
