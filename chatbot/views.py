@@ -348,127 +348,127 @@ class MyChatBotView(generic.View):
                     
 
           
-                    elif message_text == "Resume" :
+                    # elif message_text == "Resume" :
                     
 
                         
                            
                             
-                        if p.state =='1':
-                            p.emailid = message_text
-                            p.state='2'
-                            p.save()
-                            post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the resume ')
+                    #     if p.state =='1':
+                    #         p.emailid = message_text
+                    #         p.state='2'
+                    #         p.save()
+                    #         post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the resume ')
              
-                        elif pp.state =='2':
-                            pp.contact = message_text
-                            pp.state='3'
-                            pp.save()
-                            post_facebook_message(sender_id,'okay, now tell me your objective to be displayed   ')
+                    #     elif pp.state =='2':
+                    #         pp.contact = message_text
+                    #         pp.state='3'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'okay, now tell me your objective to be displayed   ')
 
-                        elif pp.state =='3':
-                            pp.details_sub11 = message_text
-                            pp.state='4'
-                            pp.save()
-                            post_facebook_message(sender_id,'okay, now tell me your four professional summary one by one ')
+                    #     elif pp.state =='3':
+                    #         pp.details_sub11 = message_text
+                    #         pp.state='4'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'okay, now tell me your four professional summary one by one ')
 
-                        elif pp.state =='4':
-                            pp.details_sub21 = message_text
-                            pp.state='5'
-                            pp.save()
-                            post_facebook_message(sender_id,'okay, second ') 
+                    #     elif pp.state =='4':
+                    #         pp.details_sub21 = message_text
+                    #         pp.state='5'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'okay, second ') 
 
-                        elif pp.state =='5':
-                            pp.details_sub22 = message_text
-                            pp.state='6'
-                            pp.save()
-                            post_facebook_message(sender_id,' Now, third ')   
+                    #     elif pp.state =='5':
+                    #         pp.details_sub22 = message_text
+                    #         pp.state='6'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,' Now, third ')   
 
-                        elif pp.state =='6':
-                            pp.details_sub23 = message_text
-                            pp.state='7'
-                            pp.save()
-                            post_facebook_message(sender_id,'Now , fourth ')                                              
+                    #     elif pp.state =='6':
+                    #         pp.details_sub23 = message_text
+                    #         pp.state='7'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Now , fourth ')                                              
 
-                        elif pp.state =='7':
-                            pp.details_sub24= message_text
-                            pp.state ='8'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your main four skills one by one ')
+                    #     elif pp.state =='7':
+                    #         pp.details_sub24= message_text
+                    #         pp.state ='8'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Great , now tell me your main four skills one by one ')
 
-                        elif pp.state =='8':
-                            pp.details_sub31 = message_text
-                            pp.state='9'
-                            pp.save()
-                            post_facebook_message(sender_id,'Now , second ')                                             
+                    #     elif pp.state =='8':
+                    #         pp.details_sub31 = message_text
+                    #         pp.state='9'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Now , second ')                                             
                         
 
-                        elif pp.state =='9':
-                            pp.details_sub32= message_text
-                            pp.state='10'
-                            pp.save()
-                            post_facebook_message(sender_id,'Now , third ')                     
+                    #     elif pp.state =='9':
+                    #         pp.details_sub32= message_text
+                    #         pp.state='10'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Now , third ')                     
 
-                        elif pp.state =='10':
-                            pp.details_sub33 = message_text
-                            pp.state='11'
-                            pp.save()
-                            post_facebook_message(sender_id,'now , fourth ')
+                    #     elif pp.state =='10':
+                    #         pp.details_sub33 = message_text
+                    #         pp.state='11'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'now , fourth ')
 
-                        elif pp.state =='11':
-                            pp.details_sub34= message_text
-                            pp.state ='12'
-                            pp.save()
-                            post_facebook_message(sender_id,'Great , now tell me your educational qualification,first')
+                    #     elif pp.state =='11':
+                    #         pp.details_sub34= message_text
+                    #         pp.state ='12'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Great , now tell me your educational qualification,first')
 
-                        elif pp.state =='12':
-                            pp.details_sub41 = message_text
-                            pp.state='13'
-                            pp.save()
-                            post_facebook_message(sender_id,'Now , second ')                                             
+                    #     elif pp.state =='12':
+                    #         pp.details_sub41 = message_text
+                    #         pp.state='13'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Now , second ')                                             
                         
                                  
 
-                        elif pp.state =='13':
-                            pp.details_sub42 = message_text
-                            pp.state='14'
-                            pp.save()
-                            post_facebook_message(sender_id,'Now , your four main hobbies one by one  ') 
+                    #     elif pp.state =='13':
+                    #         pp.details_sub42 = message_text
+                    #         pp.state='14'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'Now , your four main hobbies one by one  ') 
 
 
 
-                        elif pp.state =='14':
-                            pp.details_sub51 = message_text
-                            pp.state='15'
-                            pp.save()
-                            post_facebook_message(sender_id,'second  ') 
+                    #     elif pp.state =='14':
+                    #         pp.details_sub51 = message_text
+                    #         pp.state='15'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,'second  ') 
 
-                        elif pp.state =='15':
-                            pp.details_sub52 = message_text
-                            pp.state='16'
-                            pp.save()
-                            post_facebook_message(sender_id,' third  ') 
+                    #     elif pp.state =='15':
+                    #         pp.details_sub52 = message_text
+                    #         pp.state='16'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,' third  ') 
                         
-                        elif pp.state =='16':
-                            pp.details_sub53 = message_text
-                            pp.state='17'
-                            pp.save()
-                            post_facebook_message(sender_id,' fourth  ')
+                    #     elif pp.state =='16':
+                    #         pp.details_sub53 = message_text
+                    #         pp.state='17'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,' fourth  ')
 
-                        elif pp.state =='17':
-                            pp.details_sub54 = message_text
-                            pp.state='18'
-                            pp.save()
-                            post_facebook_message(sender_id,' name')
+                    #     elif pp.state =='17':
+                    #         pp.details_sub54 = message_text
+                    #         pp.state='18'
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,' name')
 
-                        elif pp.state =='18':
-                            pp.name = message_text
-                            pp.save()
-                            post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
-                            post_facebook_message(sender_id,'templates')
+                    #     elif pp.state =='18':
+                    #         pp.name = message_text
+                    #         pp.save()
+                    #         post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
+                    #         post_facebook_message(sender_id,'templates')
 
-                        else:
-                            post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
+                    #     else:
+                    #         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
 
 
 
