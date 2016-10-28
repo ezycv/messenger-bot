@@ -210,14 +210,9 @@ class MyChatBotView(generic.View):
                     p = event.objects.get_or_create(fbid =sender_id)[0]
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
-
-                            
-
                         print  'hihihihihihihihihih'+ sender_id
-        
                         p.state == '1'
                         p.save()                        
-                            
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
 
@@ -346,8 +341,8 @@ class MyChatBotView(generic.View):
 
 
 
-                    # else:
-                    #     post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ')
+                     # else:
+                         # post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation  ')
                     
 
           
@@ -649,6 +644,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
     elif payload == "EVENT" :
+        p = event.objects.get_or_create(fbid = fbid )[0]
 
 
         if p.state =='1':
