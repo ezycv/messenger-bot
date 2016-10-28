@@ -57,7 +57,7 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'resume download':
         response_msg = card_resume(fbid)    
         
-vi
+
     else:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
