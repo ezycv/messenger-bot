@@ -218,11 +218,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
 
-                    elif message_text == "event-website" :
-
-                        p.greetings = 'TRUE'
-                        p.state='1'
-                        p.save()                        
+                                           
 
 
                         
@@ -650,7 +646,8 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
     elif payload == "EVENT" :
-        return post_facebook_message(fbid,'event-website')
+        p.state == '1'
+        return post_facebook_message(fbid,'thank u ')
 
 
        
