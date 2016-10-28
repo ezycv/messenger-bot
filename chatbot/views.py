@@ -74,6 +74,10 @@ def post_facebook_message(fbid,message_text):
     if message_text == 'templates':
         response_msg = cards(fbid)
 
+    elif message_text == 'selection':
+        response_msg = selectcard(fbid)
+        
+
     else:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
@@ -128,6 +132,43 @@ def cards(fbid):
 
     return json.dumps(response_object)
 
+def selectcard(fbid):
+    response_object ={
+  "recipient":{
+    "id":"USER_ID"
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+          {
+            "title":"Welcome to Peter\'s Hats",
+            "item_url":"https://petersfancybrownhats.com",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"We\'ve got the right hat for everyone.",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://petersfancybrownhats.com",
+                "title":"View Website"
+              },
+              {
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }              
+            ]
+          }
+        ]
+      }
+        }
+      }
+    }
+    return json.dumps(response_object)
+
+
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -166,6 +207,7 @@ class MyChatBotView(generic.View):
 
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u details of your event one by one and after all the details will be taken after that it will give you an already deployed website  on heroku , so lets get started by taking your event name ')
+                        post_facebook_message(sender_id,'selection')
                        
                         
                     elif p.state =='1':
@@ -317,7 +359,7 @@ def index(request):
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
 
-def eventweb(request ):
+def eventweb(request):
     #fbid = '1047867078643788'
 
 
