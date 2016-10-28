@@ -57,7 +57,7 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'resume download':
         response_msg = card_resume(fbid)    
         
-
+vi
     else:
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message_text}})
 
@@ -228,7 +228,7 @@ class MyChatBotView(generic.View):
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
 
                         print  'hihihihihihihihihih'+ sender_id
-                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
+                        post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get your own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
 
                                            
@@ -243,7 +243,7 @@ class MyChatBotView(generic.View):
                         p.state='2'
                         p.save()
                         print  'hihihihihihihihihih'+ sender_id
-                        post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
+                        post_facebook_message(sender_id,'Great ,Now  Please tell me your contact phone number to be displayed on the page ')
          
                     elif p.state =='2':
 
@@ -454,14 +454,13 @@ class MyChatBotView(generic.View):
                     elif pp.state =='17':
                         pp.details_sub54 = message_text
                         pp.state='18'
-                        pp.save()
-                        post_facebook_message(sender_id,' name')
-
-                    elif pp.state =='18':
-                        pp.name = message_text
+                        pp.name = name
                         pp.save()
                         post_facebook_message(sender_id,' you are done with providing the detail, now click the link that will automatically download a pdf name mycv.pdf') 
                         post_facebook_message(sender_id,'resume download')
+
+                    
+   
 
                     else:
                         post_facebook_message(sender_id,'please, say ,hey ,hi ,hello ,supp to start a conversation')
@@ -669,17 +668,17 @@ def set_menu():
                           "call_to_actions":[
                             {
                               "type":"postback",
-                              "title":"Your event website",
+                              "title":"Resume",
                               "payload":"MENU_OUTPUT"
                             },
                             {
                               "type":"postback",
-                              "title":"Our website",
+                              "title":"Event website",
                               "payload":"MENU_LINK"
                             },
                             {
                               "type":"postback",
-                              "title":"Why Master Event",
+                              "title":"Help",
                               "payload":"MENU_WHY"
                             }
                           ]
@@ -702,7 +701,27 @@ def handle_postback(fbid,payload):
     output_text = 'Payload Recieved: ' + payload
 
     if payload == 'MENU_WHY':
-        return post_facebook_message(fbid,'Your vision our creativity')
+        response_object = {
+  "recipient":{
+    "id":fbid
+  },
+  "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"need help talk to our executive",
+            "buttons":[
+       {
+          "type":"phone_number",
+          "title":"Call Representative",
+          "payload":"+919811071358"
+       }
+            }
+            }
+        }
+        }
+        return response_object
 
     elif payload == 'MENU_LINK':
         return post_facebook_message(fbid,'Master-Event.github.io')
