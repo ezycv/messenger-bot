@@ -167,7 +167,7 @@ def selectcard(fbid):
               {
                 "type":"postback",
                 "title":"event-website",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                "payload":"EVENT"
               }              
             ]
           }
@@ -219,7 +219,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'selection')
 
                     elif message_text == "event-website" :
-                        
+
                         p.greetings = 'TRUE'
                         p.state='1'
                         p.save()                        
@@ -649,7 +649,10 @@ def handle_postback(fbid,payload):
     elif payload == 'MENU_OUTPUT':
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
-        
+    elif payload == "EVENT" :
+        return post_facebook_message(fbid,'event-website')
+
+
        
                               
         response_msg = json.dumps(response_object)
