@@ -211,7 +211,7 @@ class MyChatBotView(generic.View):
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     if message_text.lower() in 'hi,hello,hey,supp'.split(','):
                         print  'hihihihihihihihihih'+ sender_id
-                        p.state == '1'
+                        p.state = '1'
                         p.save()                        
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
