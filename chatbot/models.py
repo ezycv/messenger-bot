@@ -1,4 +1,3 @@
-
 from django.db import models
 
 # Create your models here.
@@ -24,34 +23,38 @@ class event(models.Model):
 	sub4 = models.CharField(max_length = 250)
 	
 
-
 	def __str__(self):
 		return self.fbid
 
 class resume_input(models.Model):
     greetings = models.CharField(max_length = 250)
-    state= models.CharField(max_length = 1000)
+    state = models.CharField(max_length = 1000)
+    city = models.CharField(max_length = 1000)
+    dob = models.CharField(max_length = 1000)
+    LinkedIn = models.CharField(max_length = 1000)
     fbid= models.CharField(max_length = 1000 )
     name = models.CharField(max_length = 250)
     emailid = models.CharField(max_length = 1000)
     contact = models.CharField(max_length = 100)
-    details_sub11 = models.CharField(max_length = 100)
-    details_sub21 = models.CharField(max_length = 100)
-    details_sub22 = models.CharField(max_length = 250)
-    details_sub23 = models.CharField(max_length = 250)
-    details_sub24 = models.CharField(max_length = 250)
-    details_sub31 = models.CharField(max_length = 250)
-    details_sub32 = models.CharField(max_length = 250)
-    details_sub33 = models.CharField(max_length = 250)
-    details_sub34 = models.CharField(max_length = 250)
-    details_sub41 = models.CharField(max_length = 250)
-    details_sub42 = models.CharField(max_length = 250)
-    details_sub51 = models.CharField(max_length = 250)
-    details_sub52 = models.CharField(max_length = 250)
-    details_sub53 = models.CharField(max_length = 250)
-    details_sub54 = models.CharField(max_length = 250)
-
-
+    objective_line1 = models.CharField(max_length = 100)
+    objective_achievements = models.CharField(max_length = 100)
+    educational_qualifications_1 = models.CharField(max_length = 100)
+    educational_qualifications_2 = models.CharField(max_length = 100)
+    educational_qualifications_3 = models.CharField(max_length = 100)
+    educational_qualifications_4 = models.CharField(max_length = 100)
+    skills_1 = models.CharField(max_length = 100)
+    skills_2 = models.CharField(max_length = 100)
+    skills_3 = models.CharField(max_length = 100)
+    skills_4 = models.CharField(max_length = 100)
+    experience_1 = models.CharField(max_length = 100)
+    experience_2 = models.CharField(max_length = 100)
+    experience_3 = models.CharField(max_length = 100)
+    experience_4 = models.CharField(max_length = 100)
+    hobbies_1 = models.CharField(max_length = 100)
+    hobbies_2 = models.CharField(max_length = 100)
+    hobbies_3 = models.CharField(max_length = 100)
+    hobbies_4 = models.CharField(max_length = 100)
+    
 
     def __str__(self):
         return self.fbid
