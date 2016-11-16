@@ -209,20 +209,20 @@ def quickreplies(fbid):
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Red",
+        "title":"event name",
         "payload":"test1"
       },
 
       {
         "content_type":"text",
-        "title":"Green",
+        "title":"Contact Number",
         "payload":"test2"
       },
 
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"test2"
+        "title":"Tagline",
+        "payload":"test3"
       },
 
       {
@@ -286,7 +286,7 @@ class MyChatBotView(generic.View):
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
-                        post_facebook_message(sender_id,'blah')
+                        
 
                                            
 
@@ -297,23 +297,21 @@ class MyChatBotView(generic.View):
                     elif p.state =='1':
 
                         p.name = message_text
-                        p.state='2'
                         p.save()
                         print  'hihihihihihihihihih'+ sender_id
-                        post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
-         
+                        # post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
+                        post_facebook_message(sender_id,'blah')
                     elif p.state =='2':
 
                         p.contact = message_text
-                        p.state='3'
                         p.save()
-                        post_facebook_message(sender_id,'okay, now tell me your tagline  for the event  ')
+                        # post_facebook_message(sender_id,'okay, now tell me your tagline  for the event  ')
+                        post_facebook_message(sender_id,'blah')
 
                     elif p.state =='3':
                         p.tagline = message_text
-                        p.state='4'
                         p.save()
-                        post_facebook_message(sender_id,'okay, now tell me your start date  for the event  in dd/mm/yy format ')
+                        post_facebook_message(sender_id,'blah')
 
                     elif p.state =='4':
                         p.datestart = message_text
@@ -932,7 +930,7 @@ def handle_postback(fbid,payload):
         p.save()
         pp.save()
 
-        return post_facebook_message(fbid,'please tell me your event name ')
+        return post_facebook_message(sender_id,'blah')
 
     elif payload == "RESUME" :
         p = event.objects.get_or_create(fbid =fbid)[0]
@@ -946,9 +944,24 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'Please tell me your email id ')        
 
     elif payload == 'test1':
-        return post_facebook_message(fbid,'chal gaya')
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '1'
+        p.greetings = 'TRUE'
+        p.save()        
+        return post_facebook_message(fbid,'go ahead and type')
 
     elif payload == 'test2':
+        p.state = '2'
+        p.save()        
+        return post_facebook_message(fbid,'go ahead and type')        
+
+    elif payload == 'test3':
+        p.state = '3'
+        p.save()        
+        return post_facebook_message(fbid,'go ahead and type')        
+
+
+
         return post_facebook_message(fbid,'yup bro ')   
                               
         response_msg = json.dumps(response_object)
