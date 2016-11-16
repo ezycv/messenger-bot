@@ -947,22 +947,25 @@ def handle_postback(fbid,payload):
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'
         p.greetings = 'TRUE'
-        p.save()        
+        p.save() 
+
         return post_facebook_message(fbid,'go ahead and type')
 
     elif payload == 'test2':
         p.state = '2'
-        p.save()        
+        p.save()
+
         return post_facebook_message(fbid,'go ahead and type')        
 
     elif payload == 'test3':
         p.state = '3'
-        p.save()        
+        p.save() 
+
         return post_facebook_message(fbid,'go ahead and type')        
 
 
 
-        return post_facebook_message(fbid,'yup bro ')   
+           
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
