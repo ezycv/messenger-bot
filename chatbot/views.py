@@ -212,16 +212,47 @@ def quickreplies(fbid):
         "title":"Red",
         "payload":"test1"
       },
+
       {
         "content_type":"text",
         "title":"Green",
         "payload":"test2"
-      }
+      },
+
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      },                              
             ]
         }
     }
     return json.dumps(response_object)
-    
+
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
