@@ -200,7 +200,7 @@ def selectcard(fbid):
     return json.dumps(response_object)
 
 def quickreplies(fbid):
-    {
+    response_object =  {
   "recipient":{
     "id":fbid
   },
