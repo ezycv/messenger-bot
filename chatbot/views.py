@@ -210,7 +210,7 @@ def quickreplies(fbid):
       {
         "content_type":"text",
         "title":"event name",
-        "payload":"name"
+        "payload":"NAME"
       },
 
       {
@@ -943,7 +943,7 @@ def handle_postback(fbid,payload):
 
         return post_facebook_message(fbid,'Please tell me your email id ')        
 
-    elif payload == "name":
+    elif payload == "NAME":
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'        
         pp = resume_input.objects.get_or_create(fbid =fbid)[0]
