@@ -200,7 +200,7 @@ def selectcard(fbid):
     return json.dumps(response_object)
 
 def quickreplies(fbid):
-    response_object =  {
+    response_object = {
   "recipient":{
     "id":fbid
   },
@@ -217,10 +217,11 @@ def quickreplies(fbid):
         "title":"Green",
         "payload":"test2"
       }
-    ]
-  }
-}
-
+            ]
+        }
+    }
+    return json.dumps(response_object)
+    
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
