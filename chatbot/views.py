@@ -210,19 +210,19 @@ def quickreplies(fbid):
       {
         "content_type":"text",
         "title":"event name",
-        "payload":"test1"
+        "payload":"name"
       },
 
       {
         "content_type":"text",
         "title":"Contact Number",
-        "payload":"test2"
+        "payload":"number"
       },
 
       {
         "content_type":"text",
         "title":"Tagline",
-        "payload":"test3"
+        "payload":"tagline"
       },
 
       {
@@ -943,7 +943,7 @@ def handle_postback(fbid,payload):
 
         return post_facebook_message(fbid,'Please tell me your email id ')        
 
-    elif payload == 'test1':
+    elif payload == "name":
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'
         p.greetings = 'TRUE'
@@ -951,14 +951,14 @@ def handle_postback(fbid,payload):
 
         return post_facebook_message(fbid,'go ahead and type')
 
-    elif payload == 'test2':
+    elif payload == "number":
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         p.save()
 
         return post_facebook_message(fbid,'go ahead and type')        
 
-    elif payload == 'test3':
+    elif payload == "tagline":
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'
         p.save() 
