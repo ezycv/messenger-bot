@@ -202,7 +202,7 @@ def selectcard(fbid):
 def quickreplies(fbid):
     {
   "recipient":{
-    "id":"fbid"
+    "id":fbid
   },
   "message":{
     "text":"Pick a color:",
