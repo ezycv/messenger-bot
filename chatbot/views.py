@@ -299,7 +299,7 @@ class MyChatBotView(generic.View):
                         p.name = message_text
                         p.save()
                         print  'hihihihihihihihihih'+ sender_id
-                        post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
+                        # post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
                         post_facebook_message(sender_id,'blah')
                     elif p.state =='2':
 
@@ -952,12 +952,14 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'go ahead and type')
 
     elif payload == 'test2':
+        p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         p.save()
 
         return post_facebook_message(fbid,'go ahead and type')        
 
     elif payload == 'test3':
+        p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'
         p.save() 
 
