@@ -945,9 +945,13 @@ def handle_postback(fbid,payload):
 
     elif payload == "name":
         p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '1'
-        p.greetings = 'TRUE'
-        p.save() 
+        p.state = '1'        
+        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
+        pp.state = '0'
+        pp.greetings = 'TRUE'
+        pp.save()
+        p.save()
+ 
 
         return post_facebook_message(fbid,'go ahead and type')
 
