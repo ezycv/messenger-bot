@@ -55,7 +55,10 @@ def post_facebook_message(fbid,message_text):
         response_msg = selectcard(fbid)
 
     elif message_text == 'resume download':
-        response_msg = card_resume(fbid)    
+        response_msg = card_resume(fbid)
+
+    elif message_text == 'blah':
+        response_msg = quickreplies(fbid)        
         
 
     else:
@@ -196,7 +199,27 @@ def selectcard(fbid):
     }
     return json.dumps(response_object)
 
-
+def quickreplies(fbid):
+    {
+  "recipient":{
+    "id":"fbid"
+  },
+  "message":{
+    "text":"Pick a color:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Red",
+        "payload":"test1"
+      },
+      {
+        "content_type":"text",
+        "title":"Green",
+        "payload":"test2"
+      }
+    ]
+  }
+}
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -231,6 +254,7 @@ class MyChatBotView(generic.View):
                         print  'hihihihihihihihihih'+ sender_id
                         post_facebook_message(sender_id,'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')
                         post_facebook_message(sender_id,'selection')
+                        post_facebook_message(sender_id,'blah')
 
                                            
 
@@ -889,8 +913,11 @@ def handle_postback(fbid,payload):
 
         return post_facebook_message(fbid,'Please tell me your email id ')        
 
+    elif payload == 'test1':
+        return post_facebook_message(fbid,'chal gaya')
 
-       
+    elif payload == 'test2':
+        return post_facebook_message(fbid,'yup bro ')   
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
