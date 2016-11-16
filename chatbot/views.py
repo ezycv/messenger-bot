@@ -205,7 +205,7 @@ def quickreplies(fbid):
     "id":fbid
   },
   "message":{
-    "text":"Pick a color:",
+    "text":"Pick a field:",
     "quick_replies":[
       {
         "content_type":"text",
@@ -299,7 +299,7 @@ class MyChatBotView(generic.View):
                         p.name = message_text
                         p.save()
                         print  'hihihihihihihihihih'+ sender_id
-                        # post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
+                        post_facebook_message(sender_id,'great ,Now  Please tell me your contact phone number to be displayed on the page ')
                         post_facebook_message(sender_id,'blah')
                     elif p.state =='2':
 
