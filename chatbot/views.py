@@ -253,7 +253,7 @@ def quickreplies(fbid):
     }
     return json.dumps(response_object)
 
-sender_id = ''    
+sender_id = '1047867078643788'    
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
