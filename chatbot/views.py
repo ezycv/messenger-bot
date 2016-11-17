@@ -581,7 +581,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'go ahead and type')        
 
     elif payload == 'STARTING':
-        return post_facebook_message(fbid,'quickreply1')
+        return post_facebook_message(fbid,'please go ahead and select')
 
            
                               
