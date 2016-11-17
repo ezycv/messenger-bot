@@ -275,6 +275,24 @@ class MyChatBotView(generic.View):
                 print message
 
                 try:
+                    sender_id = message['sender']['id']
+                    message_text = message['message']['text']
+                    p = event.objects.get_or_create(fbid =sender_id)[0]
+
+                    if p.state == '1':
+                        p.name = message_text
+                        p.save()
+                        post_facebook_message(sender_id,'quickreply1')
+
+
+
+                except Exception as e:
+                    print e
+                    pass                  
+
+
+
+                try:
                     if 'quick_reply' in message['message']:
                         handle_quickreply(message['sender']['id'],message['message']['quick_reply']['payload'])
                         return HttpResponse()
@@ -514,11 +532,12 @@ def set_menu():
 
 def greeting_text():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
-    
+    a= userdeatils(sender_id)
+    name = '%s %s'%(a['first_name'],a['last_name'])
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"make your resume in seconds"
+             "text":"'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')"
                 }
             }
 
@@ -565,29 +584,19 @@ def handle_postback(fbid,payload):
     elif payload == "EVENT" :
         p = event.objects.get_or_create(fbid =fbid)[0]
         # p.state = '1'
-        p.greetings = 'TRUE'
-        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        pp.state = '0'
-        p.save()
-        pp.save()
 
-        return post_facebook_message(sender_id,'blah')
+
+        return post_facebook_message(sender_id,'quickreply1')
 
     elif payload == "RESUME" :
-        p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '0'        
-        pp = resume_input.objects.get_or_create(fbid =fbid)[0]
-        pp.state = '1'
-        pp.greetings = 'TRUE'
-        pp.save()
-        p.save()
+
 
         return post_facebook_message(fbid,'Please tell me your email id ')        
 
 
 
     elif payload == 'STARTING':
-        return post_facebook_message(fbid,'quickreply1')
+        return post_facebook_message(fbid,'selection')
 
            
                               
@@ -600,7 +609,10 @@ def handle_quickreply(fbid,payload):
     output_text = 'Payload Recieved: ' + payload
 
     if payload == 'NAME':
-        return post_facebook_message(fbid,'chal gaya bro')
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '1'        
+        p.save()
+        return post_facebook_message(fbid,'Please , go ahaead and type')
 
     
            
