@@ -579,7 +579,7 @@ def handle_postback(fbid,payload):
 
 
     elif payload == 'STARTING':
-        return post_facebook_message(fbid,'quickreply1')
+        return post_facebook_message(fbid,'balless')
 
            
                               
