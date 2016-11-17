@@ -253,6 +253,8 @@ def quickreplies(fbid):
     }
     return json.dumps(response_object)
 
+sender_id = ''    
+
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == VERIFY_TOKEN:
@@ -265,7 +267,6 @@ class MyChatBotView(generic.View):
         return generic.View.dispatch(self, request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        global sender_id
         incoming_message= json.loads(self.request.body.decode('utf-8'))
         print  incoming_message
         
@@ -275,6 +276,7 @@ class MyChatBotView(generic.View):
                 print message
 
                 try:
+                    global sender_id
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     p = event.objects.get_or_create(fbid =sender_id)[0]
