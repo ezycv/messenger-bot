@@ -273,7 +273,13 @@ class MyChatBotView(generic.View):
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 print message
-                
+
+                try:
+                    if 'quickreply' in message:
+                        handle_quickreply(message['sender']['id'],message['quickreply']['payload'])
+                        return HttpResponse()
+                    else:
+                        pass                
                     
                  
 
@@ -581,6 +587,20 @@ def handle_postback(fbid,payload):
     elif payload == 'STARTING':
         return post_facebook_message(fbid,'quickreply1')
 
+           
+                              
+        response_msg = json.dumps(response_object)
+        requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
+
+
+def handle_quickreply(fbid,payload):
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    output_text = 'Payload Recieved: ' + payload
+
+    if payload == 'NAME':
+        return post_facebook_message(fbid,'chal gaya bro ')
+
+    
            
                               
         response_msg = json.dumps(response_object)
