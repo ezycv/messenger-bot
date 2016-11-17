@@ -774,6 +774,7 @@ def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
     greeting_text()
+    greeting_butto()
     context_dict = {}
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
@@ -908,7 +909,7 @@ def greeting_text():
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"Timeless apparel for the masses."
+             "text":"make your resume in seconds"
                 }
             }
 
@@ -917,6 +918,23 @@ def greeting_text():
           headers = {"Content-Type": "application/json"},
           data = menu_object)
 
+def greeting_button():
+    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
+    
+    response_object =   {
+        "setting_type":"call_to_actions",
+        "thread_state":"new_thread",
+        "call_to_actions":[
+        {
+            "payload":"STARTING"
+            }
+        ]
+        }
+
+    menu_object = json.dumps(response_object)
+    status = requests.post(post_message_url,
+          headers = {"Content-Type": "application/json"},
+          data = menu_object)
 
 
 
@@ -983,7 +1001,8 @@ def handle_postback(fbid,payload):
 
         return post_facebook_message(fbid,'go ahead and type')        
 
-
+    elif payload == 'STARTING':
+        return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
            
                               
