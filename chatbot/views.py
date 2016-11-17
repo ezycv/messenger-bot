@@ -281,7 +281,9 @@ class MyChatBotView(generic.View):
                     else:
                         pass                
                     
-                 
+                except Exception as e:
+                    print e
+                    pass                  
 
                     
                 try:
@@ -598,7 +600,7 @@ def handle_quickreply(fbid,payload):
     output_text = 'Payload Recieved: ' + payload
 
     if payload == 'NAME':
-        return post_facebook_message(fbid,'chal gaya bro ')
+        return post_facebook_message(fbid,'chal gaya bro')
 
     
            
