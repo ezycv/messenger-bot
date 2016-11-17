@@ -273,7 +273,7 @@ class MyChatBotView(generic.View):
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 print message
-                try:
+                
                     
                  
 
