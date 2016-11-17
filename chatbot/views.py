@@ -276,7 +276,7 @@ class MyChatBotView(generic.View):
 
                 try:
                     if 'quickreply' in message:
-                        handle_quickreply(message['sender']['id'],message['message']['quickreply']['payload'])
+                        handle_quickreply(message['message']['sender']['id'],message['message']['quickreply']['payload'])
                         return HttpResponse()
                     else:
                         pass                
