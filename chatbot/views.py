@@ -774,7 +774,7 @@ def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
     greeting_text()
-    greeting_butto()
+    greeting_button()
     context_dict = {}
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
