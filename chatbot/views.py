@@ -773,6 +773,7 @@ def resume(request,id):
 def index(request):
     set_menu()
     handle_postback('fbid','MENU_WHY')
+    greeting_text()
     context_dict = {}
     context_dict['fbid'] = sender_id
     return render(request,'chatbot/index.html', context_dict)
@@ -901,7 +902,20 @@ def set_menu():
           data = menu_object)
 
 
+def greeting_text():
+    post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
+    
+    response_object =   {
+         "setting_type":"greeting",
+             "greeting":{
+             "text":"Timeless apparel for the masses."
+                }
+            }
 
+    menu_object = json.dumps(response_object)
+    status = requests.post(post_message_url,
+          headers = {"Content-Type": "application/json"},
+          data = menu_object)
 
 
 
