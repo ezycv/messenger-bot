@@ -216,13 +216,13 @@ def quickreplies(fbid):
       {
         "content_type":"text",
         "title":"Contact Number",
-        "payload":"number"
+        "payload":"NUMBER"
       },
 
       {
         "content_type":"text",
         "title":"Tagline",
-        "payload":"tagline"
+        "payload":"TAGLINE"
       },
 
       {
@@ -286,7 +286,15 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'quickreply1')
 
+                    elif p.state == '2':
+                        p.contact = message_text
+                        p.save()
+                        post_facebook_message(sender_id,'quickreply1')
 
+                    elif p.state == '3':
+                        p.tagline = message_text
+                        p.save()
+                        post_facebook_message(sender_id,'quickreply1')                        
 
                 except Exception as e:
                     print e
@@ -615,7 +623,17 @@ def handle_quickreply(fbid,payload):
         p.save()
         return post_facebook_message(fbid,'Please , go ahaead and type')
 
-    
+    if payload == 'NUMBER':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '2'        
+        p.save()
+        return post_facebook_message(fbid,'Please , go ahaead and type')        
+
+    if payload == 'TAGLINE':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '3'        
+        p.save()
+        return post_facebook_message(fbid,'Please , go ahaead and type')    
            
                               
         response_msg = json.dumps(response_object)
