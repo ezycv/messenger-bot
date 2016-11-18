@@ -814,7 +814,7 @@ def handle_quickreply(fbid,payload):
         p.save()
         return post_facebook_message(sender_id,'subevents_quickreplies')             
 
-    if payload == 'BACKK':
+    if payload == 'BACK':
         return post_facebook_message(sender_id,'main_quickreplies')
                               
         response_msg = json.dumps(response_object)
