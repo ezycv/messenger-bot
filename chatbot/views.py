@@ -57,8 +57,21 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'resume download':
         response_msg = card_resume(fbid)
 
-    elif message_text == 'quickreply1':
-        response_msg = quickreplies(fbid)        
+    elif message_text == 'main_quickreplies':
+        response_msg = main_quickreplies()
+
+    elif message_text == 'social_quickreplies':
+        response_msg = social_quickreplies()
+
+    elif message_text == 'contact_quickreplies':
+        response_msg = contact_quickreplies()
+
+    elif message_text == 'details_quickreplies':
+        response_msg = details_quickreplies() 
+
+    elif message_text == 'subevents_quickreplies':
+        response_msg = subevents_quickreplies()                           
+
         
 
     else:
@@ -199,7 +212,7 @@ def selectcard(fbid):
     }
     return json.dumps(response_object)
 
-def quickreplies(fbid):
+def main_quickreplies(fbid):
     response_object = {
   "recipient":{
     "id":fbid
@@ -207,17 +220,45 @@ def quickreplies(fbid):
   "message":{
     "text":"Pick a field:",
     "quick_replies":[
+
       {
         "content_type":"text",
-        "title":"event name",
-        "payload":"NAME"
+        "title":"Details of the Event",
+        "payload":"DETAILS"
       },
 
       {
         "content_type":"text",
-        "title":"Contact Number",
-        "payload":"NUMBER"
+        "title":"Contact details",
+        "payload":"CONTACT"
       },
+
+      {
+        "content_type":"text",
+        "title":"Social  Links",
+        "payload":"SOCIAL"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Sub Events",
+        "payload":"SUBEVENTS"
+      },
+
+                                  
+            ]
+        }
+    }
+    return json.dumps(response_object)    
+
+def details_quickreplies(fbid):
+    response_object = {
+  "recipient":{
+    "id":fbid
+  },
+  "message":{
+    "text":"Pick a field:",
+    "quick_replies":[
 
       {
         "content_type":"text",
@@ -227,31 +268,154 @@ def quickreplies(fbid):
 
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"test2"
+        "title":"Starting Date",
+        "payload":"STARTDATE"
       },
 
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"test2"
+        "title":"Ending Date",
+        "payload":"STARTDATE"
       },
 
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"test2"
+        "title":"Description of your event",
+        "payload":"DESCRIPTION"
       },
 
       {
         "content_type":"text",
-        "title":"Green",
-        "payload":"test2"
-      },                              
+        "title":"event name",
+        "payload":"EVENTNAME"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Organiser Name",
+        "payload":"ONAME"
+      },
+
+
+      {
+        "content_type":"text",
+        "title":"back",
+        "payload":"BACK"
+      },
+                                  
             ]
         }
     }
     return json.dumps(response_object)
+
+def subevents_quickreplies(fbid):
+    response_object = {
+  "recipient":{
+    "id":fbid
+  },
+  "message":{
+    "text":"Pick a field:",
+    "quick_replies":[
+      
+      {
+        "content_type":"text",
+        "title":"Sub Event-1",
+        "payload":"SUBEVENT1"
+      },
+      {
+        "content_type":"text",
+        "title":"Sub Event-2",
+        "payload":"SUBEVENT2"
+      },
+      {
+        "content_type":"text",
+        "title":"Sub Event-3",
+        "payload":"SUBEVENT3"
+      },
+      {
+        "content_type":"text",
+        "title":"Sub Event-4",
+        "payload":"SUBEVENT4"
+      }, 
+
+      {
+        "content_type":"text",
+        "title":"back",
+        "payload":"BACK"
+      },                                   
+            ]
+        }
+    }
+    return json.dumps(response_object)
+
+
+def contact_quickreplies(fbid):
+    response_object = {
+  "recipient":{
+    "id":fbid
+  },
+  "message":{
+    "text":"Pick a field:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Number",
+        "payload":"NUMBER"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Email-Id",
+        "payload":"EMAIL"
+      },
+
+      {
+        "content_type":"text",
+        "title":"back",
+        "payload":"BACK"
+      },      
+
+                 
+            ]
+        }
+    }
+    return json.dumps(response_object)
+
+def social_quickreplies(fbid):
+    response_object = {
+  "recipient":{
+    "id":fbid
+  },
+  "message":{
+    "text":"Pick a field:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Twitter Link",
+        "payload":"TWITTER"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Facebook Link",
+        "payload":"FACEBOOK"
+      },
+
+      {
+        "content_type":"text",
+        "title":"back",
+        "payload":"BACK"
+      },      
+
+                 
+            ]
+        }
+    }
+    return json.dumps(response_object)
+
+
+
+
 
 sender_id = '1047867078643788'    
 
@@ -285,19 +449,25 @@ class MyChatBotView(generic.View):
                         p.name = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'quickreply1')
+                        post_facebook_message(sender_id,'details_quickreplies')
 
                     elif p.state == '2':
                         p.contact = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'quickreply1')
+                        post_facebook_message(sender_id,'social_quickreplies')
 
                     elif p.state == '3':
                         p.tagline = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'quickreply1')                        
+                        post_facebook_message(sender_id,'contact_quickreplies')                        
+
+                    elif p.state == '4':
+                        p.tagline = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'subevents_quickreplies')
 
                 except Exception as e:
                     print e
@@ -598,7 +768,7 @@ def handle_postback(fbid,payload):
         # p.state = '1'
 
 
-        return post_facebook_message(sender_id,'quickreply1')
+        return post_facebook_message(sender_id,'main_quickreplies')
 
     elif payload == "RESUME" :
 
@@ -620,24 +790,32 @@ def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
 
-    if payload == 'NAME':
+    if payload == 'DETAILS':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '1'        
         p.save()
-        return post_facebook_message(fbid,'Please , go ahaead and type')
+        return post_facebook_message(sender_id,'details_quickreplies')
 
-    if payload == 'NUMBER':
+    if payload == 'SOCIAL':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'        
         p.save()
-        return post_facebook_message(fbid,'Please , go ahaead and type')        
+        return post_facebook_message(sender_id,'social_quickreplies')       
 
-    if payload == 'TAGLINE':
+    if payload == 'CONTACT':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'        
         p.save()
-        return post_facebook_message(fbid,'Please , go ahaead and type')    
-           
+        return post_facebook_message(sender_id,'contact_quickreplies')    
+ 
+    if payload == 'SUBEVENTS':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '4'        
+        p.save()
+        return post_facebook_message(sender_id,'subevents_quickreplies')             
+
+    if payload == 'BACKK':
+        return post_facebook_message(sender_id,'main_quickreplies')
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
