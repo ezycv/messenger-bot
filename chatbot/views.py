@@ -58,19 +58,19 @@ def post_facebook_message(fbid,message_text):
         response_msg = card_resume(fbid)
 
     elif message_text == 'main_quickreplies':
-        response_msg = main_quickreplies()
+        response_msg = main_quickreplies(fbid)
 
     elif message_text == 'social_quickreplies':
-        response_msg = social_quickreplies()
+        response_msg = social_quickreplies(fbid)
 
     elif message_text == 'contact_quickreplies':
-        response_msg = contact_quickreplies()
+        response_msg = contact_quickreplies(fbid)
 
     elif message_text == 'details_quickreplies':
-        response_msg = details_quickreplies() 
+        response_msg = details_quickreplies(fbid) 
 
     elif message_text == 'subevents_quickreplies':
-        response_msg = subevents_quickreplies()                           
+        response_msg = subevents_quickreplies(fbid)                           
 
         
 
