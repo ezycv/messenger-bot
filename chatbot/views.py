@@ -534,12 +534,11 @@ def set_menu():
 
 def greeting_text():
     post_message_url = 'https://graph.facebook.com/v2.6/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
-    a= userdeatils(sender_id)
-    name = '%s %s'%(a['first_name'],a['last_name'])
+   
     response_object =   {
          "setting_type":"greeting",
              "greeting":{
-             "text":"'Hey , ' + name +', This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today ')"
+             "text":"Hey , This is a automated chatting software it will ask u your details about your resume or event website and in the end voila u will get ypur own e-resume pdf resume or a website of your event. Lets get started by selecting what u want to make today "
                 }
             }
 
