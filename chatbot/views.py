@@ -283,16 +283,19 @@ class MyChatBotView(generic.View):
 
                     if p.state == '1':
                         p.name = message_text
+                        p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'quickreply1')
 
                     elif p.state == '2':
                         p.contact = message_text
+                        p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'quickreply1')
 
                     elif p.state == '3':
                         p.tagline = message_text
+                        p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'quickreply1')                        
 
