@@ -377,7 +377,7 @@ def works_quickreplies(fbid):
 
       {
         "content_type":"text",
-        "title":"Just text",
+        "title":"Just Text",
         "payload":"JUSTTEXT"
       },      
 
@@ -386,6 +386,32 @@ def works_quickreplies(fbid):
         }
     }
     return json.dumps(response_object)
+
+def resumeask(fbid):
+    response_object = {
+   "recipient":{
+    "id":fbid
+   },
+   "message":{
+    "text":"Do you have a paper resume?",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Yes",
+        "payload":"YES"
+      },
+
+      {
+        "content_type":"text",
+        "title":"No",
+        "payload":"YES"
+      },      
+
+                 
+            ]
+        }
+    }
+    return json.dumps(response_object)    
 
 def social_quickreplies(fbid):
     response_object = {
@@ -511,13 +537,35 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '11':
-                        i = 0 
-                        i = i+1
-                        var = "work" + str(i)
-                        p.vars()[var] = message_text
+                        if message_text == "Just Text" :
+                          p.state = '12'
+                          p.save()
+                          post_facebook_message(sender_id,'Go ahead and enter')
+
+                        elif message_text == "Picture" :
+                          p.state = '13'
+                          p.save()
+                          post_facebook_message(sender_id,'Go ahead and enter')
+
+                    elif p.state == '12':
+                        p.work1 = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'works_quickreplies')                          
+                        post_facebook_message(sender_id,'work_quickreplies')
+                        
+                    elif p.state == '13':
+                        p.work1 = message['message']['attachments']['payload']['url']
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '14':
+                        p.cvlink = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'work_quickreplies')              
+
+
 
                 except Exception as e:
                     print e
@@ -850,10 +898,9 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')
 
     elif payload == 'DESIGNER':
-        global field
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        
+        global field
         field = field + ' || ' +  payload
 
         p.save()
@@ -914,13 +961,13 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'Give description to your Job Profile in Line or two')             
 
     elif payload == 'BACK':
-        return post_facebook_message(sender_id,'main_quickreplies')
+        return post_facebook_message(sender_id,'resumeask')
 
     elif payload == 'WORK1':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '11'        
         p.save()
-        return post_facebook_message(sender_id,'')
+        return post_facebook_message(sender_id,'works_quickreplies')
 
     elif payload == 'WORK2':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
@@ -939,6 +986,16 @@ def handle_quickreply(fbid,payload):
         p.state = '5'        
         p.save()
         return post_facebook_message(sender_id,'works_quickreplies')
+
+    elif payload == 'YES':
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
+        p.state = '14'        
+        p.save()
+        return post_facebook_message(sender_id,'go ahead and send it.')
+
+    elif payload == 'NO':
+        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(fbid)
+        return post_facebook_message(sender_id,url)        
 
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
