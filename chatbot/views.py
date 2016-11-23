@@ -638,39 +638,35 @@ def eventweb2(request,id):
 
     p = event.objects.get_or_create(fbid = id)[0]
     name = p.name 
-    location = p.location
-    logolink = p.logolink  
+    location = p.location  
     description = p.description
     fblink = p.fblink  
-    emailid = p.emailid  
-    oname = p.oname 
-    dateend = p.dateend 
-    datestart =  p.datestart  
-    contact = p.contact 
-    tagline = p.tagline
+    emailid = p.emailid   
+    mobile = p.mobile 
+    elaborate = p.elaborate
     twitterlink = p.twitterlink
-    sub1 = p.sub1
-    sub2 = p.sub2
-    sub3 = p.sub3
-    sub4 = p.sub4
+    work1 = p.work1
+    work2 = p.work2
+    work3 = p.work3
+    work4 = p.work4
+    cvlink = p.cvlink
+    field = p.field
 
     context_dict = {}
-    context_dict['eventname'] = name 
+    context_dict['name'] = name 
     context_dict['location'] = location
-    context_dict['logolink'] = logolink
     context_dict['description'] = description
     context_dict['fblink'] = fblink
     context_dict['emailid'] = emailid
-    context_dict['organisername'] = oname
-    context_dict['dateend'] = dateend
-    context_dict['datestart'] = datestart
-    context_dict['contact'] = contact
-    context_dict['tagline'] = tagline
+    context_dict['field'] = field
+    context_dict['cvlink'] = cvlink
+    context_dict['mobile'] = mobile
+    context_dict['elaboarte'] = elaboarte
     context_dict['twitterlink'] = twitterlink
-    context_dict['sub1'] = sub1
-    context_dict['sub2'] = sub2
-    context_dict['sub3'] = sub3
-    context_dict['sub4'] = sub4
+    context_dict['work1'] = work1
+    context_dict['work2'] = work2
+    context_dict['work3'] = work3
+    context_dict['work4'] = work4
 
 
 
@@ -679,7 +675,7 @@ def eventweb2(request,id):
 def eventreg(request):
     context_dict = {}
 
-    return render(request,'chatbot/index.html',context_dict)
+    return render(request,'chatbot/eresume.html',context_dict)
 
 
 def set_menu():
