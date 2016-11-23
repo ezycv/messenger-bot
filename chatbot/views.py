@@ -455,13 +455,9 @@ class MyChatBotView(generic.View):
                     p.name = name
                     p.save()
 
-                    if p.state == '1':
-                        p.name = message_text
-                        p.state = '0'
-                        p.save()
-                        post_facebook_message(sender_id,'field_quickreplies')
+                  
 
-                    elif p.state == '2':
+                    if p.state == '2':
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'whenever you are done adding fields please click thats all to proceed  ')
