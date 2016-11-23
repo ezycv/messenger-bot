@@ -1,11 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class event(models.Model):
+class eresume(models.Model):
     field = models.CharField(max_length = 250)
     name = models.CharField(max_length = 250)
     mobile = models.IntegerField(max_length = 100 ,  null=True)
-    description = models.CharField(max_length = 1000)
     elaborate = models.CharField(max_length = 1000)
     fblink= models.URLField(max_length = 1000)
     description= models.CharField(max_length = 10000)

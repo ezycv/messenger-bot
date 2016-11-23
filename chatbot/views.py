@@ -57,8 +57,8 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'resume download':
         response_msg = card_resume(fbid)
 
-    elif message_text == 'main_quickreplies':
-        response_msg = main_quickreplies(fbid)
+    elif message_text == 'field_quickreplies':
+        response_msg = field_quickreplies(fbid)
 
     elif message_text == 'social_quickreplies':
         response_msg = social_quickreplies(fbid)
@@ -166,10 +166,10 @@ def cards(fbid):
 
 def selectcard(fbid):
     response_object ={
-  "recipient":{
+    "recipient":{
     "id":fbid
-  },
-  "message":{
+    },
+    "message":{
     "attachment":{
       "type":"template",
       "payload":{
@@ -212,37 +212,49 @@ def selectcard(fbid):
     }
     return json.dumps(response_object)
 
-def main_quickreplies(fbid):
+def field_quickreplies(fbid):
     response_object = {
-  "recipient":{
+   "recipient":{
     "id":fbid
-  },
-  "message":{
+   },
+   "message":{
     "text":"Pick a field:",
     "quick_replies":[
 
       {
         "content_type":"text",
-        "title":"Details of the Event",
-        "payload":"DETAILS"
+        "title":"Developer",
+        "payload":"DEVELOPER"
       },
 
       {
         "content_type":"text",
-        "title":"Contact details",
-        "payload":"CONTACT"
+        "title":"Designer",
+        "payload":"DESIGNER"
       },
 
       {
         "content_type":"text",
-        "title":"Social  Links",
-        "payload":"SOCIAL"
+        "title":"Doctor",
+        "payload":"DOCTOR"
       },
 
       {
         "content_type":"text",
-        "title":"Sub Events",
-        "payload":"SUBEVENTS"
+        "title":"Lawyer",
+        "payload":"LAWYER"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Type my own ",
+        "payload":"OWN"
+      },
+
+      {
+        "content_type":"text",
+        "title":"Thats All",
+        "payload":"END"
       },
 
                                   
@@ -253,11 +265,11 @@ def main_quickreplies(fbid):
 
 def details_quickreplies(fbid):
     response_object = {
-  "recipient":{
+    "recipient":{
     "id":fbid
-  },
-  "message":{
-    "text":"Pick a field:",
+     },
+     "message":{
+      "text":"Pick a field:",
     "quick_replies":[
 
       {
@@ -310,10 +322,10 @@ def details_quickreplies(fbid):
 
 def subevents_quickreplies(fbid):
     response_object = {
-  "recipient":{
+     "recipient":{
     "id":fbid
-  },
-  "message":{
+     },
+     "message":{
     "text":"Pick a field:",
     "quick_replies":[
       
@@ -351,10 +363,10 @@ def subevents_quickreplies(fbid):
 
 def contact_quickreplies(fbid):
     response_object = {
-  "recipient":{
+   "recipient":{
     "id":fbid
-  },
-  "message":{
+   },
+   "message":{
     "text":"Pick a field:",
     "quick_replies":[
       {
@@ -383,11 +395,11 @@ def contact_quickreplies(fbid):
 
 def social_quickreplies(fbid):
     response_object = {
-  "recipient":{
+   "recipient":{
     "id":fbid
-  },
-  "message":{
-    "text":"Pick a field:",
+   },
+   "message":{
+    "text":"please  select the the social links to be added one by one",
     "quick_replies":[
       {
         "content_type":"text",
@@ -403,8 +415,8 @@ def social_quickreplies(fbid):
 
       {
         "content_type":"text",
-        "title":"back",
-        "payload":"BACK"
+        "title":"Thats all",
+        "payload":"ALL"
       },      
 
                  
@@ -444,30 +456,51 @@ class MyChatBotView(generic.View):
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
                     p = event.objects.get_or_create(fbid =sender_id)[0]
+                    a= userdeatils(sender_id)
+                    name = '%s %s'%(a['first_name'],a['last_name'])
+                    p.name = name
+                    p.save()
 
                     if p.state == '1':
                         p.name = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'details_quickreplies')
+                        post_facebook_message(sender_id,'field_quickreplies')
 
                     elif p.state == '2':
-                        p.contact = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'whenever you are done adding fields please click thats all to proceed  ')
+
+                    elif p.state == '3':
+                        p.mobile = message_text
+                        p.state = '4'
+                        p.save()
+                        post_facebook_message(sender_id,'Please enter your Email-Id ')                        
+
+                    elif p.state == '4':
+                        p.emailid = message_text
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'social_quickreplies')
 
-                    elif p.state == '3':
-                        p.tagline = message_text
+                    elif p.state == '5':
+                        p.fblink = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'contact_quickreplies')                        
+                        post_facebook_message(sender_id,'social_quickreplies')
+                        
+                    elif p.state == '6':
+                        p.twitterlink = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'social_quickreplies')
 
-                    elif p.state == '4':
-                        p.tagline = message_text
+                    elif p.state == '7':
+                        p.description = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'subevents_quickreplies')
+                        post_facebook_message(sender_id,'social_quickreplies')            
 
                 except Exception as e:
                     print e
@@ -774,41 +807,94 @@ def handle_postback(fbid,payload):
 
 
     elif payload == 'STARTING':
-        return post_facebook_message(fbid,'selection')
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state =1
+        p.save()
+
+        return post_facebook_message(fbid,'Ahhoy, great to have you on board lets get started by knowing your field of work')
 
            
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
 
-
+field = ''
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
 
-    if payload == 'DETAILS':
+    if payload == 'DEVELOPER':
         p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '1'        
-        p.save()
-        return post_facebook_message(sender_id,'details_quickreplies')
+        p.state = '2'
+        global field
+        field = field + ' || ' +  payload
 
-    elif payload == 'SOCIAL':
-        p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '2'        
         p.save()
-        return post_facebook_message(sender_id,'social_quickreplies')       
+        return post_facebook_message(sender_id,'field_quickreplies')
 
-    elif payload == 'CONTACT':
+    elif payload == 'DESIGNER':
         p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '3'        
+        p.state = '2'
+        global field
+        field = field + ' || ' +  payload
+
         p.save()
-        return post_facebook_message(sender_id,'contact_quickreplies')    
+        return post_facebook_message(sender_id,'field_quickreplies')
+
+    elif payload == 'DOCTOR':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '2'
+        global field
+        field = field + ' || ' +  payload
+
+        p.save()
+        return post_facebook_message(sender_id,'field_quickreplies')
+    
+    elif payload == 'LAWYER':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '2'
+        global field
+        field = field + ' || ' +  payload
+
+        p.save()
+        return post_facebook_message(sender_id,'field_quickreplies') 
+
+    elif payload == 'OWN':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '2'
+        global field
+        field = field + ' || ' +  payload
+
+        p.save()
+        return post_facebook_message(sender_id,'field_quickreplies')           
+
+    elif payload == 'END':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '3'
+        global field
+        p.field = field
+
+        p.save()
+        return post_facebook_message(sender_id,'Please enter your phone number')
+
+
+    elif payload == 'FACEBOOK':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '5'        
+        p.save()
+        return post_facebook_message(sender_id,'please send the link to your Facebook profile')
+
+    elif payload == 'TWITTER':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '6'        
+        p.save()
+        return post_facebook_message(sender_id,'please send the link to your Twitter profile')        
  
-    elif payload == 'SUBEVENTS':
+    elif payload == 'ALL':
         p = event.objects.get_or_create(fbid =fbid)[0]
-        p.state = '4'        
+        p.state = '7'        
         p.save()
-        return post_facebook_message(sender_id,'subevents_quickreplies')             
+        return post_facebook_message(sender_id,'Give description to your Job Profile in Line or two')             
 
     elif payload == 'BACK':
         return post_facebook_message(sender_id,'main_quickreplies')
