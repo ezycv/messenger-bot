@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from chatbot.models import event,resume_input
+from chatbot.models import eresume,resume_input
 
 # Register your models here.
 
