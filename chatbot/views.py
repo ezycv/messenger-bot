@@ -679,7 +679,7 @@ def eventweb2(request,id):
 def eventreg(request):
     context_dict = {}
 
-    return render(request,'chatbot/shop.html',context_dict)
+    return render(request,'chatbot/index.html',context_dict)
 
 
 def set_menu():
@@ -796,26 +796,32 @@ def handle_quickreply(fbid,payload):
         p.save()
         return post_facebook_message(sender_id,'details_quickreplies')
 
-    if payload == 'SOCIAL':
+    elif payload == 'SOCIAL':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'        
         p.save()
         return post_facebook_message(sender_id,'social_quickreplies')       
 
-    if payload == 'CONTACT':
+    elif payload == 'CONTACT':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'        
         p.save()
         return post_facebook_message(sender_id,'contact_quickreplies')    
  
-    if payload == 'SUBEVENTS':
+    elif payload == 'SUBEVENTS':
         p = event.objects.get_or_create(fbid =fbid)[0]
         p.state = '4'        
         p.save()
         return post_facebook_message(sender_id,'subevents_quickreplies')             
 
-    if payload == 'BACK':
+    elif payload == 'BACK':
         return post_facebook_message(sender_id,'main_quickreplies')
+
+    elif payload == 'SUBEVENTS1':
+        p = event.objects.get_or_create(fbid =fbid)[0]
+        p.state = '5'        
+        p.save()
+        return post_facebook_message(sender_id,'subevents_quickreplies')
                               
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
