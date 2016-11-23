@@ -66,8 +66,8 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'works_quickreplies':
         response_msg = works_quickreplies(fbid)
 
-    elif message_text == 'details_quickreplies':
-        response_msg = details_quickreplies(fbid) 
+    elif message_text == 'resumeask':
+        response_msg = resumeask(fbid) 
 
     elif message_text == 'work_quickreplies':
         response_msg = work_quickreplies(fbid)                           
@@ -554,10 +554,12 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'work_quickreplies')
                         
                     elif p.state == '13':
-                        p.work1 = message['message']['attachments']['payload']['url']
+                        m_text = message['message']['attachments']['payload']['url']
+                        print m_text
+                        p.work1 = m_text
                         p.state = '0'
                         p.save()
-                        print "bibibibibibibibibibi " + message['message']['attachments']['payload']['url']
+
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '14':
