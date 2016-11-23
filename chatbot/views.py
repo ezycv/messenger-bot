@@ -847,7 +847,7 @@ def handle_quickreply(fbid,payload):
         p.state = '2'
         global field
         field = field + ' || ' +  payload
-        print field
+        print "hihihihihihihihihihihihihihihihihihihhhiii" + field
 
         p.save()
         return post_facebook_message(sender_id,'field_quickreplies')
