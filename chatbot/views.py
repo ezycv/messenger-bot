@@ -63,14 +63,14 @@ def post_facebook_message(fbid,message_text):
     elif message_text == 'social_quickreplies':
         response_msg = social_quickreplies(fbid)
 
-    elif message_text == 'contact_quickreplies':
-        response_msg = contact_quickreplies(fbid)
+    elif message_text == 'works_quickreplies':
+        response_msg = works_quickreplies(fbid)
 
     elif message_text == 'details_quickreplies':
         response_msg = details_quickreplies(fbid) 
 
-    elif message_text == 'subevents_quickreplies':
-        response_msg = subevents_quickreplies(fbid)                           
+    elif message_text == 'work_quickreplies':
+        response_msg = work_quickreplies(fbid)                           
 
         
 
@@ -320,39 +320,39 @@ def details_quickreplies(fbid):
     }
     return json.dumps(response_object)
 
-def subevents_quickreplies(fbid):
+def work_quickreplies(fbid):
     response_object = {
      "recipient":{
     "id":fbid
      },
      "message":{
-    "text":"Pick a field:",
+    "text":"please add upto four best works by clicking buttons below and after adding click thats all ",
     "quick_replies":[
       
       {
         "content_type":"text",
-        "title":"Sub Event-1",
-        "payload":"SUBEVENT1"
+        "title":"Work-1",
+        "payload":"WORK1"
       },
       {
         "content_type":"text",
-        "title":"Sub Event-2",
-        "payload":"SUBEVENT2"
+        "title":"Work2",
+        "payload":"WORK2"
       },
       {
         "content_type":"text",
-        "title":"Sub Event-3",
-        "payload":"SUBEVENT3"
+        "title":"Work3",
+        "payload":"WORK3"
       },
       {
         "content_type":"text",
-        "title":"Sub Event-4",
-        "payload":"SUBEVENT4"
+        "title":"Work4",
+        "payload":"WORK4"
       }, 
 
       {
         "content_type":"text",
-        "title":"back",
+        "title":"Thats All",
         "payload":"BACK"
       },                                   
             ]
@@ -361,7 +361,7 @@ def subevents_quickreplies(fbid):
     return json.dumps(response_object)
 
 
-def contact_quickreplies(fbid):
+def works_quickreplies(fbid):
     response_object = {
    "recipient":{
     "id":fbid
@@ -371,20 +371,14 @@ def contact_quickreplies(fbid):
     "quick_replies":[
       {
         "content_type":"text",
-        "title":"Number",
-        "payload":"NUMBER"
+        "title":"Picture",
+        "payload":"PICTURE"
       },
 
       {
         "content_type":"text",
-        "title":"Email-Id",
-        "payload":"EMAIL"
-      },
-
-      {
-        "content_type":"text",
-        "title":"back",
-        "payload":"BACK"
+        "title":"Just text",
+        "payload":"JUSTTEXT"
       },      
 
                  
@@ -498,9 +492,36 @@ class MyChatBotView(generic.View):
 
                     elif p.state == '7':
                         p.description = message_text
+                        p.state = '9'
+                        p.save()
+                        post_facebook_message(sender_id,'Describe yourself in a line or two ')
+
+                    elif p.state == '8':
+                        p.field = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'social_quickreplies')            
+                        post_facebook_message(sender_id,'field_quickreplies') 
+
+                    elif p.state == '9':
+                        p.elaborate = message_text
+                        p.state = '10'
+                        p.save()
+                        post_facebook_message(sender_id,'Where do you live ') 
+
+                    elif p.state == '10':
+                        p.location = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '11':
+                        i = 0 
+                        i = i+1
+                        var = "work" + str(i)
+                        p.vars()[var] = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'works_quickreplies')                          
 
                 except Exception as e:
                     print e
@@ -694,7 +715,7 @@ def eventweb2(request,id):
     context_dict['field'] = field
     context_dict['cvlink'] = cvlink
     context_dict['mobile'] = mobile
-    context_dict['elaboarte'] = elaboarte
+    context_dict['elaborate'] = elaborate
     context_dict['twitterlink'] = twitterlink
     context_dict['work1'] = work1
     context_dict['work2'] = work2
@@ -811,7 +832,7 @@ def handle_postback(fbid,payload):
         p.state =1
         p.save()
 
-        return post_facebook_message(fbid,'Ahhoy, great to have you on board lets get started by knowing your field of work')
+        return post_facebook_message(fbid,'field_quickreplies')
 
            
                               
@@ -864,11 +885,9 @@ def handle_quickreply(fbid,payload):
     elif payload == 'OWN':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '8'
-        global field
-        field = field + ' || ' +  payload
 
         p.save()
-        return post_facebook_message(sender_id,'field_quickreplies')           
+        return post_facebook_message(sender_id,'go ahead and type')           
 
     elif payload == 'END':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
@@ -901,11 +920,29 @@ def handle_quickreply(fbid,payload):
     elif payload == 'BACK':
         return post_facebook_message(sender_id,'main_quickreplies')
 
-    elif payload == 'SUBEVENTS1':
+    elif payload == 'WORK1':
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
+        p.state = '11'        
+        p.save()
+        return post_facebook_message(sender_id,'')
+
+    elif payload == 'WORK2':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '5'        
         p.save()
-        return post_facebook_message(sender_id,'subevents_quickreplies')
-                              
+        return post_facebook_message(sender_id,'works_quickreplies')
+        
+    elif payload == 'WORK3':
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
+        p.state = '5'        
+        p.save()
+        return post_facebook_message(sender_id,'works_quickreplies')
+                
+    elif payload == 'WORK4':
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
+        p.state = '5'        
+        p.save()
+        return post_facebook_message(sender_id,'works_quickreplies')
+
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
