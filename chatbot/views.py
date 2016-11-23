@@ -455,7 +455,7 @@ class MyChatBotView(generic.View):
                     global sender_id
                     sender_id = message['sender']['id']
                     message_text = message['message']['text']
-                    p = event.objects.get_or_create(fbid =sender_id)[0]
+                    p = eresume.objects.get_or_create(fbid =sender_id)[0]
                     a= userdeatils(sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     p.name = name
@@ -626,7 +626,7 @@ def eventweb(request,id):
     #fbid = '1047867078643788'
 
 
-    p = event.objects.get_or_create(fbid =id)[0]
+    p = eresume.objects.get_or_create(fbid =id)[0]
     name = p.name 
     location = p.location
     logolink = p.logolink  
@@ -669,7 +669,7 @@ def eventweb(request,id):
 def eventweb2(request,id):
     #fbid = '1047867078643788'
 
-    p = event.objects.get_or_create(fbid = id)[0]
+    p = eresume.objects.get_or_create(fbid = id)[0]
     name = p.name 
     location = p.location  
     description = p.description
@@ -793,7 +793,7 @@ def handle_postback(fbid,payload):
         return post_facebook_message(fbid,'https://myresumemaker.herokuapp.com/temp2')
 
     elif payload == "EVENT" :
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         # p.state = '1'
 
 
@@ -807,7 +807,7 @@ def handle_postback(fbid,payload):
 
 
     elif payload == 'STARTING':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state =1
         p.save()
 
@@ -824,7 +824,7 @@ def handle_quickreply(fbid,payload):
     output_text = 'Payload Recieved: ' + payload
 
     if payload == 'DEVELOPER':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         global field
         field = field + ' || ' +  payload
@@ -833,7 +833,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')
 
     elif payload == 'DESIGNER':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         global field
         field = field + ' || ' +  payload
@@ -842,7 +842,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')
 
     elif payload == 'DOCTOR':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         global field
         field = field + ' || ' +  payload
@@ -851,7 +851,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')
     
     elif payload == 'LAWYER':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         global field
         field = field + ' || ' +  payload
@@ -860,7 +860,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies') 
 
     elif payload == 'OWN':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
         global field
         field = field + ' || ' +  payload
@@ -869,7 +869,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')           
 
     elif payload == 'END':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'
         global field
         p.field = field
@@ -879,19 +879,19 @@ def handle_quickreply(fbid,payload):
 
 
     elif payload == 'FACEBOOK':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '5'        
         p.save()
         return post_facebook_message(sender_id,'please send the link to your Facebook profile')
 
     elif payload == 'TWITTER':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '6'        
         p.save()
         return post_facebook_message(sender_id,'please send the link to your Twitter profile')        
  
     elif payload == 'ALL':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '7'        
         p.save()
         return post_facebook_message(sender_id,'Give description to your Job Profile in Line or two')             
@@ -900,7 +900,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'main_quickreplies')
 
     elif payload == 'SUBEVENTS1':
-        p = event.objects.get_or_create(fbid =fbid)[0]
+        p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '5'        
         p.save()
         return post_facebook_message(sender_id,'subevents_quickreplies')
