@@ -703,12 +703,12 @@ def eventweb2(request,id):
 
 
 
-    return render(request,'chatbot/temp2.html',context_dict)
+    return render(request,'chatbot/eresume.html',context_dict)
 
 def eventreg(request):
     context_dict = {}
 
-    return render(request,'chatbot/eresume.html',context_dict)
+    return render(request,'',context_dict)
 
 
 def set_menu():
@@ -833,9 +833,10 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'field_quickreplies')
 
     elif payload == 'DESIGNER':
+        global field
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        global field
+        
         field = field + ' || ' +  payload
 
         p.save()
@@ -861,7 +862,7 @@ def handle_quickreply(fbid,payload):
 
     elif payload == 'OWN':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
-        p.state = '2'
+        p.state = '8'
         global field
         field = field + ' || ' +  payload
 
