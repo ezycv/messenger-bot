@@ -818,7 +818,7 @@ def handle_postback(fbid,payload):
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
 
-field = ''
+field = '  '
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
