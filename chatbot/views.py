@@ -542,7 +542,7 @@ class MyChatBotView(generic.View):
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
-                        elif message_text == "Picture" :
+                    elif message_text == "Picture" :
                           p.state = '13'
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
