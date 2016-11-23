@@ -12,7 +12,7 @@ class eresume(models.Model):
     state= models.CharField(max_length = 1000)
     location = models.CharField(max_length = 250)
     twitterlink = models.CharField(max_length = 250)
-    work1 = models.CharField(max_length = 250)
+    work1 = models.CharField(max_length = 11250)
     work2 = models.CharField(max_length = 250)
     work3 = models.CharField(max_length = 250)
     work4 = models.CharField(max_length = 250)

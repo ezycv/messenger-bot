@@ -554,7 +554,7 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'work_quickreplies')
                         
                     elif p.state == '13':
-                        m_text = message['message']['attachments']['payload']
+                        m_text = message['message']
                         print "bibibibibibibibi" +  m_text
                         p.work1 = m_text['url']
                         p.state = '0'
