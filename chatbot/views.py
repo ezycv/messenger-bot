@@ -464,7 +464,7 @@ class MyChatBotView(generic.View):
 
     def post(self, request, *args, **kwargs):
         incoming_message= json.loads(self.request.body.decode('utf-8'))
-        print  incoming_message
+        # print  incoming_message
         
 
         for entry in incoming_message['entry']:
@@ -555,10 +555,9 @@ class MyChatBotView(generic.View):
                         
                     elif p.state == '13':
                         
-                        # print 'bibibibibibibibi' +  message
+                        print message
                         # p.work1 = m_text['url']
                         # p.state = '0'
-                        p.save()
 
                         post_facebook_message(sender_id,'work_quickreplies')
 
