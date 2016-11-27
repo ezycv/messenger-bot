@@ -584,8 +584,9 @@ class MyChatBotView(generic.View):
                 try:
 
                   if message["message"]["attachments"][0]["type"] == "image":
+                    p = eresume.objects.get_or_create(fbid =sender_id)[0]
                     if p.state == '13':
-                      p.work1 = message_text
+                      p.work1 = message["message"]["attachments"][0]["payload"]["url"]
                       p.state = '0'
                       p.save()
                       post_facebook_message(sender_id,'work_quickreplies')
