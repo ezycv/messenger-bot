@@ -590,7 +590,7 @@ class MyChatBotView(generic.View):
 
                 try:
 
-                  if message["message"]["attachments"]["type"] == "image":
+                  if message["message"]["attachments"][0]["type"] == "image":
                     print hihihihihihihihihihihihihihihihihihihhhiii
                         
                   else:
