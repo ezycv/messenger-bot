@@ -588,12 +588,13 @@ class MyChatBotView(generic.View):
                     print e
                     pass
 
-                 try:
-                    if message["message"]["attachments"]["type"] == "image":
-                      print hihihihihihihihihihihihihihihihihihihhhiii
+                try:
+
+                  if message["message"]["attachments"]["type"] == "image":
+                    print hihihihihihihihihihihihihihihihihihihhhiii
                         
-                    else:
-                        pass                
+                  else:
+                      pass                
                     
                 except Exception as e:
                     print e
