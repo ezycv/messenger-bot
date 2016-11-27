@@ -553,14 +553,7 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
                         
-                    elif p.state == '13':
-                        
-                        print message
-                        # p.work1 = m_text['url']
-                        # p.state = '0'
-
-                        post_facebook_message(sender_id,'work_quickreplies')
-
+                    
                     elif p.state == '14':
                         p.cvlink = message_text
                         p.state = '0'
@@ -591,7 +584,12 @@ class MyChatBotView(generic.View):
                 try:
 
                   if message["message"]["attachments"][0]["type"] == "image":
-                    print hihihihihihihihihihihihihihihihihihihhhiii
+                    if p.state == '13':
+                      p.work1 = message_text
+                      p.state = '0'
+                      p.save()
+                      post_facebook_message(sender_id,'work_quickreplies')
+
                         
                   else:
                       pass                
