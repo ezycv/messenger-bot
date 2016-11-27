@@ -546,7 +546,7 @@ class MyChatBotView(generic.View):
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
-                        elif message_text == "Picture" :
+                    elif message_text == "Picture" :
                           global i 
                           i = i +1
                           p.state = '1' + str(i)
