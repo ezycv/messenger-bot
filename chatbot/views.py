@@ -543,9 +543,9 @@ class MyChatBotView(generic.View):
                           post_facebook_message(sender_id,'Go ahead and enter')
 
                     elif message_text == "Picture" :
-                          p.state = '17'
+                          p.state = '13'
                           p.save()
-                          post_facebook_message(sender_id,'Go ahead and enter')
+                          post_facebook_message(sender_id,'Go ahead and send ')
 
                     elif p.state == '12':
                         p.work1 = message_text
@@ -553,9 +553,9 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
                         
-                    elif p.state == '17':
+                    elif p.state == '13':
                         
-                        print "bibibibibibibibi" +  message
+                        # print 'bibibibibibibibi' +  message
                         # p.work1 = m_text['url']
                         # p.state = '0'
                         p.save()
