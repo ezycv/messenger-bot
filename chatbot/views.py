@@ -538,7 +538,7 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
 
-                    elif p.state == '11' or message_text == 'hi':
+                    elif p.state == '11' :
                         global i
                         i=i+1
                         if message_text == "Just Text" :
