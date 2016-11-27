@@ -538,7 +538,7 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
 
-                    elif p.state == '11':
+                    elif p.state == '11' or message_text == 'hi':
                         global i
                         i=i+1
                         if message_text == "Just Text" :
@@ -546,7 +546,7 @@ class MyChatBotView(generic.View):
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
-                    elif message_text == "Picture" :
+                        elif message_text == "Picture" :
                           global i 
                           i = i +1
                           p.state = '1' + str(i)
