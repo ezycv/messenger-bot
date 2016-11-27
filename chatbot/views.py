@@ -449,7 +449,8 @@ def social_quickreplies(fbid):
 
 
 
-sender_id = '1047867078643788'    
+sender_id = '1047867078643788'
+i = 1    
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -479,6 +480,7 @@ class MyChatBotView(generic.View):
                     a= userdeatils(sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     p.name = name
+
                     p.save()
 
                   
@@ -537,28 +539,55 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '11':
+                        global i
+                        i=i+1
                         if message_text == "Just Text" :
-                          p.state = '12'
+                          p.state = '1' + str(i)
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
-                    elif message_text == "Picture" :
-                          p.state = '13'
+                        elif message_text == "Picture" :
+                          global i 
+                          i = i +1
+                          p.state = '1' + str(i)
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
+
+
 
                     elif p.state == '12':
                         p.work1 = message_text
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '14':
+                        p.work2 = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'work_quickreplies')
+
+
+                    elif p.state == '16':
+                        p.work3 = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '18':
+                        p.work3 = message_text
+                        p.state = '0'
+                        p.save()
+                        post_facebook_message(sender_id,'resumeask')            
                         
                     
-                    elif p.state == '14':
+                    elif p.state == '20':
+                        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(fbid)
+        
                         p.cvlink = message_text
                         p.state = '0'
                         p.save()
-                        post_facebook_message(sender_id,'work_quickreplies')              
+                        post_facebook_message(sender_id,url)              
 
                     else:
                       post_facebook_message(sender_id,'ok bro ')
@@ -590,6 +619,24 @@ class MyChatBotView(generic.View):
                       p.state = '0'
                       p.save()
                       post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '15':
+                      p.work2 = message["message"]["attachments"][0]["payload"]["url"]
+                      p.state = '0'
+                      p.save()
+                      post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '17':
+                      p.work3 = message["message"]["attachments"][0]["payload"]["url"]
+                      p.state = '0'
+                      p.save()
+                      post_facebook_message(sender_id,'work_quickreplies')
+
+                    elif p.state == '19':
+                      p.work4 = message["message"]["attachments"][0]["payload"]["url"]
+                      p.state = '0'
+                      p.save()
+                      post_facebook_message(sender_id,'resumeask')      
 
                         
                   else:
@@ -986,27 +1033,27 @@ def handle_quickreply(fbid,payload):
 
     elif payload == 'WORK2':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
-        p.state = '5'        
+        p.state = '11'        
         p.save()
         return post_facebook_message(sender_id,'works_quickreplies')
         
     elif payload == 'WORK3':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
-        p.state = '5'        
+        p.state = '11'        
         p.save()
         return post_facebook_message(sender_id,'works_quickreplies')
                 
     elif payload == 'WORK4':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
-        p.state = '5'        
+        p.state = '11'        
         p.save()
         return post_facebook_message(sender_id,'works_quickreplies')
 
     elif payload == 'YES':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
-        p.state = '14'        
+        p.state = '20'        
         p.save()
-        return post_facebook_message(sender_id,'go ahead and send it.')
+        return post_facebook_message(sender_id,'go ahead and send its link .')
 
     elif payload == 'NO':
         url = 'https://myresumemaker.herokuapp.com/temp1/' + str(fbid)
