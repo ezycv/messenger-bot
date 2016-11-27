@@ -567,6 +567,8 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')              
 
+                    else:
+                      post_facebook_message(sender_id,'ok bro ')
 
 
                 except Exception as e:
