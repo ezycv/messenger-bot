@@ -510,7 +510,7 @@ class MyChatBotView(generic.View):
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'social_quickreplies')
-                        `
+                        
                     elif p.state == '6':
                         p.twitterlink = message_text
                         p.state = '0'
