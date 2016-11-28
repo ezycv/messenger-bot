@@ -404,7 +404,7 @@ def resumeask(fbid):
       {
         "content_type":"text",
         "title":"No",
-        "payload":"YES"
+        "payload":"NO"
       },      
 
                  
