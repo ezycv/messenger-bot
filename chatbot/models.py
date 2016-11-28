@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class eresume(models.Model):
-    field = models.CharField(max_length = 250)
     name = models.CharField(max_length = 250)
     mobile = models.IntegerField(max_length = 100 ,  null=True)
     elaborate = models.CharField(max_length = 1000)
@@ -20,6 +19,7 @@ class eresume(models.Model):
     fbid = models.CharField(max_length = 250)
     i = models.CharField(max_length = 250, default = '0')
     j = models.CharField(max_length = 250, default = '1')
+    field = models.CharField(max_length = 250, default = ' ')
     
 
     def __str__(self):

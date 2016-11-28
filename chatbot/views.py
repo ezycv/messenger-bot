@@ -592,7 +592,7 @@ class MyChatBotView(generic.View):
                         
                     
                     elif p.state == '20':
-                        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(sender_id)
+                        url = 'https://myresumemaker.herokuapp.com/temp2/' + str(sender_id)
         
                         p.cvlink = message_text
                         p.state = '0'
@@ -954,7 +954,7 @@ def handle_postback(fbid,payload):
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
 
-field = ' || '
+
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
@@ -962,8 +962,7 @@ def handle_quickreply(fbid,payload):
     if payload == 'DEVELOPER':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        global field
-        field = field + ' || ' +  payload
+        p.field = p.field + ' || ' +  payload
 
         p.save()
         return post_facebook_message(sender_id,'field_quickreplies')
@@ -971,8 +970,7 @@ def handle_quickreply(fbid,payload):
     elif payload == 'DESIGNER':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        global field
-        field = field + ' || ' +  payload
+        p.field = p.field + ' || ' +  payload
 
         p.save()
         return post_facebook_message(sender_id,'field_quickreplies')
@@ -980,8 +978,7 @@ def handle_quickreply(fbid,payload):
     elif payload == 'DOCTOR':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        global field
-        field = field + ' || ' +  payload
+        p.field = p.field + ' || ' +  payload
         
 
         p.save()
@@ -990,8 +987,7 @@ def handle_quickreply(fbid,payload):
     elif payload == 'LAWYER':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '2'
-        global field
-        field = field + ' || ' +  payload
+        p.field = p.field + ' || ' +  payload
 
         p.save()
         return post_facebook_message(sender_id,'field_quickreplies') 
@@ -1006,8 +1002,6 @@ def handle_quickreply(fbid,payload):
     elif payload == 'END':
         p = eresume.objects.get_or_create(fbid =fbid)[0]
         p.state = '3'
-        global field
-        p.field = field
 
         p.save()
         return post_facebook_message(sender_id,'Please enter your phone number')
