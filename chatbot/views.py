@@ -551,7 +551,7 @@ class MyChatBotView(generic.View):
                         elif message_text == "Picture" :
                           global j 
                           j = j+2
-                          p.state = '1' + str(i)
+                          p.state = '1' + str(j)
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
 
@@ -946,7 +946,7 @@ def handle_postback(fbid,payload):
         response_msg = json.dumps(response_object)
         requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)    
 
-field = '  '
+field = ' || '
 def handle_quickreply(fbid,payload):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     output_text = 'Payload Recieved: ' + payload
@@ -974,7 +974,7 @@ def handle_quickreply(fbid,payload):
         p.state = '2'
         global field
         field = field + ' || ' +  payload
-        print "hihihihihihihihihihihihihihihihihihihhhiii" + field
+        
 
         p.save()
         return post_facebook_message(sender_id,'field_quickreplies')
