@@ -450,8 +450,9 @@ def social_quickreplies(fbid):
 
 
 sender_id = '1047867078643788'
-i = 0
-j = 1    
+
+
+
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -466,12 +467,12 @@ class MyChatBotView(generic.View):
 
     def post(self, request, *args, **kwargs):
         incoming_message= json.loads(self.request.body.decode('utf-8'))
-        # print  incoming_message
+        print  incoming_message
         
 
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
-                # print message
+                print message
 
                 try:
                     global sender_id
@@ -481,6 +482,7 @@ class MyChatBotView(generic.View):
                     a= userdeatils(sender_id)
                     name = '%s %s'%(a['first_name'],a['last_name'])
                     p.name = name
+
 
                     p.save()
 
@@ -508,7 +510,7 @@ class MyChatBotView(generic.View):
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'social_quickreplies')
-                        
+                        `
                     elif p.state == '6':
                         p.twitterlink = message_text
                         p.state = '0'
@@ -542,20 +544,22 @@ class MyChatBotView(generic.View):
                     elif p.state == '11' :
                         
                         if message_text == "Just Text" :
-                          global i 
-                          i = i +2
-                          p.state = '1' + str(i)
-                          global j 
-                          j = i +1
+                          
+                          p.i = str(int(p.i) + 2)
+                          p.j = str(int(p.i) +1)
                           p.save()
+                          p.state = '1' + p.i
+                          
+                          
+                          p.save()
+                          print
                           post_facebook_message(sender_id,'Go ahead and enter')
 
                         elif message_text == "Picture" :
-                          global j 
-                          j = j+2
+                          p.j = str(int(p.j) + 2)
+                          p.i = str(int(p.j) -1)
+                          p.save()
                           p.state = '1' + str(j)
-                          global i 
-                          i = j - 1
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
 
@@ -588,7 +592,7 @@ class MyChatBotView(generic.View):
                         
                     
                     elif p.state == '20':
-                        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(fbid)
+                        url = 'https://myresumemaker.herokuapp.com/temp1/' + str(sender_id)
         
                         p.cvlink = message_text
                         p.state = '0'
