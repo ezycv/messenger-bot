@@ -18,7 +18,7 @@ class eresume(models.Model):
     work4 = models.CharField(max_length = 250)
     cvlink = models.CharField(max_length = 250)
     fbid = models.CharField(max_length = 250)
-    workstate= models.CharField(max_length = 1000)
+    
 
     def __str__(self):
         return self.fbid
