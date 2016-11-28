@@ -450,7 +450,8 @@ def social_quickreplies(fbid):
 
 
 sender_id = '1047867078643788'
-i = 1    
+i = 0
+j = 1    
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
@@ -539,16 +540,17 @@ class MyChatBotView(generic.View):
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '11' :
-                        global i
-                        i=i+1
+                        
                         if message_text == "Just Text" :
+                          global i 
+                          i = i +2
                           p.state = '1' + str(i)
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
                         elif message_text == "Picture" :
-                          global i 
-                          i = i +1
+                          global j 
+                          j = j+2
                           p.state = '1' + str(i)
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
@@ -589,8 +591,7 @@ class MyChatBotView(generic.View):
                         p.save()
                         post_facebook_message(sender_id,url)              
 
-                    else:
-                      post_facebook_message(sender_id,'ok bro ')
+                    
 
 
                 except Exception as e:
