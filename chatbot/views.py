@@ -545,6 +545,8 @@ class MyChatBotView(generic.View):
                           global i 
                           i = i +2
                           p.state = '1' + str(i)
+                          global j 
+                          j = i +1
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and enter')
 
@@ -552,6 +554,8 @@ class MyChatBotView(generic.View):
                           global j 
                           j = j+2
                           p.state = '1' + str(j)
+                          global i 
+                          i = j - 1
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
 
