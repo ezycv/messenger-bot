@@ -566,26 +566,26 @@ class MyChatBotView(generic.View):
 
 
                     elif p.state == '12':
-                        p.work1 = message_text
+                        p.work1 = "https://placeholdit.imgix.net/~text?txtsize=50&txt=" + message_text + "&w=400&h=500" 
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '14':
-                        p.work2 = message_text
+                        p.work2 = "https://placeholdit.imgix.net/~text?txtsize=50&txt=" + message_text + "&w=400&h=500" 
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
 
 
                     elif p.state == '16':
-                        p.work3 = message_text
+                        p.work3 = "https://placeholdit.imgix.net/~text?txtsize=50&txt=" + message_text + "&w=400&h=500" 
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'work_quickreplies')
 
                     elif p.state == '18':
-                        p.work3 = message_text
+                        p.work3 = "https://placeholdit.imgix.net/~text?txtsize=50&txt=" + message_text + "&w=400&h=500" 
                         p.state = '0'
                         p.save()
                         post_facebook_message(sender_id,'resumeask')            
