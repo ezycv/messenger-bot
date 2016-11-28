@@ -19,7 +19,7 @@ class eresume(models.Model):
     cvlink = models.CharField(max_length = 250)
     fbid = models.CharField(max_length = 250)
     i = models.CharField(max_length = 250, default = '0')
-    j = models.CharField(max_length = 250, default = '0')
+    j = models.CharField(max_length = 250, default = '1')
     
 
     def __str__(self):

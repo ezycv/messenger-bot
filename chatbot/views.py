@@ -559,7 +559,7 @@ class MyChatBotView(generic.View):
                           p.j = str(int(p.j) + 2)
                           p.i = str(int(p.j) -1)
                           p.save()
-                          p.state = '1' + str(j)
+                          p.state = '1' + p.j
                           p.save()
                           post_facebook_message(sender_id,'Go ahead and send ')
 
