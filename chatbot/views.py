@@ -1187,7 +1187,7 @@ def handle_quickreply(fbid,payload):
         return post_facebook_message(sender_id,'Go ahead and please provide me with its link.')
 
     elif payload == 'NO':
-        url = 'https://ezycv.herokuapp.com/eresume' + str(fbid)
+        url = 'https://ezycv.herokuapp.com/eresume/' + str(fbid)
         return post_facebook_message(sender_id,url)        
 
         response_msg = json.dumps(response_object)
@@ -1347,7 +1347,7 @@ def eresume_1(request,id):
     context_dict['work2'] = work2
     context_dict['work3'] = work3
     context_dict['work4'] = work4
-    return render(request,'chatb.eresumehtml',context_dict)
+    return render(request,'chatbot/eresume.html',context_dict)
 
 
 def resume_2(request,id):
