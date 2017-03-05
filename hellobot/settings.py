@@ -54,6 +54,9 @@ ROOT_URLCONF = 'hellobot.urls'
 WSGI_APPLICATION = 'hellobot.wsgi.application'
 
 
+
+
+
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
