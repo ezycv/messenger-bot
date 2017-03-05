@@ -4,3 +4,4 @@ requests
 whitenoise
 reportlab
 mysqlclient
+dj-database-url
