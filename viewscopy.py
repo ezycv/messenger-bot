@@ -70,7 +70,7 @@ def post_facebook_message(fbid,message_text):
 
 
 
-
+#for card resume
 def card_resume(fbid):
     
     response_object = {
