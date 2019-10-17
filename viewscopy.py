@@ -106,7 +106,7 @@ def card_resume(fbid):
 
 
 
-
+#cards function
 def cards(fbid):
     
     response_object = {
