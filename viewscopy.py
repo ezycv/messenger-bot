@@ -151,6 +151,7 @@ def cards(fbid):
 
     return json.dumps(response_object)
 
+#select card function
 def selectcard(fbid):
     response_object ={
   "recipient":{
