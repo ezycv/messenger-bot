@@ -199,6 +199,7 @@ def selectcard(fbid):
     }
     return json.dumps(response_object)
 
+#for quick replies
 def quickreplies(fbid):
     response_object = {
   "recipient":{
